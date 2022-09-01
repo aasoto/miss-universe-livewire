@@ -1,0 +1,12 @@
+++++++++++++++ LARAVEL LIVEWIRE
+
+//Crear proyecto
+laravel new {{nombre del proyecto}} --jet
+ej: laravel new livewirestore --jet
+which jetstream stack do you prefer?
+- seleccionar livewire
+Will your application use teams?
+- seleccionar yes
+
+Luego de creado el proyecto, crear la base de datos y correr las migraciones para que esta tenga las tablas quee l aplicativo necesita para correr.
+php artisan migrate
