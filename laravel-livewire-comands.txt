@@ -9,4 +9,35 @@ Will your application use teams?
 - seleccionar yes
 
 Luego de creado el proyecto, crear la base de datos y correr las migraciones para que esta tenga las tablas quee l aplicativo necesita para correr.
+php artisan migrate.
+
+En el archivo config/jetstream.php se tienen que habilitar todos los features para tener todos los componentes en la gestión de usuarios.
+
+En el archivo de app\Providers\JetstreamServiceProvider.php se puede manipular las acciones que pueden hacer cada uno de los tipos de usuario, además se pueden agregar nuevos tipos.
+
+Las rutas de las vistas que vienen predeterminandas con las creación de una nuevo proyecto están en el archivo vendor/laravel/jetstream/routes/livewire.php
+
+---------- COMPONENTS ----------------
+//comando para publicar los componentes
+php artisan vendor:publish --tag jetstream-views
+
+/********* MIGRACIONES**************/
+//crear migración
+php artisan make:migration CreatePostsTable
+//migrar las tablas
 php artisan migrate
+
+/********* COMPONENTES ************/
+//crear componentes
+php artisan make:livewire Dashboard/Post/Index
+
+/********** MODELOS ***************/
+//crear modelos
+php artisan make:model Post
+
+/*********** CORREGIR ERRORES **********/
+Para corregir error
+http://localhost/livewire/livewire.js?id=de3fca26689cb5a39af4 net::ERR_ABORTED 404 (Not Found)
+first run php artisan vendor:publish
+then select livewire:config file
+After that open file and edit asset_url null to your filename es decir url('/')
