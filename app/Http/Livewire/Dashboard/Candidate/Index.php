@@ -10,15 +10,24 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $confirmingDeleteCandidate, $candidateToDelete;
+
     public function render()
     {
         $candidates = Candidate::paginate(10);
         return view('livewire.dashboard.candidate.index', compact('candidates'));
     }
 
-    public function delete(Candidate $candidate)
+    public function selectedCandidateToDelete(Candidate $candidate)
     {
-        $candidate->delete();
+        $this->confirmingDeleteCandidate = true;
+        $this->candidateToDelete = $candidate;
+    }
+
+    public function delete()
+    {
+        $this->confirmingDeleteCandidate = false;
+        $this->candidateToDelete->delete();
         $this->emit('deleted');
     }
 }

@@ -20,6 +20,8 @@ Las rutas de las vistas que vienen predeterminandas con las creación de una nue
 ---------- COMPONENTS ----------------
 //comando para publicar los componentes
 php artisan vendor:publish --tag jetstream-views
+//comando para crear componente anonimo
+php artisan make:component card --view
 
 /********* MIGRACIONES**************/
 //crear migración
@@ -39,5 +41,5 @@ php artisan make:model Post
 Para corregir error
 http://localhost/livewire/livewire.js?id=de3fca26689cb5a39af4 net::ERR_ABORTED 404 (Not Found)
 first run php artisan vendor:publish
-then select livewire:config file
-After that open file and edit asset_url null to your filename es decir url('/')
+then select livewire:config file (config/livewire.php)
+Despues abrir el archivo y cambiar el valor null de asset_url a el link raíz del proyecto es decir 'http://localhost/miss-universe-livewire/public' poner dirección de raiz

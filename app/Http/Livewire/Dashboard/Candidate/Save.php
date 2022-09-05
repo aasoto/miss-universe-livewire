@@ -84,13 +84,12 @@ class Save extends Component
         }
 
         if ($this->official_picture) {
-            $imageName = $this->candidate->first_name.'_'.$this->candidate->first_last_name.'_'.time().'.'.$this->official_picture->getClientOriginalExtension();
+            $imageName = $this->candidate->id.'_'.$this->candidate->first_name.'_'.$this->candidate->first_last_name.'.'.$this->official_picture->getClientOriginalExtension();
             $this->official_picture->storeAs('images/candidates/official_pictures', $imageName, 'public');
 
             $this->candidate->update([
                 'official_picture' => $imageName
             ]);
         }
-
     }
 }
