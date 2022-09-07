@@ -1,4 +1,5 @@
 {
+    "type": "sponsor",
     "private": true,
     "scripts": {
         "dev": "vite",

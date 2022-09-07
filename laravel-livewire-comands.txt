@@ -22,6 +22,8 @@ Las rutas de las vistas que vienen predeterminandas con las creación de una nue
 php artisan vendor:publish --tag jetstream-views
 //comando para crear componente anonimo
 php artisan make:component card --view
+//comando para crear componente de livewire
+php artisan make:livewire Dashboard/Post
 
 /********* MIGRACIONES**************/
 //crear migración

@@ -6,6 +6,10 @@ use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeInde
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
 use App\Http\Livewire\Dashboard\News\Save as NewsSave;
+use App\Http\Livewire\Sponsor\Company;
+use App\Http\Livewire\Sponsor\Detail;
+use App\Http\Livewire\Sponsor\General;
+use App\Http\Livewire\Sponsor\Person;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +50,10 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         Route::get('/create', NewsSave::class)->name('d-news-create');
         Route::get('/edit/{id}', NewsSave::class)->name('d-news-edit');
     });
+});
+
+Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'], 'prefix' => 'sponsor'], function () {
+    Route::get('/', General::class)->name('general');
 });
 
 /*Route::middleware([
