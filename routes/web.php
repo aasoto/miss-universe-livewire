@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\Dashboard\Candidate\Index;
 use App\Http\Livewire\Dashboard\Candidate\Save;
+use App\Http\Livewire\Dashboard\Carousel\Index as CarouselIndex;
+use App\Http\Livewire\Dashboard\Carousel\Save as CarouselSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
@@ -50,9 +52,16 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         Route::get('/create', NewsSave::class)->name('d-news-create');
         Route::get('/edit/{id}', NewsSave::class)->name('d-news-edit');
     });
+
+    Route::group(['prefix' => 'carousel'], function () {
+        Route::get('/', CarouselIndex::class)->name('d-carousel-index');
+        Route::get('/create', CarouselSave::class)->name('d-carousel-create');
+        Route::get('/edit/{id}', CarouselSave::class)->name('d-carousel-edit');
+    });
 });
 
-Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'], 'prefix' => 'sponsor'], function () {
+Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'],
+'prefix' => 'sponsor'], function () {
     Route::get('/', General::class)->name('general');
 });
 

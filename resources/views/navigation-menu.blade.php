@@ -51,6 +51,9 @@
                     <x-jet-nav-link href="{{ route('d-news-index') }}" :active="request()->routeIs('d-news-index')" class="mr-2">
                         {{ __('News') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('d-carousel-index') }}" :active="request()->routeIs('d-news-index')" class="mr-2">
+                        {{ __('Carousel') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
