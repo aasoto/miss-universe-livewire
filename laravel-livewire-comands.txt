@@ -45,3 +45,11 @@ http://localhost/livewire/livewire.js?id=de3fca26689cb5a39af4 net::ERR_ABORTED 4
 first run php artisan vendor:publish
 then select livewire:config file (config/livewire.php)
 Despues abrir el archivo y cambiar el valor null de asset_url a el link raíz del proyecto es decir 'http://localhost/miss-universe-livewire/public' poner dirección de raiz
+
+/******** SEEDERS **************/
+//crear seeder
+php artisan make:seeder PostSeeder
+//crear factory
+php artisan make:factory PostFactory
+//ejecutar seeders
+php artisan db:seed

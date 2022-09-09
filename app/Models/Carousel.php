@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class Carousel extends Model
 {
@@ -24,4 +25,14 @@ class Carousel extends Model
         'button_2_color',
         'button_2_link'
     ];
+
+    public function getImageUrlBackground()
+    {
+        return URL::asset('../storage/app/public/images/carousels/background/'.$this->image);
+    }
+
+    public function getImageUrlSecondaryImage()
+    {
+        return URL::asset('../storage/app/public/images/carousels/secondaries_images/'.$this->secondary_image);
+    }
 }

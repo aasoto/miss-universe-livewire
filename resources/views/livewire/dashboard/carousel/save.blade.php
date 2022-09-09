@@ -56,7 +56,7 @@
                         <x-jet-input-error for='image'/>
                         <x-jet-input type="file" wire:model="image" class="w-full"/>
                         @if ($carousel && $carousel->image)
-                            <img class="w-40 mt-3" src="{{ $carousel->getImageUrl() }}"/>
+                            <img class="w-40 mt-3" src="{{ $carousel->getImageUrlBackground() }}"/>
                         @endif
                     </div>
                 @endif
@@ -65,6 +65,9 @@
                         <x-jet-label for="">{{__('Image')}}</x-jet-label>
                         <x-jet-input-error for='image'/>
                         <x-jet-input type="file" wire:model="image" class="w-full"/>
+                        @if ($carousel && $carousel->image)
+                            <img class="w-40 mt-3" src="{{ $carousel->getImageUrlBackground() }}"/>
+                        @endif
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <x-jet-label for="">{{__('Title')}}</x-jet-label>
@@ -80,6 +83,9 @@
                         <x-jet-label for="">{{__('Secondary image')}}</x-jet-label>
                         <x-jet-input-error for='secondary_image'/>
                         <x-jet-input type="file" wire:model="secondary_image" class="w-full"/>
+                        @if ($carousel && $carousel->secondary_image)
+                            <img class="w-40 mt-3" src="{{ $carousel->getImageUrlSecondaryImage() }}"/>
+                        @endif
                     </div>
                     <div class="col-span-6">
                         <x-jet-label>{{__('Button 1')}}</x-jet-label>
