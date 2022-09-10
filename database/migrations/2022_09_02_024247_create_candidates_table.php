@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("country_id")->constrained()->onDelete('cascade');
+            $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string("first_name", 100);
             $table->string("second_name", 100)->nullable();
             $table->string("first_last_name", 100);
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("gender", 10);
             $table->date("birthdate");
             $table->integer("age")->nullable();
-            $table->foreignId("national_committee_id")->constrained()->onDelete('cascade');
+            $table->foreignId("national_committee_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text("official_picture")->nullable();
             $table->text("pictures")->nullable();
             $table->text("videos")->nullable();

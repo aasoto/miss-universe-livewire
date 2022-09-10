@@ -2,19 +2,61 @@
 
 namespace App\Http\Livewire\Dashboard\Candidate;
 
+use App\Http\Livewire\Dashboard\Traits\Order;
 use App\Models\Candidate;
+use App\Models\Country;
+use App\Models\NationalCommittee;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
     use WithPagination;
+    use Order;
+
+    protected $queryString = ['country_id', 'national_committee_id', 'search', 'pagination', 'sortColumn', 'sortDirection'];
+
+    public $pagination = 10;
+
+    public $search;
+
+    public $countries, $national_committees;
+
+    public $country_id, $national_committee_id;
+
+    public $columns = [
+        'id' => 'ID',
+        'country_id' => 'País',
+        'first_name' => 'Nombres',
+        'national_committee_id' => 'Comité nacional'
+    ];
 
     public $confirmingDeleteCandidate, $candidateToDelete;
 
     public function render()
     {
-        $candidates = Candidate::paginate(10);
+        $this->countries = Country::pluck('id', 'name');
+        $this->national_committees = NationalCommittee::pluck('id', 'business_name');
+        $candidates = Candidate::orderBy($this->sortColumn, $this->sortDirection);
+
+        if ($this->search) {
+            $candidates->where( function ($query) {
+                $query->orWhere('id', 'like', '%'.$this->search.'%')
+                ->orWhere('first_name', 'like', '%'.$this->search.'%')
+                ->orWhere('second_name', 'like', '%'.$this->search.'%')
+                ->orWhere('first_last_name', 'like', '%'.$this->search.'%')
+                ->orWhere('second_last_name', 'like', '%'.$this->search.'%');
+            });
+        }
+
+        if ($this->country_id) {
+            $candidates->where('country_id', $this->country_id);
+        }
+        if ($this->national_committee_id) {
+            $candidates->where('national_committee_id', $this->national_committee_id);
+        }
+
+        $candidates = $candidates->paginate($this->pagination);
         return view('livewire.dashboard.candidate.index', compact('candidates'));
     }
 

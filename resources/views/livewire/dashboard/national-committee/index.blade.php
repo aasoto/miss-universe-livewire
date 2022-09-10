@@ -10,24 +10,72 @@
             {{__('Deleted national committee successfully')}}
         </div>
     </x-jet-action-message>
-    <a href="{{route('d-nationalcommittee-create')}}">
-        <x-btn.button-success class="my-2">
-            {{__('NUEVO COMITÉ NACIONAL')}}
-        </x-btn.button-success>
-    </a>
+    <div class="grid grid-cols-6 gap-2 mb-2">
+        <div class="col-span-2">
+            <a href="{{route('d-nationalcommittee-create')}}">
+                <x-btn.button-success class="py-3 px-11">
+                    {{__('NUEVO COMITÉ NACIONAL')}}
+                </x-btn.button-success>
+            </a>
+        </div>
+        <div class="col-span-1">
+            <select wire:model="pagination"
+            class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <option value="">Mostrar</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="500">500</option>
+                <option value="750">750</option>
+                <option value="1000">1000</option>
+            </select>
+        </div>
+    </div>
+    <div class="grid grid-cols-6 gap-2 mb-2">
+        <div class="col-span-3">
+            <x-jet-input type="text" wire:model="search" class="w-full" placeholder="Buscar"></x-jet-input>
+        </div>
+        <div class="col-span-3">
+            <select wire:model="country_id"
+            class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <option value="">País</option>
+                @foreach ($countries as $name => $id)
+                    <option value="{{$id}}">{{$name}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <table class="table w-full">
         <thead class="text-left bg-gray-100">
             <tr class="border-b">
-                <th class="p-2">País</th>
-                <th class="p-2">Razón social</th>
-                <th class="p-2">Director nacional</th>
+                @foreach ($columns as $key => $column)
+                    <th class="p-2">
+                        <button wire:click="sort('{{ $key }}')">
+                        {{ $column }}
+                        @if ($key == $sortColumn)
+                            @if ($sortDirection == 'asc')
+                                &uarr;
+                            @else
+                                &darr;
+                            @endif
+                        @endif
+                        </button>
+                    </th>
+                @endforeach
                 <th class="p-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($national_committees as $national_committee)
                 <tr class="border-b">
-                    <td class="p-2">{{$national_committee->country->name}}</td>
+                    <td class="p-2">{{$national_committee->id}}</td>
+                    <td class="p-2">
+                        <span class="fi fi-{{$national_committee->country->iso3166_1_alpha2}}"></span>
+                        {{$national_committee->country->name}}
+                    </td>
                     <td class="p-2">{{$national_committee->business_name}}</td>
                     <td class="p-2">{{$national_committee->national_director}}</td>
                     <td class="p-2">

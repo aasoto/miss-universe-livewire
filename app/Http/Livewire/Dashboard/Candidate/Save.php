@@ -48,8 +48,12 @@ class Save extends Component
 
     public function render()
     {
+        if($this->country_id) {
+            $this->national_committees = NationalCommittee::where('country_id', $this->country_id)->get();
+        } else {
+            $this->national_committees = NationalCommittee::get();
+        }
         $this->countries = Country::pluck('id', 'name');
-        $this->national_committees = NationalCommittee::pluck('id', 'business_name');
         return view('livewire.dashboard.candidate.save');
     }
 

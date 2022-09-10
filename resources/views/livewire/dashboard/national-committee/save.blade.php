@@ -18,8 +18,11 @@
             {{__('Ingresar comité nacional')}}
         @endslot
         @slot('form')
-            <div class="col-span-6">
+            <div class="col-span-6 mb-0">
                 <x-jet-label>País</x-jet-label>
+            </div>
+            <div class="col-span-6 flex gap-2">
+                <span class="fi fi-{{$flag}}" style="width: 50px;"></span>
                 <x-jet-input-error for='country_id'/>
                 <select class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     wire:model="country_id">

@@ -35,7 +35,6 @@
         </div>
     </div>
 
-
     <div class="grid grid-cols-2 mb-2 gap-2">
         <x-jet-input type="text" wire:model="search" class="w-full" placeholder="Buscar"></x-jet-input>
         <div class="grid grid-cols-2 gap-2">
@@ -67,13 +66,20 @@
     <table class="table w-full">
         <thead class="text-left bg-gray-100">
             <tr class="border-b">
-                <th class="p-2">ID</th>
-                <th class="p-2">Título</th>
-                <th class="p-2">Subtitulo</th>
-                <th class="p-2">F. Publicación</th>
-                <th class="p-2">Posteado</th>
-                <th class="p-2">Tipo</th>
-                <th class="p-2">Categoría</th>
+                @foreach ($columns as $key => $column)
+                    <th class="p-2">
+                        <button wire:click="sort('{{ $key }}')">
+                        {{ $column }}
+                        @if ($key == $sortColumn)
+                            @if ($sortDirection == 'asc')
+                                &uarr;
+                            @else
+                                &darr;
+                            @endif
+                        @endif
+                        </button>
+                    </th>
+                @endforeach
                 <th class="p-2">Acciones</th>
             </tr>
         </thead>

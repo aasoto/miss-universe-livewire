@@ -14,6 +14,8 @@ class Save extends Component
 
     public $nationalcommittee;
 
+    public $flag;
+
     protected $rules = [
         'country_id' => 'required|integer',
         'business_name' => 'required|max:200|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
@@ -32,6 +34,10 @@ class Save extends Component
 
     public function render()
     {
+        if ($this->country_id) {
+            $this->flag = Country::where('id', $this->country_id)->get('iso3166_1_alpha2');
+            $this->flag = $this->flag[0]->iso3166_1_alpha2;
+        }
         $this->countries = Country::pluck('id', 'name');
         return view('livewire.dashboard.national-committee.save');
     }

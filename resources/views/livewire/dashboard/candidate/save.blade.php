@@ -76,8 +76,8 @@
                 <select class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     wire:model="national_committee_id">
                     <option value="">Seleccionar...</option>
-                    @foreach ($national_committees as $business_name => $id)
-                        <option value="{{$id}}">{{$business_name}}</option>
+                    @foreach ($national_committees as $key => $value)
+                        <option value="{{$value['id']}}">{{$value['business_name']}}</option>
                     @endforeach
                 </select>
             </div>

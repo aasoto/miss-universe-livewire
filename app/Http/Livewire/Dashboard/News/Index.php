@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\News;
 
+use App\Http\Livewire\Dashboard\Traits\Order;
 use App\Models\Category;
 use App\Models\News;
 use Livewire\Component;
@@ -10,6 +11,8 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
+    //trait de ordenación de columnas
+    use Order;
     /**
      * Para mantener los filtros una vez se recargue la página web,
      * añadir variable queryString; por el contrario si se desea tener una busqueda volatil
@@ -29,12 +32,27 @@ class Index extends Component
     //variables de filtrado por fechas
     public $from, $to;
 
+    //Array de columnas de la tabla
+    public $columns = [
+        'id' => 'ID',
+        'title' => 'Título',
+        'subtitle' => 'Subtitulo',
+        'date_publish' => 'F. Publicación',
+        'posted' => 'Posteado',
+        'type' => 'Tipo',
+        'category_id' => 'Categoría'
+    ];
+
+    //variables para ordenar columnas
+    #public $sortColumn = "id", $sortDirection = "asc";
+
     //variables para eliminar
     public $confirmingDeleteNews, $newsToDelete;
 
     public function render()
     {
-        $news = News::where('id', '>=', 1);
+        //consulta para traer registros ordenados según requerimiento
+        $news = News::orderBy($this->sortColumn, $this->sortDirection);
 
         /** Busqueda general */
         if ($this->search) {
@@ -69,6 +87,7 @@ class Index extends Component
         return view('livewire.dashboard.news.index', compact('news', 'categories'));
     }
 
+    /** Funciones para eliminar */
     public function selectedNewsToDelete(News $news)
     {
         $this->confirmingDeleteNews = true;
@@ -85,4 +104,13 @@ class Index extends Component
         $this->newsToDelete->delete();
         $this->emit('deleted');
     }
+    /** fin de Funciones para eliminar */
+
+    /** Función para ordenar */
+    /*public function sort($column)
+    {
+        $this->sortColumn = $column;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
+    }*/
+    /** fin de Función para ordenar */
 }
