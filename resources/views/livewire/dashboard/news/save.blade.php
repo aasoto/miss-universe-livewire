@@ -36,9 +36,17 @@
                 <x-jet-input type="text" wire:model="subtitle" class="w-full"/>
             </div>
             <div class="col-span-6">
+                <div wire:ignore>
+                    <div id="ckcontent">
+                        {!! $content !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
                 <x-jet-label for="">Contenido</x-jet-label>
                 <x-jet-input-error for='content'/>
-                <x-jet-input type="text" wire:model="content" class="w-full"/>
+                <textarea wire:model="content" class="w-full h-20"></textarea>
+                {{--<x-jet-input type="text" wire:model="content" class="w-full"/>--}}
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <x-jet-label for="">Postear</x-jet-label>
@@ -82,3 +90,27 @@
         @endslot
     </x-form.form-primary>
 </div>
+{{-- Importar plugin ckeditor --}}
+<script src="{{asset('js/ckeditor5-build-classic/ckeditor.js')}}"></script>
+<script>
+
+    document.addEventListener('livewire:load', function () {
+        var ckeditor = null;
+        /* Comunicación ckeditor a content */
+        var editor = ClassicEditor.create(document.querySelector('#ckcontent')).then(
+            editor => {
+                ckeditor = editor;
+                editor.model.document.on('change:data', () => {
+                    @this.content = editor.getData();
+                });
+            }
+        )
+
+        /* Comunicación content a ckeditor */
+        Livewire.hook('message.processed', (message, component) => {
+            if (message.updateQueue[0].name == 'content') {
+                ckeditor.setData(@this.content);
+            }
+        })
+    })
+</script>

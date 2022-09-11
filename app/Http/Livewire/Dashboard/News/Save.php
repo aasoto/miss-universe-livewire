@@ -23,7 +23,7 @@ class Save extends Component
     public $news;
 
     protected $rules = [
-        "background" => "required|image|mimes:jpeg,jpg,png|max:10240",
+        "background" => "nullable|image|mimes:jpeg,jpg,png|max:10240",
         "title" => "required|string|max:200",
         "subtitle" => "nullable|string|max:200",
         "content" => "required|min:7",
