@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Blog\Index as BlogIndex;
+use App\Http\Livewire\Blog\News\Show as NewsShow;
 use App\Http\Livewire\Dashboard\Candidate\Index;
 use App\Http\Livewire\Dashboard\Candidate\Save;
 use App\Http\Livewire\Dashboard\Carousel\Index as CarouselIndex;
@@ -58,6 +60,11 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         Route::get('/create', CarouselSave::class)->name('d-carousel-create');
         Route::get('/edit/{id}', CarouselSave::class)->name('d-carousel-edit');
     });
+});
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', BlogIndex::class)->name('web-index');
+    Route::get('/news/{slug}', NewsShow::class)->name('web-news-show');
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'],
