@@ -1,6 +1,5 @@
 <br>
-<img class="mx-auto w-5/6 h-80 rounded-lg shadow-lg"
-    src="{{$news->getImageURL()}}" alt="">
+<img class="mx-auto w-5/6 h-80 rounded-lg shadow-lg" src="{{$news->getImageURL()}}" alt="">
 <div class="flex flex-wrap -mt-12 mx-auto w-4/6 shadow-lg">
     <div class="rounded-lg bg-white p-4 sm:p-8">
         <div class="font-inter font-extrabold text-4xl text-black tracking-tight">{{ $news->title }}</div>
@@ -11,6 +10,15 @@
         <p class="mt-4 leading-7 text-slate-500">{!! $news->content !!}</p>
         <p class="mt-4 leading-7 text-slate-500">{!! $news->content !!}</p>
         <p class="mt-4 leading-7 text-slate-500">{!! $news->content !!}</p>
+    </div>
+</div>
+<br>
+<div class="flex flex-wrap mx-auto w-4/6 shadow-lg">
+    <div class="flex flex-wrap rounded-lg bg-white p-4 sm:p-8">
+        @if ($news->posted == 'yes')
+            @livewire('news.qualify', ['news' => $news, 'type' => 'add'])
+            {{-- @livewire('news.qualify') --}}
+        @endif
     </div>
 </div>
 <br><br>

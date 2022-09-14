@@ -27,6 +27,11 @@
     @apply border-indigo-500 rounded-t bg-gray-100
 }
 
+/* BOX */
+.box{
+    @apply py-4 px-7 border
+}
+
 .active-pink{
     @apply border-pink-400 rounded-t bg-gray-100
 }

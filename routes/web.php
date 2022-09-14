@@ -10,6 +10,7 @@ use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeInde
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
 use App\Http\Livewire\Dashboard\News\Save as NewsSave;
+use App\Http\Livewire\News\Qualify;
 use App\Http\Livewire\Sponsor\Company;
 use App\Http\Livewire\Sponsor\Detail;
 use App\Http\Livewire\Sponsor\General;
@@ -65,6 +66,10 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', BlogIndex::class)->name('web-index');
     Route::get('/news/{slug}', NewsShow::class)->name('web-news-show');
+});
+
+Route::group(['prefix' => 'qualify'], function () {
+    Route::get('/qualifies-list', Qualify::class)->name('news-qualifies');
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'],
