@@ -14,11 +14,15 @@
 </div>
 <br>
 <div class="flex flex-wrap mx-auto w-4/6 shadow-lg">
-    <div class="flex flex-wrap rounded-lg bg-white p-4 sm:p-8">
+    <div class="flex flex-wrap w-full rounded-lg bg-white p-4 sm:p-8">
         @if ($news->posted == 'yes')
             @livewire('news.qualify', ['news' => $news, 'type' => 'add'])
             {{-- @livewire('news.qualify') --}}
         @endif
     </div>
 </div>
+<br>
+@if ($news->posted == 'yes')
+    @livewire('blog.news.comments.index', ['news_id' => $news->id])
+@endif
 <br><br>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\News;
 
+use App\Models\NewsQualify;
 use Illuminate\Support\Arr;
 use Livewire\Component;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -36,6 +37,7 @@ class QualifyItem extends Component
                 unset($qualifies[$news['id']]);
                 unset($this->item);
                 $session->set('qualifies', $qualifies);
+                $this->saveDB($qualifies);
             }
             return;
         }
@@ -47,11 +49,32 @@ class QualifyItem extends Component
         }
 
         $this->item = $qualifies[$news['id']];
-
         $this->count = $this->item[1];
-
         $session->set('qualifies', $qualifies);
+        $this->saveDB($qualifies);
         //dd($session->get('qualifies', []));
+    }
+
+    private function saveDB($qualifies)
+    {
+        if (auth()->check()) {
+            $control = time();
+            foreach ($qualifies as $qualify) {
+                NewsQualify::updateOrCreate(
+                    [
+                        'news_id' => $qualify[0]['id'],
+                        'user_id' => auth()->id()
+                    ],[
+                        'news_id' => $qualify[0]['id'],
+                        'score' => $qualify[1],
+                        'user_id' => auth()->id(),
+                        'control' => $control
+                    ]
+                );
+            }
+        }
+        //borrar
+        NewsQualify::whereNot('control', $control)->where('user_id', auth()->id())->delete();
     }
 
     public function update()
