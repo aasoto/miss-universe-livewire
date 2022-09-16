@@ -38,14 +38,17 @@ class QualifyItem extends Component
                 unset($this->item);
                 $session->set('qualifies', $qualifies);
                 $this->saveDB($qualifies);
+                $this->emit('QualifyRemoved');
             }
             return;
         }
         //agregar
         if (Arr::exists($qualifies, $news['id'])) {
             $qualifies[$news['id']][1] = $count;
+            $this->emit('QualifyModified');
         } else {
             $qualifies[$news['id']] = [$news, $count];
+            $this->emit('QualifyAdded', $news);
         }
 
         $this->item = $qualifies[$news['id']];

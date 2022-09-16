@@ -15,8 +15,8 @@
             'resources/css/app.css',
             'resources/js/app.js',
             'node_modules/flag-icons/css/flag-icons.min.css',
-            'node_modules/fontawesome-free-6.2.0-web/css/all.min.css',
-            'node_modules/fontawesome-free-6.2.0-web/js/all.min.js'
+            'resources/fontawesome-free-6.2.0-web/css/all.min.css',
+            'resources/fontawesome-free-6.2.0-web/js/all.min.js'
         ])
 
         <!-- Styles -->

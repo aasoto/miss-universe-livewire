@@ -13,6 +13,7 @@
     </div>
 </div>
 <br>
+@if (auth()->check())
 <div class="flex flex-wrap mx-auto w-4/6 shadow-lg">
     <div class="flex flex-wrap w-full rounded-lg bg-white p-4 sm:p-8">
         @if ($news->posted == 'yes')
@@ -22,6 +23,7 @@
     </div>
 </div>
 <br>
+@endif
 @if ($news->posted == 'yes')
     @livewire('blog.news.comments.index', ['news_id' => $news->id])
 @endif

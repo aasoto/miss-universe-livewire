@@ -17,6 +17,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "flag-icons": "^6.6.6"
+        "flag-icons": "^6.6.6",
+        "toast-me": "^1.4.8"
     }
 }

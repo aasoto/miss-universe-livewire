@@ -2,6 +2,7 @@
 /public/build
 /public/hot
 /public/storage
+/resources/fontawesome-free-6.2.0-web
 /storage/*.key
 /vendor
 .env
