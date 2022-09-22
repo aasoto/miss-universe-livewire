@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('carousels', function (Blueprint $table) {
             $table->id();
+            $table->integer('number');
+            $table->boolean('visible')->default(true);
             $table->string("type", 50);
             $table->string("image", 1000);
             $table->string("title", 500)->nullable();
@@ -46,6 +48,7 @@ return new class extends Migration
             ])->nullable();
             $table->string("button_2_color", 2000)->nullable();
             $table->string("button_2_link", 2000)->nullable();
+            $table->boolean('selected')->default(false);
             $table->timestamps();
         });
     }

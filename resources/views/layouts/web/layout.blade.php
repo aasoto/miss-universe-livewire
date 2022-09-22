@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>The Beauty Pageant Project</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -16,26 +16,24 @@
             'resources/js/app.js',
             'node_modules/flag-icons/css/flag-icons.min.css',
             'resources/fontawesome-free-6.2.0-web/css/all.min.css',
-            'resources/fontawesome-free-6.2.0-web/js/all.min.js'
+            'resources/fontawesome-free-6.2.0-web/js/all.min.js',
+            'resources/js/dropdown.js'
         ])
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
-
-        <div class="min-h-screen bg-gray-200">
-
-           {{-- @livewire('navigation-menu') --}}
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+    <body class="min-h-screen bg-gray-200 dark:bg-gray-800">
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+        @livewire('web.navigation.menu')
 
         {{--@stack('modals')--}}
 
         @livewireScripts
+        {{-- <script src="../resources/alpinejs/data.js"></script> --}}
+
     </body>
 </html>

@@ -15,6 +15,7 @@ use App\Http\Livewire\Sponsor\Company;
 use App\Http\Livewire\Sponsor\Detail;
 use App\Http\Livewire\Sponsor\General;
 use App\Http\Livewire\Sponsor\Person;
+use App\Http\Livewire\Web\Index as WebIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +29,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::group(['prefix' => ''], function () {
+    Route::get('/', WebIndex::class)->name('start');
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'], 'prefix' => 'dashboard'], function () {
@@ -66,6 +71,10 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', BlogIndex::class)->name('web-index');
     Route::get('/news/{slug}', NewsShow::class)->name('web-news-show');
+});
+
+Route::group(['prefix' => 'web'], function () {
+    Route::get('/', WebIndex::class)->name('index');
 });
 
 Route::group(['prefix' => 'qualify'], function () {

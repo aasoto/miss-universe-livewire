@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Carousel;
 
+use App\Http\Livewire\Dashboard\Traits\uploadImage;
 use App\Models\Carousel;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -9,6 +10,7 @@ use Livewire\WithFileUploads;
 class Save extends Component
 {
     use WithFileUploads;
+    use uploadImage;
 
     public $type;
     public $step = 1, $checked_images = false;
@@ -77,9 +79,9 @@ class Save extends Component
             if ($this->checked_images == false) {
                 if ($this->type == 'make' && $this->secondary_image != null) {
                     $imageName = 'carousel_background_'.time().'.'.$this->image->getClientOriginalExtension();
-                    $this->image->storeAs('images/carousels/background', $imageName, 'public');
+                    $this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
                     $secondaryImageName = 'carousel_secondary_image_'.time().'.'.$this->secondary_image->getClientOriginalExtension();
-                    $this->secondary_image->storeAs('images/carousels/secondaries_images', $secondaryImageName, 'public');
+                    $this->resizeUploadImage('../storage/app/public/images/carousels/secondaries_images', $secondaryImageName, $this->secondary_image, 700, 700);
 
                     $this->checked_images = true;
                 }
@@ -87,7 +89,7 @@ class Save extends Component
 
             if ($this->checked_images == false) {
                 $imageName = 'carousel_background_'.time().'.'.$this->image->getClientOriginalExtension();
-                $this->image->storeAs('images/carousels/background', $imageName, 'public');
+                $this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
 
                 $this->checked_images = true;
             }
@@ -126,6 +128,7 @@ class Save extends Component
             } else {
                 $this->carousel = Carousel::create([
                     'type' => $this->type,
+                    'number' => Carousel::all()->count(),
                     'image' => $imageName,
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
