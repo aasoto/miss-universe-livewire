@@ -48,6 +48,7 @@ return new class extends Migration
             ])->nullable();
             $table->string("button_2_color", 2000)->nullable();
             $table->string("button_2_link", 2000)->nullable();
+            $table->string('link_redirect')->nullable();
             $table->boolean('selected')->default(false);
             $table->timestamps();
         });

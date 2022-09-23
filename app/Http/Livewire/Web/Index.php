@@ -11,7 +11,7 @@ class Index extends Component
 
     public function render()
     {
-        $this->carousels = Carousel::orderBy('number')->get()->toArray();
+        $this->carousels = Carousel::where('visible', true)->orderBy('number')->get()->toArray();
         $this->carousels = json_encode($this->carousels);
         $this->carousels = json_decode($this->carousels);
         return view('livewire.web.index')->layout('layouts.web.layout');

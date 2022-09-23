@@ -24,7 +24,8 @@ class Carousel extends Model
         'button_2_text',
         'button_2_type',
         'button_2_color',
-        'button_2_link'
+        'button_2_link',
+        'link_redirect'
     ];
 
     public function getImageUrlBackground()

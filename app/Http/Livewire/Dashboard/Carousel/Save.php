@@ -27,7 +27,8 @@ class Save extends Component
             $button_2_text,
             $button_2_type,
             $button_2_color,
-            $button_2_link;
+            $button_2_link,
+            $link_redirect;
 
     public $current_image, $current_secondary_image;
 
@@ -44,7 +45,8 @@ class Save extends Component
         'button_2_text' => 'nullable|string|max:50',
         'button_2_type' => 'nullable|string|max:100',
         'button_2_color' => 'nullable|string|max:2000',
-        'button_2_link' => 'nullable|string|max:2000'
+        'button_2_link' => 'nullable|string|max:2000',
+        'link_redirect' => 'nullable|string|max:2000'
     ];
 
     public function mount($id = null)
@@ -57,11 +59,14 @@ class Save extends Component
             $this->subtitle = $this->carousel->subtitle;
             $this->current_secondary_image = $this->carousel->secondary_image;
             $this->button_1_text = $this->carousel->button_1_text;
+            $this->button_1_color = $this->carousel->button_1_color;
             $this->button_1_type = $this->carousel->button_1_type;
             $this->button_1_link = $this->carousel->button_1_link;
             $this->button_2_text = $this->carousel->button_2_text;
+            $this->button_2_color = $this->carousel->button_2_color;
             $this->button_2_type = $this->carousel->button_2_type;
             $this->button_2_link = $this->carousel->button_2_link;
+            $this->link_redirect = $this->carousel->link_redirect;
         }
     }
 
@@ -71,6 +76,7 @@ class Save extends Component
     }
 
     public function submit(){
+
         if ($this->image != null) {
             $this->validate();
 
@@ -94,6 +100,14 @@ class Save extends Component
                 $this->checked_images = true;
             }
 
+            if ($this->button_1_color) {
+                $this->button_1_type = 'default';
+            }
+
+            if ($this->button_2_color) {
+                $this->button_2_type = 'default';
+            }
+
             if ($this->carousel) {
                 $this->carousel->update([
                     'type' => $this->type,
@@ -106,7 +120,8 @@ class Save extends Component
                     'button_2_text' => $this->button_2_text,
                     'button_2_type' => $this->button_2_type,
                     'button_2_color' => $this->button_2_color,
-                    'button_2_link' => $this->button_2_link
+                    'button_2_link' => $this->button_2_link,
+                    'link_redirect' => $this->link_redirect
                 ]);
 
                 if ($this->image != null) {
@@ -126,6 +141,8 @@ class Save extends Component
                 $this->emit('updated');
 
             } else {
+                //dd($this->link_redirect);
+
                 $this->carousel = Carousel::create([
                     'type' => $this->type,
                     'number' => Carousel::all()->count(),
@@ -140,7 +157,8 @@ class Save extends Component
                     'button_2_text' => $this->button_2_text,
                     'button_2_type' => $this->button_2_type,
                     'button_2_color' => $this->button_2_color,
-                    'button_2_link' => $this->button_2_link
+                    'button_2_link' => $this->button_2_link,
+                    'link_redirect' => $this->link_redirect
                 ]);
                 $this->emit('created');
             }
