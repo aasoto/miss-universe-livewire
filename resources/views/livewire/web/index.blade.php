@@ -66,19 +66,19 @@
 
     <!-- <img class="h-4/5 w-full object-cover object-center" :src="images[selected]" alt="mountains" /> -->
     <button @click="selected = clickPrevious()"
-        class="opacity-0 hover:opacity-100 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+        class="opacity-0 hover:opacity-100 absolute top-0 bottom-0 flex items-center justify-center p-5 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
         type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
         <span class="inline-block bg-no-repeat" aria-hidden="true"></span>
         <span class="text-gray-50 ml-3">
-            <i class="fa-solid fa-angle-left"></i>
+            <i class="w-10 h-10 fa-solid fa-angle-left"></i>
         </span>
     </button>
     <button @click="selected = clickNext()"
-        class="opacity-0 hover:opacity-100 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+        class="opacity-0 hover:opacity-100 absolute top-0 bottom-0 flex items-center justify-center p-5 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
         type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
         <span class="inline-block bg-no-repeat" aria-hidden="true"></span>
         <span class="text-gray-50 mr-3">
-            <i class="fa-solid fa-angle-right"></i>
+            <i class="w-10 h-10 fa-solid fa-angle-right"></i>
         </span>
     </button>
     <div class="absolute bottom-0 w-full p-4 flex justify-center space-x-2">
@@ -89,11 +89,9 @@
         </template>
     </div>
 </div>
-<div class="flex flex-wrap -mt-12 w-11/12 mx-auto bg-white dark:bg-gray-800">
-    <div class="rounded-md bg-white/70 dark:bg-gray-700 backdrop-blur-sm">
-        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 mt-20">
-            <div class="w-1 sm:w-1 md:w-full col-span-0 md:col-span-1">
-            </div>
+<div x-data="news()" class="relative">
+    <div class="flex flex-wrap w-full md:w-11/12 mx-0 mt-0 md:mt-4 lg:-mt-20 md:mx-8 lg:mx-11 xl:mx-14 2xl:mx-16 md:rounded-md bg-white/70 dark:bg-gray-800 backdrop-blur-lg shadow-sm shadow-gray-700">
+        <div class="grid grid-cols-1 sm:grid-cols-3 mx-0 md:mx-12 lg:mx-24 xl:mx-32 2xl:mx-44 mt-20">
             <div class="col-span-1 sm:border-r-4 border-rose-600 dark:border-rose-300">
                 <div class="mx-3">
                     <div class="text-center">
@@ -158,48 +156,53 @@
                         nostrum delectus debitis eaque corporis enim! Ea, odit tenetur!</p>
                 </div>
             </div>
-            <div class="hidden sm:hidden md:col-span-1">
+        </div>
+        <div class="my-20">
+            <h1 class="text-rose-500 text-4xl 2xl:text-6xl font-medium text-center">Noticias</h1>
+            <div class="xl:flex mx-5 md:mx-20 xl:mx-20 2xl:mx-20 mt-8 gap-4">
+                <template x-for="n1 in show_last_news_1()">
+                    <div class="rounded-xl bg-white dark:bg-gray-800 shadow-xl shadow-gray-200 dark:shadow-gray-200 mb-6 xl:mb-0 w-full xl:w-1/4">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-1">
+                            <div class="col-span-1">
+                                <img class="w-full rounded-t-xl lg:rounded-r-none lg:rounded-l-xl xl:rounded-b-none xl:rounded-t-xl"
+                                :src="`../storage/app/public/images/news/background/${n1.background}`" alt="news-1">
+                            </div>
+                            <div class="col-span-1">
+                                <div class="mx-4 mt-2 mb-4 lg:mb-0 xl:mb-6">
+                                    <h4 class="text-gray-900 text-xl text-left font-semibold 2xl:font-bold" x-text="n1.title"></h4>
+                                    <p class="mt-2 text-gray-800 text-sm 2xl:text-base font-light 2xl:font-normal text-justify" x-text="n1.subtitle"></p>
+                                    <div class="mt-2 xl:mt-4">
+                                        <a href="pages/news/show.html" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="xl:flex mx-5 md:mx-20 xl:mx-20 2xl:mx-20 mt-4 gap-4">
+                <template x-for="n2 in show_last_news_2()">
+                    <div class="rounded-xl bg-white dark:bg-gray-800 shadow-xl shadow-gray-200 dark:shadow-gray-200 mb-6 xl:mb-0 w-full xl:w-1/4">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-1">
+                            <div class="col-span-1">
+                                <img class="w-full rounded-t-xl lg:rounded-r-none lg:rounded-l-xl xl:rounded-b-none xl:rounded-t-xl"
+                                :src="`../storage/app/public/images/news/background/${n2.background}`" alt="news-1">
+                            </div>
+                            <div class="col-span-1">
+                                <div class="mx-4 mt-2 mb-4 lg:mb-0 xl:mb-6">
+                                    <h4 class="text-gray-900 text-xl text-left font-semibold 2xl:font-bold" x-text="n2.title"></h4>
+                                    <p class="mt-2 text-gray-800 text-sm 2xl:text-base font-light 2xl:font-normal text-justify" x-text="n2.subtitle"></p>
+                                    <div class="mt-2 xl:mt-4">
+                                        <a href="#" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste, et corporis quam hic alias
-            maiores eius, maxime cumque voluptate fugit aperiam nesciunt ad incidunt quisquam quos ducimus
-            quas libero!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, quisquam! Cumque debitis, ducimus
-            voluptatum facilis corporis consectetur fugiat facere reiciendis mollitia neque reprehenderit.
-            Dolores expedita inventore deserunt, vel magni maiores?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt a, quam illo sapiente voluptates
-            ducimus saepe perspiciatis in atque ipsam quo molestias enim rerum nesciunt! Quo minus
-            voluptates tenetur blanditiis.</p>
     </div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum laborum quae beatae fugit explicabo
-    alias animi doloremque officia odio, blanditiis facilis totam adipisci! Tenetur fugit omnis esse
-    explicabo quo?
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam tenetur, corporis nulla accusantium atque,
-    minima amet quis error recusandae, impedit culpa cumque. Maiores beatae magni cum iste quisquam
-    blanditiis voluptate!
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius sit consequuntur vel numquam ad illum
-    nesciunt laudantium fuga pariatur, libero eveniet magni id repellendus quisquam illo modi hic odio vero.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptas ullam, officiis nemo numquam
-    impedit sint tempore veritatis quis fugiat modi distinctio vel debitis vitae unde pariatur eius quasi
-    vero?
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae, voluptas. Distinctio vel, ipsum
-    nisi quia iure consequuntur minima sequi consectetur impedit. Vitae animi quis blanditiis facere
-    voluptatem dolorem, quia velit.
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam tenetur quidem quae qui cum. Ex quis
-    fugiat harum cumque. Minus dolorum praesentium vel consectetur expedita impedit mollitia illum, nostrum
-    recusandae.
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente deleniti, consequuntur molestias a
-    quasi error, dolorum molestiae autem incidunt amet voluptatibus consectetur reiciendis, quibusdam vero
-    eius aliquam neque numquam voluptate!
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed sunt tenetur cupiditate enim animi quam
-    obcaecati necessitatibus repellendus assumenda, ex aut labore, sit harum iusto vero possimus itaque
-    fugit! Illo!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro accusantium totam earum
-    tempora? Fugit repudiandae eveniet ipsam dolorum doloremque, ex natus alias est? Ad aliquid delectus ea
-    eaque modi.
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi vero architecto, nesciunt aliquam
-    voluptatum totam! Odit ea deleniti hic incidunt sed, non assumenda. Culpa quam accusamus consequuntur
-    minima veniam officiis.
 </div>
 
 <script>
@@ -264,7 +267,48 @@
                     this.next = this.aux_previous + 1;
                 }
                 return this.aux_previous;
-            },
+            }
+
         };
     };
+
+    var news = () => {
+        return {
+            last_news: @entangle('news'),
+            last_news_aux_1: [],
+            last_news_aux_2: [],
+            index_aux_2: 0,
+            divide_news() {
+                for (var index = 0; index < this.last_news.length; index++) {
+                    if (index < 4) {
+                        this.last_news_aux_1[index] = this.last_news[index];
+                    }
+                }
+                for (var index = 0; index < this.last_news.length; index++) {
+                    if (index >= 4) {
+                        this.last_news_aux_2[this.index_aux_2] = this.last_news[index];
+                        this.index_aux_2 = this.index_aux_2 + 1;
+                        if (this.index_aux_2 == 4) {
+                            break;
+                        }
+                    }
+                    if (this.index_aux_2 == 4) {
+                        break;
+                    }
+                }
+                this.index_aux_2 = 0;
+            },
+            show_last_news_1() {
+                this.divide_news();
+                console.log('ultimas noticias 1: ', this.last_news_aux_1);
+                return this.last_news_aux_1;
+            },
+            show_last_news_2() {
+                this.divide_news();
+                console.log('ultimas noticias 2: ', this.last_news_aux_2);
+                return this.last_news_aux_2;
+            }
+        }
+    };
+
 </script>

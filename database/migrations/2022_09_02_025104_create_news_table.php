@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('posted', ['yes', 'not'])->nullable();
             $table->foreignId("category_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->enum('type', ['article', 'news'])->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

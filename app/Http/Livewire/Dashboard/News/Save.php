@@ -79,7 +79,8 @@ class Save extends Component
                     'date_publish' => $this->date_publish,
                     'posted' => $this->posted,
                     'category_id' => $this->category_id,
-                    'type' => $this->type
+                    'type' => $this->type,
+                    'user_id' => auth()->id()
                 ]
             );
             $this->emit('created');

@@ -29,7 +29,8 @@ class NewsFactory extends Factory
             'date_publish' => $this->faker->date(),
             'posted' => $this->faker->randomElement(['yes', 'not']),
             'category_id' => $this->faker->numberBetween(1, 3),
-            'type' => $this->faker->randomElement(['article', 'news'])
+            'type' => $this->faker->randomElement(['article', 'news']),
+            'user_id' => 1
         ];
     }
 }
