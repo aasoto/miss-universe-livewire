@@ -172,7 +172,7 @@
                                     <h4 class="text-gray-900 text-xl text-left font-semibold 2xl:font-bold" x-text="n1.title"></h4>
                                     <p class="mt-2 text-gray-800 text-sm 2xl:text-base font-light 2xl:font-normal text-justify" x-text="n1.subtitle"></p>
                                     <div class="mt-2 xl:mt-4">
-                                        <a href="pages/news/show.html" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
+                                        <a :href="`{{asset('news/show')}}/${n1.slug}`" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
                                     </div>
                                 </div>
                             </div>
@@ -193,13 +193,18 @@
                                     <h4 class="text-gray-900 text-xl text-left font-semibold 2xl:font-bold" x-text="n2.title"></h4>
                                     <p class="mt-2 text-gray-800 text-sm 2xl:text-base font-light 2xl:font-normal text-justify" x-text="n2.subtitle"></p>
                                     <div class="mt-2 xl:mt-4">
-                                        <a href="#" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
+                                        <a :href="`{{asset('news/show')}}/${n2.slug}`" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </template>
+            </div>
+            <div class="mx-5 md:mx-20 xl:mx-20 2xl:mx-20 my-8">
+                <a class="text-lg text-blue-500 font-extrabold" href="{{route('news-index')}}">
+                    <p class="text-center">Ver todas las noticias</p>
+                </a>
             </div>
         </div>
     </div>

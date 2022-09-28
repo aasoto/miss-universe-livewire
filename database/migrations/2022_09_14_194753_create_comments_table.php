@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId("news_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('message', 750);
+            $table->string('plus', 50)->nullable();
             $table->timestamps();
         });
     }

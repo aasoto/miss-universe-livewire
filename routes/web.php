@@ -16,6 +16,8 @@ use App\Http\Livewire\Sponsor\Detail;
 use App\Http\Livewire\Sponsor\General;
 use App\Http\Livewire\Sponsor\Person;
 use App\Http\Livewire\Web\Index as WebIndex;
+use App\Http\Livewire\Web\News\Index as WebNewsIndex;
+use App\Http\Livewire\Web\News\Show as WebNewsShow;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => ''], function () {
     Route::get('/', WebIndex::class)->name('start');
+    Route::get('/news/all', WebNewsIndex::class)->name('news-index');
+    Route::get('/news/show/{slug}', WebNewsShow::class)->name('news-show');
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'], 'prefix' => 'dashboard'], function () {

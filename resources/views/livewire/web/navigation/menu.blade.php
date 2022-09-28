@@ -24,7 +24,7 @@
             <a href="{{ route('login') }}" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Iniciar sesión</a>
         </div>
         <div class="mx-2 my-2 rounded-md hover:bg-gray-300">
-            <a href="#" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Crear cuenta</a>
+            <a href="{{ route('register') }}" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Crear cuenta</a>
         </div>
     </div>
     <div x-show="movil" @click.outside="movil = false" class="fixed top-20 ml-4 sm:ml-0 sm:right-6 w-11/12 md:rounded-md bg-white/70 dark:bg-gray-800 backdrop-blur-lg shadow-sm shadow-gray-700">
@@ -46,7 +46,7 @@
                 <a href="{{ route('login') }}" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Iniciar sesión</a>
             </div>
             <div class="mx-2 my-2 rounded-md hover:bg-gray-300">
-                <a href="#" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Crear cuenta</a>
+                <a href="{{ route('register') }}" class="text-sm text-gray-800 dark:text-white font-semibold px-3 py-3">Crear cuenta</a>
             </div>
         </div>
     </div>
