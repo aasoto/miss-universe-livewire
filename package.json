@@ -19,6 +19,7 @@
     "dependencies": {
         "flag-icons": "^6.6.6",
         "sortablejs": "^1.15.0",
+        "sweetalert2": "^11.4.35",
         "toast-me": "^1.4.8"
     }
 }
