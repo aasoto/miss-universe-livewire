@@ -6,6 +6,12 @@ use App\Http\Livewire\Dashboard\Candidate\Index;
 use App\Http\Livewire\Dashboard\Candidate\Save;
 use App\Http\Livewire\Dashboard\Carousel\Index as CarouselIndex;
 use App\Http\Livewire\Dashboard\Carousel\Save as CarouselSave;
+use App\Http\Livewire\Dashboard\Editions\Broadcaster\Index as BroadcasterIndex;
+use App\Http\Livewire\Dashboard\Editions\Broadcaster\Save as BroadcasterSave;
+use App\Http\Livewire\Dashboard\Editions\CityVenue\Index as CityVenueIndex;
+use App\Http\Livewire\Dashboard\Editions\CityVenue\Save as CityVenueSave;
+use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
+use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
@@ -69,6 +75,24 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         Route::get('/', CarouselIndex::class)->name('d-carousel-index');
         Route::get('/create', CarouselSave::class)->name('d-carousel-create');
         Route::get('/edit/{id}', CarouselSave::class)->name('d-carousel-edit');
+    });
+
+    Route::group(['prefix' => 'editions'], function () {
+        Route::group(['prefix' => 'broadcaster'], function () {
+            Route::get('/', BroadcasterIndex::class)->name('d-editions-broadcaster-index');
+            Route::get('/create', BroadcasterSave::class)->name('d-editions-broadcaster-create');
+            Route::get('/edit/{id}', BroadcasterSave::class)->name('d-editions-broadcaster-edit');
+        });
+        Route::group(['prefix' => 'city_venue'], function () {
+            Route::get('/', CityVenueIndex::class)->name('d-editions-city-venue-index');
+            Route::get('/create', CityVenueSave::class)->name('d-editions-city-venue-create');
+            Route::get('/edit/{id}', CityVenueSave::class)->name('d-editions-city-venue-edit');
+        });
+        Route::group(['prefix' => 'place'], function () {
+            Route::get('/', PlacesIndex::class)->name('d-editions-place-index');
+            Route::get('/create', PlacesSave::class)->name('d-editions-place-create');
+            Route::get('/edit/{id}', PlacesSave::class)->name('d-editions-place-edit');
+        });
     });
 });
 
