@@ -10,6 +10,8 @@ use App\Http\Livewire\Dashboard\Editions\Broadcaster\Index as BroadcasterIndex;
 use App\Http\Livewire\Dashboard\Editions\Broadcaster\Save as BroadcasterSave;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Index as CityVenueIndex;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Save as CityVenueSave;
+use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
+use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
@@ -92,6 +94,11 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', PlacesIndex::class)->name('d-editions-place-index');
             Route::get('/create', PlacesSave::class)->name('d-editions-place-create');
             Route::get('/edit/{id}', PlacesSave::class)->name('d-editions-place-edit');
+        });
+        Route::group(['prefix' => 'miss_universe'], function () {
+            Route::get('/', MissUniverseIndex::class)->name('d-editions-miss-universe-index');
+            Route::get('/create', MissUniverseSave::class)->name('d-editions-miss-universe-create');
+            Route::get('/edit/{id}', MissUniverseSave::class)->name('d-editions-miss-universe-edit');
         });
     });
 });

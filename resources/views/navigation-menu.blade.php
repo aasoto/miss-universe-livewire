@@ -83,8 +83,8 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-place-index') }}">
                                     {{ __('Places') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
-                                    {{ __('General information') }}
+                                <x-jet-dropdown-link href="{{ route('d-editions-miss-universe-index') }}">
+                                    {{ __('Miss Universe') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
                                     {{ __('Presenters') }}

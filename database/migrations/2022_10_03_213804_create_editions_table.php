@@ -18,10 +18,14 @@ return new class extends Migration
             $table->strig('year', 20);
             $table->string('name', 200);
             $table->string('official_name', 1000)->nullable();
-            $table->date('date');
-            $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->date('start_concentration')->nullable();
+            $table->date('end_concentration')->nullable();
+            $table->string('hotel_concentration', 200)->nullable();
+            $table->date('date_preliminary')->nullable();
+            $table->date('date')->nullable();
+            $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('broadcaster_2')->nullable();
-            $table->foreignId("city_venue_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("place_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->integer('entrants')->nullable();
             $table->integer('placements')->nullable();
             $table->text('description');
@@ -30,6 +34,8 @@ return new class extends Migration
             $table->boolean('top_5')->default(false);
             $table->boolean('top_6')->default(false);
             $table->text('extra_data')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('background')->nullable();
             $table->timestamps();
         });
     }

@@ -38,8 +38,8 @@ class Index extends Component
 
     public function render()
     {
-        $this->broadcasters = Broadcaster::pluck('id', 'name');
-        $this->city_venue = CityVenue::get('id', 'city', 'state', 'country');
+        $this->broadcasters = Broadcaster::get();
+        $this->city_venues = CityVenue::get();
         $miss_universe = MissUniverse::orderBy($this->sortColumn, $this->sortDirection);
 
         if ($this->search) {
@@ -65,6 +65,12 @@ class Index extends Component
 
        $miss_universe = $miss_universe->paginate($this->pagination);
         return view('livewire.dashboard.editions.miss-universe.index', compact('miss_universe'));
+    }
+
+    public function searchBroadcaster2($id)
+    {
+        $name = Broadcaster::where('id', $id)->get('name');
+        return $name[0]->name;
     }
 
     public function selectedMissUniverseToDelete(MissUniverse $miss_universe)

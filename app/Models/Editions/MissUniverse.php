@@ -4,6 +4,7 @@ namespace App\Models\Editions;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class MissUniverse extends Model
 {
@@ -11,7 +12,7 @@ class MissUniverse extends Model
 
     protected $table = 'editions';
 
-    protected $fillable = ['name', 'official_name', 'date', 'broadcaster_id', 'city_venue_id', 'entrants', 'placements', 'description', 'content', 'top_3', 'top_5', 'top_6', 'extra_data'];
+    protected $fillable = ['year', 'name', 'official_name', 'start_concentration', 'end_concentration', 'hotel_concentration', 'date_preliminary', 'date', 'broadcaster_id', 'broadcaster_2', 'place_id', 'entrants', 'placements', 'description', 'content', 'top_3', 'top_5', 'top_6', 'extra_data', 'logo', 'background'];
 
     public function broadcaster(){
         return $this->belongsTo(Broadcaster::class, 'broadcaster_id');
@@ -21,7 +22,17 @@ class MissUniverse extends Model
         return $this->belongsTo(Broadcaster::class, 'broadcaster_2');
     }
 
-    public function city_venue(){
-        return $this->belongsTo(CityVenue::class, 'city_venue_id');
+    public function place(){
+        return $this->belongsTo(Place::class, 'place_id');
+    }
+
+    public function getLogoUrl()
+    {
+        return URL::asset('../storage/app/public/images/editions/miss-universe/logos/'.$this->logo);
+    }
+
+    public function getBackgroundUrl()
+    {
+        return URL::asset('../storage/app/public/images/editions/miss-universe/background/'.$this->background);
     }
 }
