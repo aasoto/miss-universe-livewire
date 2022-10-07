@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('artist', 1000);
             $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('act_performing', ['opening', 'swimsiut', 'evening_gown', 'final_look', 'other'])->nullable();
+            $table->enum('act_performing', ['opening', 'swimsuit', 'evening_gown', 'final_look', 'other'])->nullable();
             $table->foreignId("edition_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

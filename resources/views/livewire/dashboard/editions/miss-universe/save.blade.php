@@ -94,6 +94,17 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-span-6 sm:col-span-3 mb-0">
+                            <x-jet-label for="">Presentador noche final</x-jet-label>
+                            <x-jet-input-error for='presenter_id'/>
+                            <select class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                wire:model="presenter_id">
+                                <option value="">Seleccionar...</option>
+                                @foreach ($presenters as $name => $id)
+                                    <option value="{{$id}}">{{$name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="col-span-6 mb-0">
                             <x-jet-label for="">Descripción</x-jet-label>
                             <x-jet-input-error for='description'/>

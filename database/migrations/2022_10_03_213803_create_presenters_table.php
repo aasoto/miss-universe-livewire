@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('presenters', function (Blueprint $table) {
             $table->id();
             $table->string('name', 200);
-            $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->enum('rol', ['main_show', 'backstage', 'prelims', 'national_costume', 'other']);
             $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->text('photo')->nullable();
             $table->timestamps();
         });
     }

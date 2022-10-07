@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('presenter_edition_interceptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("presenter_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("presenter_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->foreignId("edition_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

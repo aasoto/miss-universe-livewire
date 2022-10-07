@@ -10,10 +10,14 @@ use App\Http\Livewire\Dashboard\Editions\Broadcaster\Index as BroadcasterIndex;
 use App\Http\Livewire\Dashboard\Editions\Broadcaster\Save as BroadcasterSave;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Index as CityVenueIndex;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Save as CityVenueSave;
+use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Index as EntraimentShowIndex;
+use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Save as EntraimentShowSave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
+use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
+use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
@@ -99,6 +103,16 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', MissUniverseIndex::class)->name('d-editions-miss-universe-index');
             Route::get('/create', MissUniverseSave::class)->name('d-editions-miss-universe-create');
             Route::get('/edit/{id}', MissUniverseSave::class)->name('d-editions-miss-universe-edit');
+        });
+        Route::group(['prefix' => 'presenter'], function () {
+            Route::get('/', PresentersIndex::class)->name('d-editions-presenter-index');
+            Route::get('/create', PresentersSave::class)->name('d-editions-presenter-create');
+            Route::get('/edit/{id}', PresentersSave::class)->name('d-editions-presenter-edit');
+        });
+        Route::group(['prefix' => 'entertainment_show'], function () {
+            Route::get('/', EntraimentShowIndex::class)->name('d-editions-entertainment-show-index');
+            Route::get('/create', EntraimentShowSave::class)->name('d-editions-entertainment-show-create');
+            Route::get('/edit/{id}', EntraimentShowSave::class)->name('d-editions-entertainment-show-edit');
         });
     });
 });
