@@ -10,6 +10,10 @@ use App\Http\Livewire\Dashboard\Editions\Broadcaster\Index as BroadcasterIndex;
 use App\Http\Livewire\Dashboard\Editions\Broadcaster\Save as BroadcasterSave;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Index as CityVenueIndex;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Save as CityVenueSave;
+use App\Http\Livewire\Dashboard\Editions\Contestants\Index as ContestantsIndex;
+use App\Http\Livewire\Dashboard\Editions\Contestants\Save as ContestantsSave;
+use App\Http\Livewire\Dashboard\Editions\Debuts\Index as DebutsIndex;
+use App\Http\Livewire\Dashboard\Editions\Debuts\Save as DebutsSave;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Index as EntraimentShowIndex;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Save as EntraimentShowSave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
@@ -18,6 +22,10 @@ use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
+use App\Http\Livewire\Dashboard\Editions\Returns\Index as ReturnsIndex;
+use App\Http\Livewire\Dashboard\Editions\Returns\Save as ReturnsSave;
+use App\Http\Livewire\Dashboard\Editions\Withdrawals\Index as WithdrawalsIndex;
+use App\Http\Livewire\Dashboard\Editions\Withdrawals\Save as WithdrawalsSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
@@ -113,6 +121,26 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', EntraimentShowIndex::class)->name('d-editions-entertainment-show-index');
             Route::get('/create', EntraimentShowSave::class)->name('d-editions-entertainment-show-create');
             Route::get('/edit/{id}', EntraimentShowSave::class)->name('d-editions-entertainment-show-edit');
+        });
+        Route::group(['prefix' => 'debut'], function () {
+            Route::get('/', DebutsIndex::class)->name('d-editions-debut-index');
+            Route::get('/create', DebutsSave::class)->name('d-editions-debut-create');
+            Route::get('/edit/{id}', DebutsSave::class)->name('d-editions-debut-edit');
+        });
+        Route::group(['prefix' => 'withdrawal'], function () {
+            Route::get('/', WithdrawalsIndex::class)->name('d-editions-withdrawal-index');
+            Route::get('/create', WithdrawalsSave::class)->name('d-editions-withdrawal-create');
+            Route::get('/edit/{id}', WithdrawalsSave::class)->name('d-editions-withdrawal-edit');
+        });
+        Route::group(['prefix' => 'return'], function () {
+            Route::get('/', ReturnsIndex::class)->name('d-editions-return-index');
+            Route::get('/create', ReturnsSave::class)->name('d-editions-return-create');
+            Route::get('/edit/{id}', ReturnsSave::class)->name('d-editions-return-edit');
+        });
+        Route::group(['prefix' => 'contestant'], function () {
+            Route::get('/', ContestantsIndex::class)->name('d-editions-contestant-index');
+            Route::get('/create', ContestantsSave::class)->name('d-editions-contestant-create');
+            Route::get('/edit/{id}', ContestantsSave::class)->name('d-editions-contestant-edit');
         });
     });
 });

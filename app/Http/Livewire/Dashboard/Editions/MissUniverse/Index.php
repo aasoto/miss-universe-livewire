@@ -75,7 +75,7 @@ class Index extends Component
 
     public function selectedMissUniverseToDelete(MissUniverse $miss_universe)
     {
-        $this->confirmingMissUniversePlace = true;
+        $this->confirmingDeleteMissUniverse = true;
         $this->missUniverseToDelete = $miss_universe;
     }
 

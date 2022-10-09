@@ -92,11 +92,20 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-entertainment-show-index') }}">
                                     {{ __('Entraiment shows') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-debut-index') }}">
                                     {{ __('Debuts') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-withdrawal-index') }}">
                                     {{ __('Withdrawals') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-editions-return-index') }}">
+                                    {{ __('Returns') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-editions-contestant-index') }}">
+                                    {{ __('Contestants per edition') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-editions-return-index') }}">
+                                    {{ __('Winners') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
                                     {{ __('First runner ups') }}

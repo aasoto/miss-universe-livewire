@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text("official_picture")->nullable();
             $table->text("pictures")->nullable();
             $table->text("videos")->nullable();
+            $table->boolean('asigned')->default(false);
             $table->timestamps();
         });
     }
