@@ -16,6 +16,8 @@ use App\Http\Livewire\Dashboard\Editions\Debuts\Index as DebutsIndex;
 use App\Http\Livewire\Dashboard\Editions\Debuts\Save as DebutsSave;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Index as EntraimentShowIndex;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Save as EntraimentShowSave;
+use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Index as FirstRunnerUpsIndex;
+use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Save as FirstRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
@@ -24,6 +26,8 @@ use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
 use App\Http\Livewire\Dashboard\Editions\Returns\Index as ReturnsIndex;
 use App\Http\Livewire\Dashboard\Editions\Returns\Save as ReturnsSave;
+use App\Http\Livewire\Dashboard\Editions\Winners\Index as WinnersIndex;
+use App\Http\Livewire\Dashboard\Editions\Winners\Save as WinnersSave;
 use App\Http\Livewire\Dashboard\Editions\Withdrawals\Index as WithdrawalsIndex;
 use App\Http\Livewire\Dashboard\Editions\Withdrawals\Save as WithdrawalsSave;
 use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeIndex;
@@ -141,6 +145,16 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', ContestantsIndex::class)->name('d-editions-contestant-index');
             Route::get('/create', ContestantsSave::class)->name('d-editions-contestant-create');
             Route::get('/edit/{id}', ContestantsSave::class)->name('d-editions-contestant-edit');
+        });
+        Route::group(['prefix' => 'winner'], function () {
+            Route::get('/', WinnersIndex::class)->name('d-editions-winner-index');
+            Route::get('/create', WinnersSave::class)->name('d-editions-winner-create');
+            Route::get('/edit/{id}', WinnersSave::class)->name('d-editions-winner-edit');
+        });
+        Route::group(['prefix' => 'first_runner_up'], function () {
+            Route::get('/', FirstRunnerUpsIndex::class)->name('d-editions-first-runner-up-index');
+            Route::get('/create', FirstRunnerUpsSave::class)->name('d-editions-first-runner-up-create');
+            Route::get('/edit/{id}', FirstRunnerUpsSave::class)->name('d-editions-first-runner-up-edit');
         });
     });
 });

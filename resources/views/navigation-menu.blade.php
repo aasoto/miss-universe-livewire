@@ -104,10 +104,10 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-contestant-index') }}">
                                     {{ __('Contestants per edition') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-editions-return-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-winner-index') }}">
                                     {{ __('Winners') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-first-runner-up-index') }}">
                                     {{ __('First runner ups') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
