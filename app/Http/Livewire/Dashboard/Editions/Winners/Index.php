@@ -40,7 +40,10 @@ class Index extends Component
         $winners = Winner::orderBy($this->sortColumn, $this->sortDirection);
 
         if ($this->country_id) {
-            $winners->where('country_id', $this->country_id);
+            $candidates = Candidate::where('country_id', $this->country_id)->get();
+            foreach ($candidates as $key => $value) {
+                $winners->where('candidate_id', $value['id']);
+            }
         }
 
         if ($this->edition_id) {

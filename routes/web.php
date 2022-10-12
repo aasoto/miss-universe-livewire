@@ -14,6 +14,8 @@ use App\Http\Livewire\Dashboard\Editions\Contestants\Index as ContestantsIndex;
 use App\Http\Livewire\Dashboard\Editions\Contestants\Save as ContestantsSave;
 use App\Http\Livewire\Dashboard\Editions\Debuts\Index as DebutsIndex;
 use App\Http\Livewire\Dashboard\Editions\Debuts\Save as DebutsSave;
+use App\Http\Livewire\Dashboard\Editions\Eighterfinalists\Index as EighterfinalistsIndex;
+use App\Http\Livewire\Dashboard\Editions\Eighterfinalists\Save as EighterfinalistsSave;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Index as EntraimentShowIndex;
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Save as EntraimentShowSave;
 use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Index as FirstRunnerUpsIndex;
@@ -26,12 +28,16 @@ use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
+use App\Http\Livewire\Dashboard\Editions\Quarterfinalists\Index as QuarterfinalistsIndex;
+use App\Http\Livewire\Dashboard\Editions\Quarterfinalists\Save as QuarterfinalistsSave;
 use App\Http\Livewire\Dashboard\Editions\Returns\Index as ReturnsIndex;
 use App\Http\Livewire\Dashboard\Editions\Returns\Save as ReturnsSave;
 use App\Http\Livewire\Dashboard\Editions\RunnersUps\Index as RunnersUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\RunnersUps\Save as RunnersUpsSave;
 use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Index as SecondRunnerUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Save as SecondRunnerUpsSave;
+use App\Http\Livewire\Dashboard\Editions\Semifinalists\Index as SemifinalistsIndex;
+use App\Http\Livewire\Dashboard\Editions\Semifinalists\Save as SemifinalistsSave;
 use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Index as ThirdRunnerUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Save as ThirdRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\Winners\Index as WinnersIndex;
@@ -183,6 +189,21 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', RunnersUpsIndex::class)->name('d-editions-runners-ups-index');
             Route::get('/create', RunnersUpsSave::class)->name('d-editions-runners-ups-create');
             Route::get('/edit/{id}', RunnersUpsSave::class)->name('d-editions-runners-ups-edit');
+        });
+        Route::group(['prefix' => 'semifinalists'], function () {
+            Route::get('/', SemifinalistsIndex::class)->name('d-editions-semifinalists-index');
+            Route::get('/create', SemifinalistsSave::class)->name('d-editions-semifinalists-create');
+            Route::get('/edit/{id}', SemifinalistsSave::class)->name('d-editions-semifinalists-edit');
+        });
+        Route::group(['prefix' => 'quarterfinalists'], function () {
+            Route::get('/', QuarterfinalistsIndex::class)->name('d-editions-quarterfinalists-index');
+            Route::get('/create', QuarterfinalistsSave::class)->name('d-editions-quarterfinalists-create');
+            Route::get('/edit/{id}', QuarterfinalistsSave::class)->name('d-editions-quarterfinalists-edit');
+        });
+        Route::group(['prefix' => 'eighterfinalists'], function () {
+            Route::get('/', EighterfinalistsIndex::class)->name('d-editions-eighterfinalists-index');
+            Route::get('/create', EighterfinalistsSave::class)->name('d-editions-eighterfinalists-create');
+            Route::get('/edit/{id}', EighterfinalistsSave::class)->name('d-editions-eighterfinalists-edit');
         });
     });
 });

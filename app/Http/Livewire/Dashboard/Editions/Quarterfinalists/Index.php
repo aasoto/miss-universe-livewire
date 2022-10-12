@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Editions\RunnersUps;
+namespace App\Http\Livewire\Dashboard\Editions\Quarterfinalists;
 
 use App\Http\Livewire\Dashboard\Traits\Order;
 use App\Models\Candidate;
 use App\Models\Country;
 use App\Models\Editions\MissUniverse;
-use App\Models\Editions\RunnersUp;
+use App\Models\Editions\Quarterfinalist;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -31,43 +31,43 @@ class Index extends Component
         'first_name' => 'Contestant'
     ];
 
-    public $confirmingDeleteRunnerUp, $runnerUpToDelete;
+    public $confirmingDeleteQuarterfinalist, $quarterfinalistUpToDelete;
 
     public function render()
     {
         $this->countries = Country::pluck('id', 'name');
         $this->editions = MissUniverse::pluck('id', 'name');
-        $runners_ups = RunnersUp::orderBy($this->sortColumn, $this->sortDirection);
+        $quarterfinalists = Quarterfinalist::orderBy($this->sortColumn, $this->sortDirection);
         if ($this->country_id) {
             $candidates = Candidate::where('country_id', $this->country_id)->get();
             foreach ($candidates as $key => $value) {
-                $runners_ups->where('candidate_id', $value['id']);
+                $quarterfinalists->where('candidate_id', $value['id']);
             }
         }
 
         if ($this->edition_id) {
-            $runners_ups->where('edition_id', $this->edition_id);
+            $quarterfinalists->where('edition_id', $this->edition_id);
         }
 
-        $runners_ups = $runners_ups->paginate($this->pagination);
-        return view('livewire.dashboard.editions.runners-ups.index', compact('runners_ups'));
+        $quarterfinalists = $quarterfinalists->paginate($this->pagination);
+        return view('livewire.dashboard.editions.quarterfinalists.index', compact('quarterfinalists'));
     }
 
-    public function selectedRunnerUpToDelete(RunnersUp $runner_up)
+    public function selectedQuarterfinalistToDelete(Quarterfinalist $quarterfinalist)
     {
-        $this->confirmingDeleteRunnerUp = true;
-        $this->runnerUpToDelete = $runner_up;
+        $this->confirmingDeleteQuarterfinalist = true;
+        $this->quarterfinalistToDelete = $quarterfinalist;
     }
 
     public function delete()
     {
-        $this->confirmingDeleteRunnerUp = false;
-        $this->runnerUpToDelete->delete();
+        $this->confirmingDeleteQuarterfinalist = false;
+        $this->quarterfinalistToDelete->delete();
         $this->emit('deleted');
     }
 
     public function close_delete_modal()
     {
-        $this->confirmingDeleteRunnerUp = false;
+        $this->confirmingDeleteQuarterfinalist = false;
     }
 }

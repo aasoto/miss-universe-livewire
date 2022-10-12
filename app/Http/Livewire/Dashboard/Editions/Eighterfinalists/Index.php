@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Editions\RunnersUps;
+namespace App\Http\Livewire\Dashboard\Editions\Eighterfinalists;
 
 use App\Http\Livewire\Dashboard\Traits\Order;
 use App\Models\Candidate;
 use App\Models\Country;
+use App\Models\Editions\Eighterfinalist;
 use App\Models\Editions\MissUniverse;
-use App\Models\Editions\RunnersUp;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -31,43 +31,43 @@ class Index extends Component
         'first_name' => 'Contestant'
     ];
 
-    public $confirmingDeleteRunnerUp, $runnerUpToDelete;
+    public $confirmingDeleteEighterfinalist, $eighterfinalistToDelete;
 
     public function render()
     {
         $this->countries = Country::pluck('id', 'name');
         $this->editions = MissUniverse::pluck('id', 'name');
-        $runners_ups = RunnersUp::orderBy($this->sortColumn, $this->sortDirection);
+        $eighterfinalists = Eighterfinalist::orderBy($this->sortColumn, $this->sortDirection);
         if ($this->country_id) {
             $candidates = Candidate::where('country_id', $this->country_id)->get();
             foreach ($candidates as $key => $value) {
-                $runners_ups->where('candidate_id', $value['id']);
+                $eighterfinalists->where('candidate_id', $value['id']);
             }
         }
 
         if ($this->edition_id) {
-            $runners_ups->where('edition_id', $this->edition_id);
+            $eighterfinalists->where('edition_id', $this->edition_id);
         }
 
-        $runners_ups = $runners_ups->paginate($this->pagination);
-        return view('livewire.dashboard.editions.runners-ups.index', compact('runners_ups'));
+        $eighterfinalists = $eighterfinalists->paginate($this->pagination);
+        return view('livewire.dashboard.editions.eighterfinalists.index', compact('eighterfinalists'));
     }
 
-    public function selectedRunnerUpToDelete(RunnersUp $runner_up)
+    public function selectedEighterfinalistToDelete(Eighterfinalist $eighterfinalist)
     {
-        $this->confirmingDeleteRunnerUp = true;
-        $this->runnerUpToDelete = $runner_up;
+        $this->confirmingDeleteEighterfinalist = true;
+        $this->eighterfinalistToDelete = $eighterfinalist;
     }
 
     public function delete()
     {
-        $this->confirmingDeleteRunnerUp = false;
-        $this->runnerUpToDelete->delete();
+        $this->confirmingDeleteEighterfinalist = false;
+        $this->eighterfinalistToDelete->delete();
         $this->emit('deleted');
     }
 
     public function close_delete_modal()
     {
-        $this->confirmingDeleteRunnerUp = false;
+        $this->confirmingDeleteEighterfinalist = false;
     }
 }

@@ -122,13 +122,13 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-runners-ups-index') }}">
                                     {{ __('Runners ups') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-semifinalists-index') }}">
                                     {{ __('Semifinalists') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-quarterfinalists-index') }}">
                                     {{ __('Quarterfinalists') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-eighterfinalists-index') }}">
                                     {{ __('Eighterfinalists') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">

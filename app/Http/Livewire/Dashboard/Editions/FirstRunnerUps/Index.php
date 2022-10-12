@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Editions\FirstRunnerUps;
 
 use App\Http\Livewire\Dashboard\Traits\Order;
+use App\Models\Candidate;
 use App\Models\Country;
 use App\Models\Editions\FirstRunnerUp;
 use App\Models\Editions\MissUniverse;
@@ -39,7 +40,10 @@ class Index extends Component
         $first_runner_ups = FirstRunnerUp::orderBy($this->sortColumn, $this->sortDirection);
 
         if ($this->country_id) {
-            $first_runner_ups->where($first_runner_ups->candidate->country->id, $this->country_id);
+            $candidates = Candidate::where('country_id', $this->country_id)->get();
+            foreach ($candidates as $key => $value) {
+                $first_runner_ups->where('candidate_id', $value['id']);
+            }
         }
 
         if ($this->edition_id) {

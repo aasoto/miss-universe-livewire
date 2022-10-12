@@ -39,7 +39,10 @@ class Index extends Component
         $third_runner_ups = ThirdRunnerUp::orderBy($this->sortColumn, $this->sortDirection);
 
         if ($this->country_id) {
-            $third_runner_ups->where($third_runner_ups->candidate->country->id, $this->country_id);
+            $candidates = Candidate::where('country_id', $this->country_id)->get();
+            foreach ($candidates as $key => $value) {
+                $third_runner_ups->where('candidate_id', $value['id']);
+            }
         }
 
         if ($this->edition_id) {
