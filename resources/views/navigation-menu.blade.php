@@ -110,14 +110,17 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-first-runner-up-index') }}">
                                     {{ __('First runner ups') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-second-runner-up-index') }}">
                                     {{ __('Second runner ups') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-third-runner-up-index') }}">
                                     {{ __('Third runner ups') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-fourth-runner-up-index') }}">
                                     {{ __('Fourth runner ups') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-editions-runners-ups-index') }}">
+                                    {{ __('Runners ups') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
                                     {{ __('Semifinalists') }}

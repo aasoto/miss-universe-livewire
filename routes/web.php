@@ -18,6 +18,8 @@ use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Index as EntraimentShowI
 use App\Http\Livewire\Dashboard\Editions\EntraimentShow\Save as EntraimentShowSave;
 use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Index as FirstRunnerUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Save as FirstRunnerUpsSave;
+use App\Http\Livewire\Dashboard\Editions\FourthRunnerUps\Index as FourthRunnerUpsIndex;
+use App\Http\Livewire\Dashboard\Editions\FourthRunnerUps\Save as FourthRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
@@ -26,6 +28,12 @@ use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
 use App\Http\Livewire\Dashboard\Editions\Returns\Index as ReturnsIndex;
 use App\Http\Livewire\Dashboard\Editions\Returns\Save as ReturnsSave;
+use App\Http\Livewire\Dashboard\Editions\RunnersUps\Index as RunnersUpsIndex;
+use App\Http\Livewire\Dashboard\Editions\RunnersUps\Save as RunnersUpsSave;
+use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Index as SecondRunnerUpsIndex;
+use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Save as SecondRunnerUpsSave;
+use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Index as ThirdRunnerUpsIndex;
+use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Save as ThirdRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\Winners\Index as WinnersIndex;
 use App\Http\Livewire\Dashboard\Editions\Winners\Save as WinnersSave;
 use App\Http\Livewire\Dashboard\Editions\Withdrawals\Index as WithdrawalsIndex;
@@ -155,6 +163,26 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', FirstRunnerUpsIndex::class)->name('d-editions-first-runner-up-index');
             Route::get('/create', FirstRunnerUpsSave::class)->name('d-editions-first-runner-up-create');
             Route::get('/edit/{id}', FirstRunnerUpsSave::class)->name('d-editions-first-runner-up-edit');
+        });
+        Route::group(['prefix' => 'second_runner_up'], function () {
+            Route::get('/', SecondRunnerUpsIndex::class)->name('d-editions-second-runner-up-index');
+            Route::get('/create', SecondRunnerUpsSave::class)->name('d-editions-second-runner-up-create');
+            Route::get('/edit/{id}', SecondRunnerUpsSave::class)->name('d-editions-second-runner-up-edit');
+        });
+        Route::group(['prefix' => 'third_runner_up'], function () {
+            Route::get('/', ThirdRunnerUpsIndex::class)->name('d-editions-third-runner-up-index');
+            Route::get('/create', ThirdRunnerUpsSave::class)->name('d-editions-third-runner-up-create');
+            Route::get('/edit/{id}', ThirdRunnerUpsSave::class)->name('d-editions-third-runner-up-edit');
+        });
+        Route::group(['prefix' => 'fourth_runner_up'], function () {
+            Route::get('/', FourthRunnerUpsIndex::class)->name('d-editions-fourth-runner-up-index');
+            Route::get('/create', FourthRunnerUpsSave::class)->name('d-editions-fourth-runner-up-create');
+            Route::get('/edit/{id}', FourthRunnerUpsSave::class)->name('d-editions-fourth-runner-up-edit');
+        });
+        Route::group(['prefix' => 'runners_ups'], function () {
+            Route::get('/', RunnersUpsIndex::class)->name('d-editions-runners-ups-index');
+            Route::get('/create', RunnersUpsSave::class)->name('d-editions-runners-ups-create');
+            Route::get('/edit/{id}', RunnersUpsSave::class)->name('d-editions-runners-ups-edit');
         });
     });
 });
