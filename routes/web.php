@@ -6,6 +6,8 @@ use App\Http\Livewire\Dashboard\Candidate\Index;
 use App\Http\Livewire\Dashboard\Candidate\Save;
 use App\Http\Livewire\Dashboard\Carousel\Index as CarouselIndex;
 use App\Http\Livewire\Dashboard\Carousel\Save as CarouselSave;
+use App\Http\Livewire\Dashboard\Editions\BestNationalCostumes\Index as BestNationalCostumesIndex;
+use App\Http\Livewire\Dashboard\Editions\BestNationalCostumes\Save as BestNationalCostumesSave;
 use App\Http\Livewire\Dashboard\Editions\Broadcaster\Index as BroadcasterIndex;
 use App\Http\Livewire\Dashboard\Editions\Broadcaster\Save as BroadcasterSave;
 use App\Http\Livewire\Dashboard\Editions\CityVenue\Index as CityVenueIndex;
@@ -22,6 +24,8 @@ use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Index as FirstRunnerUpsI
 use App\Http\Livewire\Dashboard\Editions\FirstRunnerUps\Save as FirstRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\FourthRunnerUps\Index as FourthRunnerUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\FourthRunnerUps\Save as FourthRunnerUpsSave;
+use App\Http\Livewire\Dashboard\Editions\MissCongeniality\Index as MissCongenialityIndex;
+use App\Http\Livewire\Dashboard\Editions\MissCongeniality\Save as MissCongenialitySave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
@@ -38,6 +42,8 @@ use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Index as SecondRunnerUp
 use App\Http\Livewire\Dashboard\Editions\SecondRunnerUps\Save as SecondRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\Semifinalists\Index as SemifinalistsIndex;
 use App\Http\Livewire\Dashboard\Editions\Semifinalists\Save as SemifinalistsSave;
+use App\Http\Livewire\Dashboard\Editions\SpecialAwards\Index as SpecialAwardsIndex;
+use App\Http\Livewire\Dashboard\Editions\SpecialAwards\Save as SpecialAwardsSave;
 use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Index as ThirdRunnerUpsIndex;
 use App\Http\Livewire\Dashboard\Editions\ThirdRunnerUps\Save as ThirdRunnerUpsSave;
 use App\Http\Livewire\Dashboard\Editions\Winners\Index as WinnersIndex;
@@ -204,6 +210,21 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', EighterfinalistsIndex::class)->name('d-editions-eighterfinalists-index');
             Route::get('/create', EighterfinalistsSave::class)->name('d-editions-eighterfinalists-create');
             Route::get('/edit/{id}', EighterfinalistsSave::class)->name('d-editions-eighterfinalists-edit');
+        });
+        Route::group(['prefix' => 'best_national_costume'], function () {
+            Route::get('/', BestNationalCostumesIndex::class)->name('d-editions-best-national-costume-index');
+            Route::get('/create', BestNationalCostumesSave::class)->name('d-editions-best-national-costume-create');
+            Route::get('/edit/{id}', BestNationalCostumesSave::class)->name('d-editions-best-national-costume-edit');
+        });
+        Route::group(['prefix' => 'miss_congeniality'], function () {
+            Route::get('/', MissCongenialityIndex::class)->name('d-editions-miss-congeniality-index');
+            Route::get('/create', MissCongenialitySave::class)->name('d-editions-miss-congeniality-create');
+            Route::get('/edit/{id}', MissCongenialitySave::class)->name('d-editions-miss-congeniality-edit');
+        });
+        Route::group(['prefix' => 'special_awards'], function () {
+            Route::get('/', SpecialAwardsIndex::class)->name('d-editions-special-awards-index');
+            Route::get('/create', SpecialAwardsSave::class)->name('d-editions-special-awards-create');
+            Route::get('/edit/{id}', SpecialAwardsSave::class)->name('d-editions-special-awards-edit');
         });
     });
 });

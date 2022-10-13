@@ -131,13 +131,13 @@
                                 <x-jet-dropdown-link href="{{ route('d-editions-eighterfinalists-index') }}">
                                     {{ __('Eighterfinalists') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-best-national-costume-index') }}">
                                     {{ __('Best National Costumes') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-miss-congeniality-index') }}">
                                     {{ __('Congenialities') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('d-nationalcommittee-index') }}">
+                                <x-jet-dropdown-link href="{{ route('d-editions-special-awards-index') }}">
                                     {{ __('Special awards') }}
                                 </x-jet-dropdown-link>
                             </div>
