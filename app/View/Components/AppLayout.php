@@ -13,6 +13,11 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        $url = url()->current();
+        if (strpos($url, 'teams')){
+            return view('layouts.app');
+        } else {
+            return view('layouts.dashboard.home');
+        }
     }
 }

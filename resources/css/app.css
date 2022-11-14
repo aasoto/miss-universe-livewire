@@ -2,41 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-.box-success-action-message{
+.box-success-action-message {
     @apply py-2 px-4 bg-green-300 border rounded mb-4
 }
 
-.box-danger-action-message{
+.box-danger-action-message {
     @apply py-2 px-4 bg-red-300 border rounded mb-4
 }
 
-.box-warning-action-message{
+.box-warning-action-message {
     @apply py-2 px-4 bg-yellow-300 border rounded mb-4
 }
 
-.box-info-action-message{
+.box-info-action-message {
     @apply py-2 px-4 bg-blue-300 border rounded mb-4
 }
 
 /* STEPS */
 
-.step{
+.step {
     @apply font-medium px-6 border-b-2 tracking-wider py-2
 }
-.active{
+
+.active {
     @apply border-indigo-500 rounded-t bg-gray-100
 }
 
 /* BOX */
-.box{
+.box {
     @apply py-4 px-7 border
 }
 
-.active-pink{
+.active-pink {
     @apply border-pink-400 rounded-t bg-gray-100
 }
 
 .divide-pink {
     @apply grid grid-cols-1 divide-y-4 divide-pink-600
 }
+
+@layer components {
+
+    @keyframes appear-x {
+
+        0%,
+        100% {
+            transform: translateX(100%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+
+        99.99% {
+            transform: none;
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+    }
+
+    @keyframes appear-x-1 {
+
+        0%,
+        100% {
+            transform: translateX(100%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+
+        99.99% {
+            transform: translateX(-50%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+    }
+
+    @keyframes appear-x-2 {
+
+        0%,
+        100% {
+            transform: translateX(100%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+
+        99.99% {
+            transform: translateX(-100%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+    }
+
+    @keyframes appear-x-3 {
+
+        0%,
+        100% {
+            transform: translateX(100%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+
+        99.99% {
+            transform: translateX(-150%);
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+        }
+    }
+
+    .animate-appear-x {
+        animation: appear-x 2s;
+    }
+
+    .animate-appear-x-1 {
+        animation: appear-x-1 2s;
+    }
+
+    .animate-appear-x-2 {
+        animation: appear-x-2 2s;
+    }
+
+    .animate-appear-x-3 {
+        animation: appear-x-3 2s;
+    }
+
+    @keyframes tik-tok {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        20% {
+            transform: rotate(45deg);
+        }
+
+        30% {
+            transform: rotate(-45deg);
+        }
+
+        40% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(45deg);
+        }
+
+        60% {
+            transform: rotate(-45deg);
+        }
+
+        70% {
+            transform: rotate(0deg);
+        }
+
+        80% {
+            transform: rotate(45deg);
+        }
+
+        90% {
+            transform: rotate(-45deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .animate-tik-tok {
+        animation: tik-tok 2s linear infinite;
+    }
+}
+
 

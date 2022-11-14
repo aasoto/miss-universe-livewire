@@ -57,7 +57,7 @@ class Index extends Component
         }
 
         $candidates = $candidates->paginate($this->pagination);
-        return view('livewire.dashboard.candidate.index', compact('candidates'));
+        return view('livewire.dashboard.candidate.index', compact('candidates'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedCandidateToDelete(Candidate $candidate)

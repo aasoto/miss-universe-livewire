@@ -54,7 +54,7 @@ class Save extends Component
             $this->national_committees = NationalCommittee::get();
         }
         $this->countries = Country::pluck('id', 'name');
-        return view('livewire.dashboard.candidate.save');
+        return view('livewire.dashboard.candidate.save')->layout('layouts.dashboard.add.app');
     }
 
     public function submit()
