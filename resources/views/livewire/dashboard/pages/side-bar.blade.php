@@ -1,13 +1,13 @@
 <aside
     class="ml-7 sm:ml-5 my-5 max-h-screen w-80 rounded-lg bg-white dark:bg-slate-800 peer-checked:shadow-lg transition fixed inset-0 translate-x-[-107%] peer-checked:translate-x-0">
     <div
-        class="h-2 w-full rounded-t-lg bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700">
+        class="h-2 w-full rounded-t-lg bg-gradient-to-r {{ $colour }}">
     </div>
     <div class="relative border-b border-gray-400">
         <a class="" href="/dashboard/">
-            <img class="block dark:hidden h-20 my-5 mx-auto" src="../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-negro.svg"
+            <img class="block dark:hidden h-20 my-5 mx-auto" src="{{ $redirect }}../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-negro.svg"
                 alt="">
-            <img class="hidden dark:block h-20 my-5 mx-auto" src="../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-blanco.svg"
+            <img class="hidden dark:block h-20 my-5 mx-auto" src="{{ $redirect }}../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-blanco.svg"
                 alt="">
         </a>
         <label for="hamburger"
@@ -22,13 +22,13 @@
             <li class="relative group flex flex-col w-full transition duration-200">
                 <div class="flex flex-row">
                     <div
-                        class="-z-10 w-full h-10 group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30 group-hover:blur-lg">
+                        class="-z-10 w-full h-10 {{ $list_blur_shadow }} group-hover:blur-lg">
                     </div>
                     <a href="#"
                         class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
                         <div class="w-1/4">
                             <div
-                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700 rounded-full">
+                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
                                 <i class="fa-solid fa-person-dress"></i>
                             </div>
                         </div>
@@ -75,13 +75,13 @@
             <li class="relative group flex flex-col w-full transition duration-200">
                 <div class="flex flex-row">
                     <div
-                        class="-z-10 w-full h-10 group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30 group-hover:blur-lg">
+                        class="-z-10 w-full h-10 {{ $list_blur_shadow }} group-hover:blur-lg">
                     </div>
                     <a href="#"
                         class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
                         <div class="w-1/4">
                             <div
-                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700 rounded-full">
+                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
                                 <i class="fa-solid fa-flag"></i>
                             </div>
                         </div>
@@ -128,13 +128,13 @@
             <li class="relative group flex flex-col w-full transition duration-200">
                 <div class="flex flex-row">
                     <div
-                        class="-z-10 w-full h-10 group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30 group-hover:blur-lg">
+                        class="-z-10 w-full h-10 {{ $list_blur_shadow }} group-hover:blur-lg">
                     </div>
                     <a href="#"
                         class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
                         <div class="w-1/4">
                             <div
-                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700 rounded-full">
+                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
                                 <i class="fa-solid fa-newspaper"></i>
                             </div>
                         </div>
@@ -181,13 +181,13 @@
             <li class="relative group flex flex-col w-full transition duration-200">
                 <div class="flex flex-row">
                     <div
-                        class="-z-10 w-full h-10 group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30 group-hover:blur-lg">
+                        class="-z-10 w-full h-10 {{ $list_blur_shadow }} group-hover:blur-lg">
                     </div>
                     <a href="#"
                         class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
                         <div class="w-1/4">
                             <div
-                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700 rounded-full">
+                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
                                 <i class="fa-solid fa-images"></i>
                             </div>
                         </div>
@@ -234,13 +234,13 @@
             <li class="relative group flex flex-col w-full transition duration-200">
                 <div class="flex flex-row">
                     <div
-                        class="-z-10 w-full h-10 group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30 group-hover:blur-lg">
+                        class="-z-10 w-full h-10 {{ $list_blur_shadow }} group-hover:blur-lg">
                     </div>
                     <a href="#"
                         class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
                         <div class="w-1/4">
                             <div
-                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700 rounded-full">
+                                class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
                                 <i class="fa-solid fa-file-lines"></i>
                             </div>
                         </div>
@@ -260,7 +260,7 @@
                         <a href="{{ route('d-editions-broadcaster-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-full w-12 h-12 flex justify-center items-center bg-gradient-to-r from-cyan-400 dark:from-cyan-200 to-blue-900 dark:to-blue-700 px-4 py-2 text-white">
+                                    class="rounded-full w-12 h-12 flex justify-center items-center bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
                                     <i class="fa-solid fa-tv"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">

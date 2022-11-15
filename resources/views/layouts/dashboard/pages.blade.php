@@ -25,13 +25,22 @@
             <div class="py-3 bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
                 <input type="checkbox" name="hamburger" id="hamburger" class="hidden peer">
                 <!-- Sidebar -->
-                @livewire('dashboard.pages.side-bar')
+                @livewire('dashboard.pages.side-bar', [
+                    'colour' => 'from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700',
+                    'redirect' => '',
+                    'list_blur_shadow' => 'group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30'
+                ])
                 <!-- cuerpo de la página -->
                 <div class="transition w-[96%] sm:w-auto inset-0 translate-x-0 peer-checked:translate-x-[100%] sm:peer-checked:translate-x-[54%] md:peer-checked:translate-x-[45%] lg:peer-checked:translate-x-[34%] xl:peer-checked:translate-x-[27%] 2xl:peer-checked:translate-x-[25%] bg-white dark:bg-slate-900">
                     <!-- navbar -->
                     <div class="h-64">
-                        @livewire('dashboard.pages.nav-bar')
-                        @livewire('dashboard.pages.cover-image')
+                        @livewire('dashboard.pages.nav-bar',[
+                            'redirect' => ''
+                        ])
+                        @livewire('dashboard.pages.cover-image', [
+                            'text' => 'List of candidates',
+                            'cover_image' => '../../storage/app/public/images/dashboard/cover-images/fondo-azul.svg'
+                        ])
                         <!-- main -->
                         <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl -mt-6 lg:-mt-14 mx-5 sm:mx-8 md:mx-14 px-1 sm:px-4 md:px-10 w-auto shadow-lg">
                             <main>

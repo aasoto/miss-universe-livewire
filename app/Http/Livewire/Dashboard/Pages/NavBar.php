@@ -8,6 +8,11 @@ class NavBar extends Component
 {
     public $profile_photo, $name, $role;
 
+    public function mount($redirect)
+    {
+        $this->redirect = $redirect;
+    }
+
     public function render()
     {
         $this->profile_photo = auth()->user()->profile_photo_path;

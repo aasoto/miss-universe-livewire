@@ -12,9 +12,9 @@
                 <div class="basis-3/4 flex items-center">
                     <a href="../index.html">
                         <img class="ml-2 sm:ml-0 block dark:hidden h-12 pt-2 transition"
-                            src="../../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente.svg" alt="">
+                            src="{{ $redirect }}../../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente.svg" alt="">
                         <img class="ml-2 sm:ml-0 hidden dark:block h-12 pt-2 transition"
-                            src="../../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente-blanco.svg" alt="">
+                            src="{{ $redirect }}../../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente-blanco.svg" alt="">
                     </a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="group">
                     <div class="flex flex-row text text-lg text-gray-800 dark:text-white font-medium">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                            <img class="rounded-full h-7 w-7" src="../../storage/app/public/{{ $profile_photo }}" alt="{{ $name }}">
+                            <img class="rounded-full h-7 w-7" src="{{ $redirect }}../../storage/app/public/{{ $profile_photo }}" alt="{{ $name }}">
                             <p class="mx-5"><span class="hidden sm:block capitalize">{{ $role }}</span></p>
                         @else
                             <span class="inline-flex rounded-md">
@@ -39,7 +39,7 @@
                     <div
                         class="absolute z-20 -translate-x-8 hidden group-hover:block mt-8 w-60 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
                         <div class="p-3 flex justify-center items-center">
-                            <img class="w-20 h-20 rounded-full object-cover object-center" src="../../storage/app/public/{{ $profile_photo }}"
+                            <img class="w-20 h-20 rounded-full object-cover object-center" src="{{ $redirect }}../../storage/app/public/{{ $profile_photo }}"
                                 alt="">
                         </div>
                         <div class="p-3">

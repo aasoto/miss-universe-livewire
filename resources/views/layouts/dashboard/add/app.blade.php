@@ -25,13 +25,22 @@
             <div class="py-3 bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
                 <input type="checkbox" name="hamburger" id="hamburger" class="peer hidden">
                 <!-- Sidebar -->
-                @livewire('dashboard.pages.add.side-bar')
+                @livewire('dashboard.pages.side-bar', [
+                    'colour' => 'from-lime-400 dark:from-lime-300 via-lime-700 dark:via-lime-500 to-green-800 dark:to-green-700',
+                    'redirect' => '../',
+                    'list_blur_shadow' => 'group-hover:bg-lime-200 dark:group-hover:bg-lime-900/30'
+                ])
                 <!-- cuerpo de la página -->
                 <div class="w-[94%] sm:w-auto transition inset-0 translate-x-0 peer-checked:translate-x-[100%] sm:peer-checked:translate-x-[54%] md:peer-checked:translate-x-[45%] lg:peer-checked:translate-x-[34%] xl:peer-checked:translate-x-[27%] 2xl:peer-checked:translate-x-[25%] bg-white dark:bg-slate-900">
                     <!-- navbar -->
-                    @livewire('dashboard.pages.add.nav-bar')
-                    @livewire('dashboard.pages.add.cover-image')
-                    <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl mx-3.5 iPhoneSE:mx-5 sm:mx-8 md:mx-16 lg:mx-32 px-10 w-[90%] sm:w-auto translate-x-3 sm:translate-x-0 shadow-lg">
+                    @livewire('dashboard.pages.nav-bar', [
+                        'redirect' => '../'
+                    ])
+                    @livewire('dashboard.pages.cover-image', [
+                        'text' => 'Add candidate',
+                        'cover_image' => '../../../storage/app/public/images/dashboard/cover-images/fondo-verde.svg'
+                    ])
+                    <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 -mt-6 lg:-mt-14 backdrop-blur-xl mx-3.5 iPhoneSE:mx-5 sm:mx-8 md:mx-16 lg:mx-32 px-10 w-[90%] sm:w-auto translate-x-3 sm:translate-x-0 shadow-lg">
                         <main>
                             {{ $slot }}
                         </main>
