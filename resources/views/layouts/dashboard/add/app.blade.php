@@ -44,4 +44,14 @@
 
         @livewireScripts
     </body>
+    <script>
+        function data() {
+            return {
+                dark_mode: false,
+                change_mode(){
+                    this.dark_mode = !this.dark_mode;
+                },
+            }
+        }
+    </script>
 </html>

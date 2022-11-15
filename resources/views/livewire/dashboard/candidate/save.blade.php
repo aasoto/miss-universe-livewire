@@ -12,9 +12,10 @@
     <form wire:submit.prevent="submit">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 dark:gap-9">
             <div class="col-span-1 lg:col-span-2 relative">
-                <label
-                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
-                    for="country">País</label>
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="country">
+                    {{__('Country')}}
+                </label>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="country_id">
                     <option value="">Seleccionar...</option>
@@ -26,7 +27,7 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
-                    Primer nombre
+                    {{__('First name')}}
                 </label>
                 <x-jet-input-error for='first_name' />
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
@@ -35,7 +36,7 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
-                    Segundo nombre
+                    {{__('Second name')}}
                 </label>
                 <x-jet-input-error for='second_name' />
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
@@ -44,7 +45,7 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
-                    Primer apellido
+                    {{__('First surname')}}
                 </label>
                 <x-jet-input-error for='first_last_name' />
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
@@ -53,7 +54,7 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
-                    Segundo apellido
+                    {{__('Second surname')}}
                 </label>
                 <x-jet-input-error for='second_last_name' />
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
@@ -62,20 +63,20 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="gender">
-                    Genero
+                    {{__('Gender')}}
                 </label>
                 <x-jet-input-error for='gender' />
                 <select  class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="gender">
-                    <option value="">Seleccionar...</option>
-                    <option value="f">Femenino</option>
-                    <option value="m">Masculino</option>
+                    <option value="">{{__('Select...')}}</option>
+                    <option value="f">{{__('Female')}}</option>
+                    <option value="m">{{__('Male')}}</option>
                 </select>
             </div>
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="birthdate">
-                    Fecha nacimiento
+                    {{__('Birthdate')}}
                 </label>
                 <x-jet-input-error for='birthdate' />
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
@@ -84,11 +85,11 @@
             <div class="col-span-1">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="national_committee_id">
-                    Comité nacional
+                    {{__('National committee')}}
                 </label>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="national_committee_id">
-                    <option value="">Seleccionar...</option>
+                    <option value="">{{__('Select...')}}</option>
                     @foreach ($national_committees as $key => $value)
                         <option value="{{ $value['id'] }}">{{ $value['business_name'] }}</option>
                     @endforeach
@@ -109,7 +110,7 @@
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
             <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-400 via-lime-500 to-green-900 hover:scale-110 transition">
-                Guardar
+                {{__('Save')}}
             </button>
         </div>
     </form>
