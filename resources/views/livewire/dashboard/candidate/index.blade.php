@@ -12,8 +12,8 @@
             </div>
             <div class="col-span-1">
                 <select wire:model="pagination"
-                    class="w-full border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{ __('Mostrar') }}</option>
+                    class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
+                    <option value="">{{ __('Show') }}</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -27,14 +27,14 @@
             </div>
             <div class="col-span-1 md:col-span-3">
                 <input
-                    class="rounded-full w-full px-4 py-2 border border-gray-400 text-gray-800 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50"
+                    class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50"
                     type="text" wire:model="search" placeholder="{{ __('Search') }}">
             </div>
         </div>
         <div class="flex flex-col md:flex-row gap-2 mb-2 w-full">
             <div class="basis-0 md:basis-1/2">
                 <select wire:model="country_id"
-                    class="rounded-full w-full px-4 py-2 border border-gray-400 text-gray-800 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
+                    class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
                     <option value="">{{ __('Country...') }}</option>
                     @foreach ($countries as $name => $id)
                         <option value="{{ $id }}">{{ $name }}</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="basis-0 md:basis-1/2">
                 <select wire:model="national_committee_id"
-                    class="rounded-full w-full px-4 py-2 border border-gray-400 text-gray-800 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
+                    class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
                     <option value="">{{ __('National committees...') }}</option>
                     @foreach ($national_committees as $business_name => $id)
                         <option value="{{ $id }}">{{ $business_name }}</option>

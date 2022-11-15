@@ -22,7 +22,7 @@
     <body x-data="data()" x-init="dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
     $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)));">
         <div :class="{'dark': dark_mode === true}">
-            <div class="py-3 bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
+            <div class="py-3 bg-white dark:bg-slate-900 h-auto dark:h-[1350px] text-gray-800 dark:text-white">
                 <input type="checkbox" name="hamburger" id="hamburger" class="hidden peer">
                 <!-- Sidebar -->
                 @livewire('dashboard.pages.side-bar', [
@@ -35,7 +35,8 @@
                     <!-- navbar -->
                     <div class="h-64">
                         @livewire('dashboard.pages.nav-bar',[
-                            'redirect' => ''
+                            'redirect' => '',
+                            'check_color' => 'from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700'
                         ])
                         @livewire('dashboard.pages.cover-image', [
                             'text' => 'List of candidates',

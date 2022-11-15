@@ -30,11 +30,16 @@
                     'redirect' => '../',
                     'list_blur_shadow' => 'group-hover:bg-lime-200 dark:group-hover:bg-lime-900/30'
                 ])
+                <div x-ignore>
+                    <div class="from-yellow-400 dark:from-yellow-300 via-yellow-500 dark:via-yellow-400 to-orange-500 dark:to-orange-400"></div>
+                    <div class="group-hover:bg-yellow-200 dark:group-hover:bg-yellow-900/30"></div>
+                </div>
                 <!-- cuerpo de la página -->
                 <div class="w-[94%] sm:w-auto transition inset-0 translate-x-0 peer-checked:translate-x-[100%] sm:peer-checked:translate-x-[54%] md:peer-checked:translate-x-[45%] lg:peer-checked:translate-x-[34%] xl:peer-checked:translate-x-[27%] 2xl:peer-checked:translate-x-[25%] bg-white dark:bg-slate-900">
                     <!-- navbar -->
                     @livewire('dashboard.pages.nav-bar', [
-                        'redirect' => '../'
+                        'redirect' => '../',
+                        'check_color' => 'from-lime-400 dark:from-lime-300 via-lime-700 dark:via-lime-500 to-green-800 dark:to-green-700'
                     ])
                     @livewire('dashboard.pages.cover-image', [
                         'text' => 'Add candidate',

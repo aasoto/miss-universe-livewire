@@ -95,7 +95,7 @@
                         <input @click="change_mode()" type="checkbox" :value="dark_mode" id="dark_check"
                             class="sr-only peer">
                         <div
-                            class="w-9 h-5 bg-gray-200 peer-focus:outline-none dark:peer-focus:ring-cyan-700 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-500 transition duration-200">
+                            class="w-9 h-5 bg-gray-200 peer-focus:outline-none dark:peer-focus:ring-cyan-700 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-gradient-to-r {{ $check_color }} transition duration-200">
                         </div>
                         <div x-show="!dark_mode" x-transition>
                             <span

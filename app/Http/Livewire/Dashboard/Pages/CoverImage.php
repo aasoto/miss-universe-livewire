@@ -16,6 +16,10 @@ class CoverImage extends Component
 
     public function render()
     {
+        if (strpos(url()->current(), 'edit')) {
+            $this->text = 'Modify candidate';
+            $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
         return view('livewire.dashboard.pages.cover-image');
     }
 }
