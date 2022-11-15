@@ -261,8 +261,8 @@
                         <a href="{{ route('d-editions-broadcaster-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-cyan-400 dark:from-cyan-200 to-blue-900 dark:to-blue-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-list"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-tv"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Broadcasters')}}
@@ -274,8 +274,8 @@
                         <a href="{{ route('d-editions-city-venue-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-city"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('City venues')}}
@@ -287,8 +287,8 @@
                         <a href="{{ route('d-editions-place-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-building"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Places')}}
@@ -300,8 +300,8 @@
                         <a href="{{ route('d-editions-presenter-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-chalkboard"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Presenters')}}
@@ -313,8 +313,8 @@
                         <a href="{{ route('d-editions-miss-universe-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-chess-queen"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Miss Universe')}}
@@ -326,8 +326,8 @@
                         <a href="{{ route('d-editions-entertainment-show-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-music"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Entraiment shows')}}
@@ -339,8 +339,8 @@
                         <a href="{{ route('d-editions-debut-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-play"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Debuts')}}
@@ -352,8 +352,8 @@
                         <a href="{{ route('d-editions-withdrawal-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-walking-arrow-right"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Withdrawals')}}
@@ -365,8 +365,8 @@
                         <a href="{{ route('d-editions-return-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-walking-arrow-loop-left"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Returns')}}
@@ -378,8 +378,8 @@
                         <a href="{{ route('d-editions-contestant-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-circle-plus"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Contestants per edition')}}
@@ -391,8 +391,8 @@
                         <a href="{{ route('d-editions-winner-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-trophy"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Winners')}}
@@ -404,8 +404,8 @@
                         <a href="{{ route('d-editions-first-runner-up-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('First runner ups')}}
@@ -417,8 +417,8 @@
                         <a href="{{ route('d-editions-second-runner-up-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Second runner ups')}}
@@ -430,8 +430,8 @@
                         <a href="{{ route('d-editions-third-runner-up-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Third runner ups')}}
@@ -443,8 +443,8 @@
                         <a href="{{ route('d-editions-fourth-runner-up-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Fourth runner ups')}}
@@ -456,8 +456,8 @@
                         <a href="{{ route('d-editions-runners-ups-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-arrow-up-from-line"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Runners ups')}}
@@ -469,8 +469,8 @@
                         <a href="{{ route('d-editions-semifinalists-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-arrow-up-from-line"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Semifinalists')}}
@@ -482,8 +482,8 @@
                         <a href="{{ route('d-editions-quarterfinalists-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-arrow-up-from-line"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Quarterfinalists')}}
@@ -495,8 +495,8 @@
                         <a href="{{ route('d-editions-eighterfinalists-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-person-arrow-up-from-line"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Eighterfinalists')}}
@@ -508,8 +508,8 @@
                         <a href="{{ route('d-editions-best-national-costume-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-award"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Best National Costumes')}}
@@ -521,8 +521,8 @@
                         <a href="{{ route('d-editions-miss-congeniality-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
-                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
-                                    <i class="fa-solid fa-plus"></i>
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-award"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
                                     {{__('Special awards')}}
