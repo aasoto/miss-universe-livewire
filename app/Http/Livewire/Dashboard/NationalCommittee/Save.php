@@ -39,7 +39,7 @@ class Save extends Component
             $this->flag = $this->flag[0]->iso3166_1_alpha2;
         }
         $this->countries = Country::pluck('id', 'name');
-        return view('livewire.dashboard.national-committee.save');
+        return view('livewire.dashboard.national-committee.save')->layout('layouts.dashboard.add.app');
     }
 
     public function submit()
