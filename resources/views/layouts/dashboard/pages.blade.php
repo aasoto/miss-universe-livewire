@@ -22,7 +22,7 @@
     <body x-data="data()" x-init="dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
     $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)));">
         <div :class="{'dark': dark_mode === true}">
-            <div class="py-3 bg-white dark:bg-slate-900 h-auto dark:h-[1350px] text-gray-800 dark:text-white">
+            <div class="py-3 bg-white dark:bg-slate-900 h-auto dark:h-[1500px] text-gray-800 dark:text-white">
                 <input type="checkbox" name="hamburger" id="hamburger" class="hidden peer">
                 <!-- Sidebar -->
                 @livewire('dashboard.pages.side-bar', [
@@ -42,7 +42,7 @@
                             'cover_image' => '../../storage/app/public/images/dashboard/cover-images/fondo-azul.svg'
                         ])
                         <!-- main -->
-                        <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl -mt-6 lg:-mt-14 mx-5 sm:mx-8 md:mx-14 px-1 sm:px-4 md:px-10 w-auto shadow-lg">
+                        <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl -mt-6 lg:-mt-14 mx-5 sm:mx-8 md:mx-14 px-1 sm:px-4 md:px-10 pb-10 w-auto shadow-lg">
                             <main>
                                 {{ $slot }}
                             </main>

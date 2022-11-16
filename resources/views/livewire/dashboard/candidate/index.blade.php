@@ -1,6 +1,11 @@
 <section>
     <!-- <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">Concursantes</h2> -->
     <div class="pt-24 flex flex-col justify-center items-center">
+        <x-jet-action-message on="deleted">
+            <div class="box-success-action-message">
+                {{__('Deleted candidate successfully')}}
+            </div>
+        </x-jet-action-message>
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-2 w-full">
             <div class="col-span-1 md:col-span-2">
                 <a href="{{ route('d-candidate-create') }}">

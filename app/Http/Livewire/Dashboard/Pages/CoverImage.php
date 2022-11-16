@@ -48,5 +48,17 @@ class CoverImage extends Component
         if ($this->title == null) {
             $this->title = '';
         }
+
+        /****************** NEWS *************** */
+        if (strpos(url()->current(), 'dashboard/news')) {
+            $this->title = 'List of news';
+        }
+        if (strpos(url()->current(), 'news/create')) {
+            $this->title = 'Add news';
+        }
+        if (strpos(url()->current(), 'news/edit')) {
+            $this->title = 'Modify news';
+            $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
     }
 }

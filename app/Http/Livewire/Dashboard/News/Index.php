@@ -84,7 +84,7 @@ class Index extends Component
 
         $news = $news->paginate($this->pagination);
         $categories = Category::pluck('id', 'name');
-        return view('livewire.dashboard.news.index', compact('news', 'categories'));
+        return view('livewire.dashboard.news.index', compact('news', 'categories'))->layout('layouts.dashboard.pages');
     }
 
     /** Funciones para eliminar */

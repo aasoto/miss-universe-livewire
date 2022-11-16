@@ -50,7 +50,7 @@ class Save extends Component
     public function render()
     {
         $categories = Category::pluck('id','name');
-        return view('livewire.dashboard.news.save', compact('categories'));
+        return view('livewire.dashboard.news.save', compact('categories'))->layout('layouts.dashboard.add.app');
     }
 
     public function submit()
