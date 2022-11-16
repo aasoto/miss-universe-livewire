@@ -39,7 +39,6 @@
                             'check_color' => 'from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700'
                         ])
                         @livewire('dashboard.pages.cover-image', [
-                            'text' => 'List of candidates',
                             'cover_image' => '../../storage/app/public/images/dashboard/cover-images/fondo-azul.svg'
                         ])
                         <!-- main -->
@@ -48,6 +47,7 @@
                                 {{ $slot }}
                             </main>
                         </div>
+                        <div class="w-full h-20"></div>
                     </div>
                 </div>
             </div>

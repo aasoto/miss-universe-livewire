@@ -59,6 +59,7 @@ class Save extends Component
 
     public function submit()
     {
+
         $this -> validate();
 
         if ($this->candidate) {
@@ -95,5 +96,6 @@ class Save extends Component
                 'official_picture' => $imageName
             ]);
         }
+
     }
 }

@@ -101,10 +101,13 @@
                     {{__('Official Picture')}}
                 </label>
                 <x-jet-input-error for='official_picture' />
-                <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
-                    wire:model="official_picture" type="file">
+                <div class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2">
+                    <x-jet-input type="file" wire:model="official_picture" class="w-full"/>
+                </div>
                 @if ($candidate && $candidate->official_picture)
-                    <img class="w-40 mt-3" src="{{ $candidate->getImageUrl() }}" />
+                <div class="flex justify-center items-center">
+                    <img class="w-2/3 mt-5 object-cover object-center rounded-lg" src="{{ $candidate->getImageUrl() }}" />
+                </div>
                 @endif
             </div>
         </div>

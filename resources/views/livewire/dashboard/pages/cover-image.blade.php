@@ -2,7 +2,7 @@
     style="background-image: url('{{ $cover_image }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="absolute top-1/2 w-full">
         <h1 class="text-center text-3xl md:text-5xl font-bold text-white">
-            {{ $text }}
+            {{ $title }}
         </h1>
     </div>
 </div>

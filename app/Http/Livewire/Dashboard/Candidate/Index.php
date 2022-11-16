@@ -14,6 +14,8 @@ class Index extends Component
     use WithPagination;
     use Order;
 
+    protected $listeners = ['redirect_index' => 'render'];
+
     protected $queryString = ['country_id', 'national_committee_id', 'search', 'pagination', 'sortColumn', 'sortDirection'];
 
     public $pagination = 10;

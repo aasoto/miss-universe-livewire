@@ -6,20 +6,47 @@ use Livewire\Component;
 
 class CoverImage extends Component
 {
-    public $text, $cover_image;
+    public $title, $cover_image;
 
-    public function mount ($text, $cover_image)
+    public function mount ($cover_image)
     {
-        $this->text = $text;
         $this->cover_image = $cover_image;
     }
 
     public function render()
     {
-        if (strpos(url()->current(), 'edit')) {
-            $this->text = 'Modify candidate';
+        $this->guess_title();
+
+        return view('livewire.dashboard.pages.cover-image');
+    }
+
+    public function guess_title ()
+    {
+        /****************** CANDIDATES *************** */
+        if (strpos(url()->current(), 'dashboard/candidate')) {
+            $this->title = 'List of candidates';
+        }
+        if (strpos(url()->current(), 'candidate/create')) {
+            $this->title = 'Add candidate';
+        }
+        if (strpos(url()->current(), 'candidate/edit')) {
+            $this->title = 'Modify candidate';
             $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
-        return view('livewire.dashboard.pages.cover-image');
+
+        /****************** NATIONAL COMMITTEES *************** */
+        if (strpos(url()->current(), 'dashboard/national-committee')) {
+            $this->title = 'List of national committees';
+        }
+        if (strpos(url()->current(), 'national-committee/create')) {
+            $this->title = 'Add national committee';
+        }
+        if (strpos(url()->current(), 'national-committee/edit')) {
+            $this->title = 'Modify national committee';
+            $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+        if ($this->title == null) {
+            $this->title = '';
+        }
     }
 }

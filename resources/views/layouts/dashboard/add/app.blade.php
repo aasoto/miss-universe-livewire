@@ -42,7 +42,6 @@
                         'check_color' => 'from-lime-400 dark:from-lime-300 via-lime-700 dark:via-lime-500 to-green-800 dark:to-green-700'
                     ])
                     @livewire('dashboard.pages.cover-image', [
-                        'text' => 'Add candidate',
                         'cover_image' => '../../../storage/app/public/images/dashboard/cover-images/fondo-verde.svg'
                     ])
                     <div class="rounded-xl bg-white/70 dark:bg-slate-800/70 -mt-6 lg:-mt-14 backdrop-blur-xl mx-3.5 iPhoneSE:mx-5 sm:mx-8 md:mx-16 lg:mx-32 px-10 w-[90%] sm:w-auto translate-x-3 sm:translate-x-0 shadow-lg">

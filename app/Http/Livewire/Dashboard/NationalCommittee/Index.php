@@ -48,7 +48,7 @@ class Index extends Component
 
         $national_committees = $national_committees->paginate($this->pagination);
         $countries = Country::pluck('id', 'name');
-        return view('livewire.dashboard.national-committee.index', compact('national_committees', 'countries'));
+        return view('livewire.dashboard.national-committee.index', compact('national_committees', 'countries'))->layout('layouts.dashboard.pages');;
     }
 
     public function selectedNationalCommitteeToDelete(NationalCommittee $nationalcommittee)
