@@ -45,9 +45,6 @@ class CoverImage extends Component
             $this->title = 'Modify national committee';
             $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
-        if ($this->title == null) {
-            $this->title = '';
-        }
 
         /****************** NEWS *************** */
         if (strpos(url()->current(), 'dashboard/news')) {
@@ -59,6 +56,22 @@ class CoverImage extends Component
         if (strpos(url()->current(), 'news/edit')) {
             $this->title = 'Modify news';
             $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** CAROUSEL *************** */
+        if (strpos(url()->current(), 'dashboard/carousel')) {
+            $this->title = 'List of carousel items';
+        }
+        if (strpos(url()->current(), 'carousel/create')) {
+            $this->title = 'Add item';
+        }
+        if (strpos(url()->current(), 'carousel/edit')) {
+            $this->title = 'Modify item';
+            $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        if ($this->title == null) {
+            $this->title = '';
         }
     }
 }

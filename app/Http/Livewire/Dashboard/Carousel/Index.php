@@ -19,7 +19,7 @@ class Index extends Component
     {
         //$carousels = Carousel::paginate(10);
         $this->carousels = Carousel::orderBy('number')->get()->toArray();
-        return view('livewire.dashboard.carousel.index');
+        return view('livewire.dashboard.carousel.index')->layout('layouts.dashboard.pages');
     }
 
     public function setOrden()

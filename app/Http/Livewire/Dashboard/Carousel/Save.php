@@ -13,7 +13,7 @@ class Save extends Component
     use uploadImage;
 
     public $type;
-    public $step = 1, $checked_images = false;
+    public $step = 1, $checked_images = false, $authorized = false;
 
     public $carousel;
     public  $image,
@@ -31,6 +31,8 @@ class Save extends Component
             $link_redirect;
 
     public $current_image, $current_secondary_image;
+
+    public $send_button_color;
 
     protected $rules = [
         'type' => 'required|string|max:50',
@@ -72,12 +74,19 @@ class Save extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.carousel.save');
+        if (strpos(url()->current(), 'carousel/create')) {
+            $this->send_button_color = 'bg-gradient-to-r from-lime-500 to-green-800';
+        }
+        if (strpos(url()->current(), 'carousel/edit')) {
+            $this->send_button_color = 'bg-gradient-to-r from-yellow-500 to-orange-800';
+        }
+        return view('livewire.dashboard.carousel.save')->layout('layouts.dashboard.add.app');
     }
 
     public function submit(){
 
         if ($this->image != null) {
+
             $this->validate();
 
             $secondaryImageName = null;
@@ -108,6 +117,9 @@ class Save extends Component
                 $this->button_2_type = 'default';
             }
 
+        }
+
+        if ($this->authorized) {
             if ($this->carousel) {
                 $this->carousel->update([
                     'type' => $this->type,
@@ -162,8 +174,8 @@ class Save extends Component
                 ]);
                 $this->emit('created');
             }
-
         }
+
 
     }
 
@@ -179,5 +191,10 @@ class Save extends Component
 
     public function previousStep(){
         $this->step = 1;
+    }
+
+    public function authorize_send ()
+    {
+        $this->authorized = true;
     }
 }

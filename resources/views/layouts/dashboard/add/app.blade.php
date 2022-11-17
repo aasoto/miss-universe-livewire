@@ -22,7 +22,7 @@
     <body x-data="data()" x-init="dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
     $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)))">
         <div :class="{'dark': dark_mode === true}">
-            <div class="py-3 bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
+            <div class="py-3 min-h-screen bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
                 <input type="checkbox" name="hamburger" id="hamburger" class="peer hidden">
                 <!-- Sidebar -->
                 @livewire('dashboard.pages.side-bar', [
