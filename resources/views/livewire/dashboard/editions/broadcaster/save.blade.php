@@ -25,7 +25,7 @@
                         </label>
                         <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-4 py-2"
                             wire:model="country_id">
-                            <option value="">Seleccionar...</option>
+                            <option value="">{{__('Select...')}}</option>
                             @foreach ($countries as $name => $id)
                                 <option value="{{ $id }}">{{ $name }}</option>
                             @endforeach

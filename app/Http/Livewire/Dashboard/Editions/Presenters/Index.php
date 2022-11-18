@@ -66,7 +66,7 @@ class Index extends Component
 
         $presenters =$presenters->paginate($this->pagination);
 
-        return view('livewire.dashboard.editions.presenters.index', compact('presenters'));
+        return view('livewire.dashboard.editions.presenters.index', compact('presenters'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedPresenterToDelete(Presenter $presenter)
