@@ -50,7 +50,7 @@ class Index extends Component
         }
 
        $city_venues = $city_venues->paginate($this->pagination);
-        return view('livewire.dashboard.editions.city-venue.index', compact('city_venues'));
+        return view('livewire.dashboard.editions.city-venue.index', compact('city_venues'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedCityVenueToDelete(CityVenue $city_venue)

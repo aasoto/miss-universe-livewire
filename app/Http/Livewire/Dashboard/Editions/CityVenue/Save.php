@@ -17,6 +17,8 @@ class Save extends Component
 
     public $city_venue;
 
+    public $send_button;
+
     protected $rules = [
         'country_id' => 'required|integer',
         'city' => 'required|max:200|string',
@@ -35,8 +37,21 @@ class Save extends Component
 
     public function render()
     {
+        $this->customize_send_button();
+
         $this->countries = Country::pluck('id', 'name');
-        return view('livewire.dashboard.editions.city-venue.save');
+        return view('livewire.dashboard.editions.city-venue.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'editions/city_venue/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'editions/city_venue/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
+
     }
 
     public function submit()

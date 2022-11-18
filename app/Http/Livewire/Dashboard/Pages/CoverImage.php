@@ -85,6 +85,21 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** BROADCASTER *************** */
+        if (strpos(url()->current(), 'dashboard/editions/city_venue')) {
+            $this->title = 'List of cities venue';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/city_venue/create')) {
+            $this->title = 'Add cities venue';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/city_venue/edit')) {
+            $this->title = 'Modify cities venue';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+
         if ($this->title == null) {
             $this->title = '';
         }
