@@ -32,10 +32,8 @@ $maxWidth = [
     }"
     x-init="$watch('show', value => {
         if (value) {
-            document.body.classList.add('');
             {{ $attributes->has('focusable') ? 'setTimeout(() => firstFocusable().focus(), 100)' : '' }}
         } else {
-            document.body.classList.remove('');
         }
     })"
     x-on:close.stop="show = false"

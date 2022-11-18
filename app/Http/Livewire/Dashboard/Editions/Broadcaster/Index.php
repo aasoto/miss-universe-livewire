@@ -49,10 +49,10 @@ class Index extends Component
         }
 
        $broadcasters =$broadcasters->paginate($this->pagination);
-        return view('livewire.dashboard.editions.broadcaster.index', compact('broadcasters'));
+        return view('livewire.dashboard.editions.broadcaster.index', compact('broadcasters'))->layout('layouts.dashboard.pages');
     }
 
-    public function selectedBroadcastToDelete(Broadcaster $broadcaster)
+    public function selectedBroadcasterToDelete(Broadcaster $broadcaster)
     {
         $this->confirmingDeleteBroadcaster = true;
         $this->broadcasterToDelete = $broadcaster;

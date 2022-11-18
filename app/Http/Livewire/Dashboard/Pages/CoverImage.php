@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class CoverImage extends Component
 {
-    public $title, $cover_image;
+    public $title, $cover_image, $redirect = '';
 
     public function mount ($cover_image)
     {
@@ -68,6 +68,21 @@ class CoverImage extends Component
         if (strpos(url()->current(), 'carousel/edit')) {
             $this->title = 'Modify item';
             $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /*************------ EDITIONS ------****************** */
+        /****************** BROADCASTER *************** */
+        if (strpos(url()->current(), 'dashboard/editions/broadcaster')) {
+            $this->title = 'List of broadcasters';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/broadcaster/create')) {
+            $this->title = 'Add broadcaster';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/broadcaster/edit')) {
+            $this->title = 'Modify broadcaster';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
         if ($this->title == null) {

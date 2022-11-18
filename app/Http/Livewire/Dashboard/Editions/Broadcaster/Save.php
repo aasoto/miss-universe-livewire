@@ -13,18 +13,19 @@ class Save extends Component
 
     public $countries;
 
-    public $name, $logo;
+    public $name, $logo_light_theme, $logo_dark_theme;
 
     public $country_id;
 
     public $broadcaster;
 
-    public $flag;
+    public $flag, $send_button;
 
     protected $rules = [
         'country_id' => 'required|integer',
         'name' => 'required|max:200|string',
-        'logo' => 'nullable|image|mimes:jpeg,jpg,png|max:10240'
+        'logo_light_theme' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240',
+        'logo_dark_theme' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240'
     ];
 
     public function mount($id = null)
@@ -33,7 +34,8 @@ class Save extends Component
             $this->broadcaster = Broadcaster::findOrFail($id);
             $this->country_id = $this->broadcaster->country_id;
             $this->name = $this->broadcaster->name;
-            $this->logo = $this->broadcaster->logo;
+            $this->logo_light_theme = $this->broadcaster->logo_light_theme;
+            $this->logo_dark_theme = $this->broadcaster->logo_dark_theme;
         }
     }
 
@@ -43,8 +45,22 @@ class Save extends Component
             $this->flag = Country::where('id', $this->country_id)->get('iso3166_1_alpha2');
             $this->flag = $this->flag[0]->iso3166_1_alpha2;
         }
+
+        $this->customize_send_button();
+
         $this->countries = Country::pluck('id', 'name');
-        return view('livewire.dashboard.editions.broadcaster.save');
+        return view('livewire.dashboard.editions.broadcaster.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'editions/broadcaster/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'editions/broadcaster/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
+
     }
 
     public function submit()
@@ -61,17 +77,27 @@ class Save extends Component
             $this->broadcaster = Broadcaster::create([
                 'country_id' => $this->country_id,
                 'name' => $this->name,
-                'logo' => 'wait'
+                'logo_light_theme' => 'wait',
+                'logo_dark_theme' => 'wait'
             ]);
             $this->emit('created');
         }
 
-        if ($this->logo) {
-            $imageName = $this->broadcaster->id.'_broadcaster.'.$this->logo->getClientOriginalExtension();
-            $this->logo->storeAs('images/editions/broadcasters', $imageName, 'public');
+        if ($this->logo_light_theme) {
+            $imageName = $this->broadcaster->id.'_broadcaster_light_theme_logo.'.$this->logo_light_theme->getClientOriginalExtension();
+            $this->logo_light_theme->storeAs('images/editions/broadcasters', $imageName, 'public');
 
             $this->broadcaster->update([
-                'logo' => $imageName
+                'logo_light_theme' => $imageName
+            ]);
+        }
+
+        if ($this->logo_dark_theme) {
+            $imageName = $this->broadcaster->id.'_broadcaster_dark_theme_logo.'.$this->logo_dark_theme->getClientOriginalExtension();
+            $this->logo_dark_theme->storeAs('images/editions/broadcasters', $imageName, 'public');
+
+            $this->broadcaster->update([
+                'logo_dark_theme' => $imageName
             ]);
         }
     }

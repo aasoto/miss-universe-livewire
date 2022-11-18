@@ -11,14 +11,19 @@ class Broadcaster extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'country_id', 'logo'];
+    protected $fillable = ['name', 'country_id', 'logo_light_theme', 'logo_dark_theme'];
 
     public function country(){
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    public function getImageUrl()
+    public function getLogoLightUrl()
     {
-        return URL::asset('../storage/app/public/images/editions/broadcasters/'.$this->logo);
+        return URL::asset('../storage/app/public/images/editions/broadcasters/'.$this->logo_light_theme);
+    }
+
+    public function getLogoDarkUrl()
+    {
+        return URL::asset('../storage/app/public/images/editions/broadcasters/'.$this->logo_dark_theme);
     }
 }

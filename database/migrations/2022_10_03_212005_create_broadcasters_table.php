@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 200);
             $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->text('logo');
+            $table->text('logo_light_theme');
+            $table->text('logo_dark_theme')->nullable();
             $table->timestamps();
         });
     }
