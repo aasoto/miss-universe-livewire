@@ -49,7 +49,7 @@ class Index extends Component
 
         $places = $places->paginate($this->pagination);
 
-        return view('livewire.dashboard.editions.places.index', compact('places'));
+        return view('livewire.dashboard.editions.places.index', compact('places'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedPlaceToDelete(Place $place)

@@ -85,7 +85,7 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
-        /****************** BROADCASTER *************** */
+        /****************** CITY VENUE *************** */
         if (strpos(url()->current(), 'dashboard/editions/city_venue')) {
             $this->title = 'List of cities venue';
             $this->cover_image = '../'.$this->cover_image;
@@ -99,6 +99,19 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** PLACE *************** */
+        if (strpos(url()->current(), 'dashboard/editions/place')) {
+            $this->title = 'List of places';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/place/create')) {
+            $this->title = 'Add places';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/place/edit')) {
+            $this->title = 'Modify place';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
 
         if ($this->title == null) {
             $this->title = '';
