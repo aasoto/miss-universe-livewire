@@ -113,27 +113,26 @@
         </table>
         <br>
         {{ $broadcasters->links() }}
+        <x-modals.question-modal wire:model="confirmingDeleteBroadcaster">
+            <x-slot name="title">
+                <div class="">
+                    {{ __('Delete broadcaster') }}
+                </div>
+            </x-slot>
+
+            <x-slot name="content">
+                {{ __('Are you sure you would like to delete this broadcaster?') }}
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$toggle('confirmingDeleteBroadcaster')" wire:loading.attr="disabled">
+                    {{ __('Cancel') }}
+                </x-jet-secondary-button>
+
+                <x-jet-danger-button class="ml-3" wire:click="delete()" wire:loading.attr="disabled">
+                    {{ __('Delete') }}
+                </x-jet-danger-button>
+            </x-slot>
+        </x-modals.question-modal>
     </div>
 </section>
-
-<x-jet-confirmation-modal wire:model="confirmingDeleteBroadcaster">
-    <x-slot name="title">
-        <div class="">
-            {{ __('Delete broadcaster') }}
-        </div>
-    </x-slot>
-
-    <x-slot name="content">
-        {{ __('Are you sure you would like to delete this broadcaster?') }}
-    </x-slot>
-
-    <x-slot name="footer">
-        <x-jet-secondary-button wire:click="$toggle('confirmingDeleteBroadcaster')" wire:loading.attr="disabled">
-            {{ __('Cancel') }}
-        </x-jet-secondary-button>
-
-        <x-jet-danger-button class="ml-3" wire:click="delete()" wire:loading.attr="disabled">
-            {{ __('Delete') }}
-        </x-jet-danger-button>
-    </x-slot>
-</x-jet-confirmation-modal>

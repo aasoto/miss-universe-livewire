@@ -1,5 +1,10 @@
 <section>
     <div class="pt-24 flex flex-col justify-center items-center mb-5">
+        <x-jet-action-message on="deleted">
+            <div class="box-success-action-message">
+                {{__('National committee deleted successfully')}}
+            </div>
+        </x-jet-action-message>
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-2 w-full">
             <div class="col-span-1 md:col-span-2">
                 <a href="{{ route('d-nationalcommittee-create') }}">
@@ -100,30 +105,31 @@
             @endforeach
             </tbody>
         </table>
+        <br>
+        {{ $national_committees->links() }}
+        <x-modals.question-modal wire:model="confirmingDeleteNationalCommittee">
+            <x-slot name="title">
+                <div class="">
+                    {{ __('Delete national committee') }}
+                </div>
+            </x-slot>
+
+            <x-slot name="content">
+                {{ __('Are you sure you would like to delete this national committee?') }}
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$toggle('confirmingDeleteNationalCommittee')" wire:loading.attr="disabled">
+                    {{ __('Cancel') }}
+                </x-jet-secondary-button>
+
+                <x-jet-danger-button class="ml-3" wire:click="delete()" wire:loading.attr="disabled">
+                    {{ __('Delete') }}
+                </x-jet-danger-button>
+            </x-slot>
+        </x-modals.question-modal>
     </div>
-    {{ $national_committees->links() }}
     <br>
 </section>
-<x-modals.question-modal wire:model="confirmingDeleteNationalCommittee">
-    <x-slot name="title">
-        <div class="">
-            {{ __('Delete national committee') }}
-        </div>
-    </x-slot>
-
-    <x-slot name="content">
-        {{ __('Are you sure you would like to delete this national committee?') }}
-    </x-slot>
-
-    <x-slot name="footer">
-        <x-jet-secondary-button wire:click="$toggle('confirmingDeleteNationalCommittee')" wire:loading.attr="disabled">
-            {{ __('Cancel') }}
-        </x-jet-secondary-button>
-
-        <x-jet-danger-button class="ml-3" wire:click="delete()" wire:loading.attr="disabled">
-            {{ __('Delete') }}
-        </x-jet-danger-button>
-    </x-slot>
-</x-modals.question-modal>
 
 
