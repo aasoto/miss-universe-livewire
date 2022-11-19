@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Carousel;
 
+use App\Http\Livewire\Dashboard\Traits\customizeSendButton;
 use App\Http\Livewire\Dashboard\Traits\uploadImage;
 use App\Models\Carousel;
 use Livewire\Component;
@@ -11,6 +12,7 @@ class Save extends Component
 {
     use WithFileUploads;
     use uploadImage;
+    use customizeSendButton;
 
     public $type;
     public $step = 1, $checked_images = false, $authorized = false;

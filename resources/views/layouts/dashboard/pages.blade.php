@@ -30,6 +30,10 @@
                     'redirect' => '',
                     'list_blur_shadow' => 'group-hover:bg-cyan-100 dark:group-hover:bg-blue-900/30'
                 ])
+                <div x-ignore>
+                    <div class="bg-gradient-to-r from-lime-500 to-green-800"></div>
+                    <div class="bg-gradient-to-r from-yellow-500 to-orange-600"></div>
+                </div>
                 <!-- cuerpo de la página -->
                 <div class="transition w-[96%] sm:w-auto inset-0 translate-x-0 peer-checked:translate-x-[100%] sm:peer-checked:translate-x-[54%] md:peer-checked:translate-x-[45%] lg:peer-checked:translate-x-[34%] xl:peer-checked:translate-x-[27%] 2xl:peer-checked:translate-x-[25%] bg-white dark:bg-slate-900">
                     <!-- navbar -->

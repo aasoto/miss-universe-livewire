@@ -46,7 +46,7 @@ class Index extends Component
         }
 
         $withdrawals = $withdrawals->paginate($this->pagination);
-        return view('livewire.dashboard.editions.withdrawals.index', compact('withdrawals'));
+        return view('livewire.dashboard.editions.withdrawals.index', compact('withdrawals'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedWithdrawalToDelete(Withdrawal $withdrawal)

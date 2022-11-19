@@ -16,56 +16,57 @@
                     for="country">
                     {{__('Country')}}
                 </label>
+                <x-jet-input-error for='country_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="country_id">
-                    <option value="">Seleccionar...</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
                     {{__('First name')}}
                 </label>
-                <x-jet-input-error for='first_name' />
+                <x-jet-input-error for='first_name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="first_name" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
                     {{__('Second name')}}
                 </label>
-                <x-jet-input-error for='second_name' />
+                <x-jet-input-error for='second_name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="second_name" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
                     {{__('First surname')}}
                 </label>
-                <x-jet-input-error for='first_last_name' />
+                <x-jet-input-error for='first_last_name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="first_last_name"" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
                     {{__('Second surname')}}
                 </label>
-                <x-jet-input-error for='second_last_name' />
+                <x-jet-input-error for='second_last_name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="second_last_name" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="gender">
                     {{__('Gender')}}
                 </label>
-                <x-jet-input-error for='gender' />
+                <x-jet-input-error for='gender' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select  class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="gender">
                     <option value="">{{__('Select...')}}</option>
@@ -73,20 +74,21 @@
                     <option value="m">{{__('Male')}}</option>
                 </select>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="birthdate">
                     {{__('Birthdate')}}
                 </label>
-                <x-jet-input-error for='birthdate' />
+                <x-jet-input-error for='birthdate' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="birthdate" type="date">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="national_committee_id">
                     {{__('National committee')}}
                 </label>
+                <x-jet-input-error for='national_committee_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="national_committee_id">
                     <option value="">{{__('Select...')}}</option>
@@ -95,12 +97,12 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="first_name">
                     {{__('Official Picture')}}
                 </label>
-                <x-jet-input-error for='official_picture' />
+                <x-jet-input-error for='official_picture' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <div class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2">
                     <x-jet-input type="file" wire:model="official_picture" class="w-full"/>
                 </div>
@@ -112,7 +114,7 @@
             </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
-            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-400 via-lime-500 to-green-900 hover:scale-110 transition">
+            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-500 via-lime-600 to-green-800 hover:scale-110 transition">
                 {{__('Save')}}
             </button>
         </div>

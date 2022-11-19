@@ -199,7 +199,7 @@
                         {{__('Next')}}
                     </button>
                 @else
-                    <button wire:click="previousStep()" class="rounded-full w-32 px-4 py-2 text-white font-bold border-2 border-gray-900 dark:border-white bg-transparent hover:bg-gray-900 dark:hover:bg-white text-gray-900 hover:text-white dark:text-white dark:hover:text-gray-900 hover:scale-110 transition duration-200">
+                    <button wire:click="previousStep()" class="rounded-full w-32 px-4 py-2 font-bold border-2 border-gray-900 dark:border-white bg-transparent hover:bg-gray-900 dark:hover:bg-white text-gray-900 hover:text-white dark:text-white dark:hover:text-gray-900 hover:scale-110 transition duration-200">
                         {{__('Previous')}}
                     </button>
                     <button wire:click="authorize_send()" type="submit" class="rounded-full w-32 px-4 py-2 text-white font-bold {{ $send_button_color }} hover:scale-110 transition duration-200">
