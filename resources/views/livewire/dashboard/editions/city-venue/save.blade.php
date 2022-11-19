@@ -37,7 +37,7 @@
                 <x-jet-input-error for='country_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="country_id">
-                    <option value="">Seleccionar...</option>
+                    <option value="">{{__('Select...')}}</option>
                     @foreach ($countries as $name => $id)
                         <option value="{{ $id }}">{{ $name }}</option>
                     @endforeach

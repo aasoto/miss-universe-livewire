@@ -46,7 +46,7 @@ class Index extends Component
         }
 
         $debuts = $debuts->paginate($this->pagination);
-        return view('livewire.dashboard.editions.debuts.index', compact('debuts'));
+        return view('livewire.dashboard.editions.debuts.index', compact('debuts'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedDebutToDelete(Debut $debut)
