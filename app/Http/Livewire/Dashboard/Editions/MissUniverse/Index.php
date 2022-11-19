@@ -64,7 +64,7 @@ class Index extends Component
         }
 
        $miss_universe = $miss_universe->paginate($this->pagination);
-        return view('livewire.dashboard.editions.miss-universe.index', compact('miss_universe'));
+        return view('livewire.dashboard.editions.miss-universe.index', compact('miss_universe'))->layout('layouts.dashboard.pages');
     }
 
     public function searchBroadcaster2($id)

@@ -127,6 +127,20 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** MISS UNIVERSE *************** */
+        if (strpos(url()->current(), 'dashboard/editions/miss_universe')) {
+            $this->title = 'List of Miss Universe Editions';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_universe/create')) {
+            $this->title = 'Add Edition';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_universe/edit')) {
+            $this->title = 'Modify Miss Universe Edition';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

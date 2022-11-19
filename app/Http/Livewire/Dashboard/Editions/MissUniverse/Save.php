@@ -76,10 +76,21 @@ class Save extends Component
 
     public function render()
     {
+        $this->customize_send_button();
         $this->broadcasters = Broadcaster::pluck('id', 'name');
         $this->places = Place::get();
         $this->presenters = Presenter::pluck('id', 'name');
-        return view('livewire.dashboard.editions.miss-universe.save');
+        return view('livewire.dashboard.editions.miss-universe.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'editions/miss_universe/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'editions/miss_universe/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
     }
 
     public function submit()
