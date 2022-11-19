@@ -65,7 +65,7 @@ class Index extends Component
         }
 
         $entraiment_shows = $entraiment_shows->paginate($this->pagination);
-        return view('livewire.dashboard.editions.entraiment-show.index', compact('entraiment_shows'));
+        return view('livewire.dashboard.editions.entraiment-show.index', compact('entraiment_shows'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedEntraimentShowToDelete(EntraimentShow $entraiment_show)

@@ -17,6 +17,8 @@ class Save extends Component
 
     public $entraiment_show;
 
+    public $send_button;
+
     public $acts = [
         'opening' => 'Inicio',
         'swimsuit' => 'Traje de baño',
@@ -45,9 +47,20 @@ class Save extends Component
 
     public function render()
     {
+        $this->customize_send_button();
         $this->countries = Country::pluck('id', 'name');
         $this->editions = MissUniverse::pluck('id', 'name');
-        return view('livewire.dashboard.editions.entraiment-show.save');
+        return view('livewire.dashboard.editions.entraiment-show.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'editions/entertainment_show/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'editions/entertainment_show/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
     }
 
     public function submit()
