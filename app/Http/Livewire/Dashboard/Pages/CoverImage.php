@@ -211,6 +211,20 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** WINNERS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/winner')) {
+            $this->title = 'List of winners';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/winner/create')) {
+            $this->title = 'Add winner';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/winner/edit')) {
+            $this->title = 'Modify winner';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

@@ -51,7 +51,7 @@ class Index extends Component
         }
 
         $winners = $winners->paginate($this->pagination);
-        return view('livewire.dashboard.editions.winners.index', compact('winners'));
+        return view('livewire.dashboard.editions.winners.index', compact('winners'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedWinnerToDelete(Winner $winner)
