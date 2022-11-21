@@ -51,7 +51,7 @@ class Index extends Component
         }
 
         $first_runner_ups = $first_runner_ups->paginate($this->pagination);
-        return view('livewire.dashboard.editions.first-runner-ups.index', compact('first_runner_ups'));
+        return view('livewire.dashboard.editions.first-runner-ups.index', compact('first_runner_ups'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedFirstRunnerUpToDelete(FirstRunnerUp $first_runner_up)

@@ -34,7 +34,7 @@
         @foreach ($contestants as $contestant)
             <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
                 <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                    <span class="fi fi-{{$contestant->candidate->country->iso3166_1_alpha2}}"></span>
+                    <span class="fi fi-{{$contestant->candidate->country->iso3166_1_alpha2}} fis rounded-full scale-[2] mr-5"></span>
                     {{ $contestant->candidate->country->name }}
                 </td>
                 <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
