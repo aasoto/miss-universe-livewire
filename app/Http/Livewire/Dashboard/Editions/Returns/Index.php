@@ -46,7 +46,7 @@ class Index extends Component
         }
 
         $returns = $returns->paginate($this->pagination);
-        return view('livewire.dashboard.editions.returns.index', compact('returns'));
+        return view('livewire.dashboard.editions.returns.index', compact('returns'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedReturnToDelete(Returns $return)

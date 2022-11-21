@@ -169,7 +169,7 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
-        /****************** DEBUTS *************** */
+        /****************** WITHDRAWALS *************** */
         if (strpos(url()->current(), 'dashboard/editions/withdrawal')) {
             $this->title = 'List of withdrawals';
             $this->cover_image = '../'.$this->cover_image;
@@ -180,6 +180,34 @@ class CoverImage extends Component
         }
         if (strpos(url()->current(), 'editions/withdrawal/edit')) {
             $this->title = 'Modify withdrawal';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** RETURNS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/return')) {
+            $this->title = 'List of returns';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/return/create')) {
+            $this->title = 'Add return';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/return/edit')) {
+            $this->title = 'Modify return';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** CONTESTANTS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/contestant')) {
+            $this->title = 'List of contestants';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/contestant/create')) {
+            $this->title = 'Add contestant';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/contestant/edit')) {
+            $this->title = 'Modify contestant';
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
