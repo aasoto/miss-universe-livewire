@@ -51,7 +51,7 @@ class Index extends Component
         }
 
         $congenialities = $congenialities->paginate($this->pagination);
-        return view('livewire.dashboard.editions.miss-congeniality.index', compact('congenialities'));
+        return view('livewire.dashboard.editions.miss-congeniality.index', compact('congenialities'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedCongenialityToDelete(MissCongeniality $congeniality)

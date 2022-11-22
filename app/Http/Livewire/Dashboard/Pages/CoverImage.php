@@ -337,6 +337,34 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** BEST NATIONAL COSTUME *************** */
+        if (strpos(url()->current(), 'dashboard/editions/best_national_costume')) {
+            $this->title = 'List of best national costume';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/best_national_costume/create')) {
+            $this->title = 'Add best national costume';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/best_national_costume/edit')) {
+            $this->title = 'Modify best national costume';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** MISS CONGENIALITY *************** */
+        if (strpos(url()->current(), 'dashboard/editions/miss_congeniality')) {
+            $this->title = 'List of miss congeniality';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_congeniality/create')) {
+            $this->title = 'Add miss congeniality';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_congeniality/edit')) {
+            $this->title = 'Modify miss congeniality';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

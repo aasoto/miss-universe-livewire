@@ -51,7 +51,7 @@ class Index extends Component
         }
 
         $best_national_costumes = $best_national_costumes->paginate($this->pagination);
-        return view('livewire.dashboard.editions.best-national-costumes.index', compact('best_national_costumes'));
+        return view('livewire.dashboard.editions.best-national-costumes.index', compact('best_national_costumes'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedBestNationalCostumeToDelete(BestNationalCostume $best_national_costume)
