@@ -239,6 +239,48 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** SECOND RUNNER UP *************** */
+        if (strpos(url()->current(), 'dashboard/editions/second_runner_up')) {
+            $this->title = 'List of second runners up';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/second_runner_up/create')) {
+            $this->title = 'Add second runner up';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/second_runner_up/edit')) {
+            $this->title = 'Modify second runner up';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** THIRD RUNNER UP *************** */
+        if (strpos(url()->current(), 'dashboard/editions/third_runner_up')) {
+            $this->title = 'List of thrid runners up';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/third_runner_up/create')) {
+            $this->title = 'Add thrid runner up';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/third_runner_up/edit')) {
+            $this->title = 'Modify thrid runner up';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** FOURTH RUNNER UP *************** */
+        if (strpos(url()->current(), 'dashboard/editions/fourth_runner_up')) {
+            $this->title = 'List of fourth runners up';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/fourth_runner_up/create')) {
+            $this->title = 'Add fourth runner up';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/fourth_runner_up/edit')) {
+            $this->title = 'Modify fourth runner up';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

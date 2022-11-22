@@ -50,7 +50,7 @@ class Index extends Component
         }
 
         $fourth_runner_ups = $fourth_runner_ups->paginate($this->pagination);
-        return view('livewire.dashboard.editions.fourth-runner-ups.index', compact('fourth_runner_ups'));
+        return view('livewire.dashboard.editions.fourth-runner-ups.index', compact('fourth_runner_ups'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedFourthRunnerUpToDelete(FourthRunnerUp $fourth_runner_up)
