@@ -3,7 +3,7 @@
     <div class="h-2 w-full rounded-t-lg bg-gradient-to-r from-pink-600 dark:from-pink-300 to-rose-900 dark:to-rose-600">
     </div>
     <div class="relative border-b border-gray-400">
-        <a class="" href="/">
+        <a class="" href="{{ route('dashboard') }}">
             <img class="block dark:hidden h-20 my-5 mx-auto"
                 src="../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-negro.svg"
                 alt="">

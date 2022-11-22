@@ -4,7 +4,7 @@
         class="h-2 w-full rounded-t-lg bg-gradient-to-r {{ $colour }}">
     </div>
     <div class="relative border-b border-gray-400">
-        <a class="" href="/dashboard/">
+        <a class="" href="{{ route('dashboard') }}">
             <img class="block dark:hidden h-20 my-5 mx-auto" src="{{ $redirect }}../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-negro.svg"
                 alt="">
             <img class="hidden dark:block h-20 my-5 mx-auto" src="{{ $redirect }}../../storage/app/public/images/dashboard/side-bar-logo/logo-BPproject2x1-fuente-blanco.svg"

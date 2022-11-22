@@ -9,12 +9,14 @@
                     </label>
                 </div>
                 <div class="basis-3/4 flex items-center">
-                    <img class="ml-2 sm:ml-0 block dark:hidden h-12 pt-2 transition"
-                        src="../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente.svg"
-                        alt="">
-                    <img class="ml-2 sm:ml-0 hidden dark:block h-12 pt-2 transition"
-                        src="../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente-blanco.svg"
-                        alt="">
+                    <a href="{{ route('dashboard') }}">
+                        <img class="ml-2 sm:ml-0 block dark:hidden h-12 pt-2 transition"
+                            src="../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente.svg"
+                            alt="">
+                        <img class="ml-2 sm:ml-0 hidden dark:block h-12 pt-2 transition"
+                            src="../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente-blanco.svg"
+                            alt="">
+                    </a>
                 </div>
             </div>
             <div class="w-1/3 flex flex-row gap-5 justify-end items-center">

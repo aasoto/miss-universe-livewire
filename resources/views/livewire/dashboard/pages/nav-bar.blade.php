@@ -10,7 +10,7 @@
                     </label>
                 </div>
                 <div class="basis-3/4 flex items-center">
-                    <a href="../index.html">
+                    <a href="{{ route('dashboard') }}">
                         <img class="ml-2 sm:ml-0 block dark:hidden h-12 pt-2 transition"
                             src="{{ $redirect }}../../storage/app/public/images/dashboard/nav-logo/logo-BPproject-horizontal-fuente.svg" alt="">
                         <img class="ml-2 sm:ml-0 hidden dark:block h-12 pt-2 transition"
@@ -110,9 +110,13 @@
                     </label>
                 </div>
                 <div class="text-right">
-                    <a href="../../login.html">
-                        <i class="text-gray-800 dark:text-white fa-solid fa-right-from-bracket"></i>
-                    </a>
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf
+                        <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                            <i class="text-gray-800 dark:text-white fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
