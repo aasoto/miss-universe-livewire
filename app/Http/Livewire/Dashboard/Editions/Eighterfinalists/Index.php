@@ -50,7 +50,7 @@ class Index extends Component
         }
 
         $eighterfinalists = $eighterfinalists->paginate($this->pagination);
-        return view('livewire.dashboard.editions.eighterfinalists.index', compact('eighterfinalists'));
+        return view('livewire.dashboard.editions.eighterfinalists.index', compact('eighterfinalists'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedEighterfinalistToDelete(Eighterfinalist $eighterfinalist)

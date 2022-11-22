@@ -281,6 +281,62 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** RUNNERS UP *************** */
+        if (strpos(url()->current(), 'dashboard/editions/runners_ups')) {
+            $this->title = 'List of runners up';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/runners_ups/create')) {
+            $this->title = 'Add runner up';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/runners_ups/edit')) {
+            $this->title = 'Modify runner up';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** SEMIFINALISTS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/semifinalists')) {
+            $this->title = 'List of semifinalists';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/semifinalists/create')) {
+            $this->title = 'Add semifinalist';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/semifinalists/edit')) {
+            $this->title = 'Modify semifinalist';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** QUARTERFINALISTS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/quarterfinalists')) {
+            $this->title = 'List of quarterfinalists';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/quarterfinalists/create')) {
+            $this->title = 'Add quarterfinalist';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/quarterfinalists/edit')) {
+            $this->title = 'Modify quarterfinalist';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
+        /****************** EIGHTERFINALISTS *************** */
+        if (strpos(url()->current(), 'dashboard/editions/eighterfinalists')) {
+            $this->title = 'List of eighterfinalists';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/eighterfinalists/create')) {
+            $this->title = 'Add eighterfinalist';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/eighterfinalists/edit')) {
+            $this->title = 'Modify eighterfinalist';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

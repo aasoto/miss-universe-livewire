@@ -43,7 +43,7 @@
             <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                 <div class="text-center">
                     <button wire:click="confirmAction({{$contestant->candidate->id}})" class="w-full rounded-full px-4 py-2 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 text-white text-medium font-bold hover:bg-green-700 hover:scale-110 transition duration-200">
-                        {{__('Winner')}}
+                        {{__('Fourth runner up')}}
                     </button>
                 </div>
             </td>

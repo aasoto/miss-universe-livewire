@@ -50,7 +50,7 @@ class Index extends Component
         }
 
         $semifinalists = $semifinalists->paginate($this->pagination);
-        return view('livewire.dashboard.editions.semifinalists.index', compact('semifinalists'));
+        return view('livewire.dashboard.editions.semifinalists.index', compact('semifinalists'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedSemifinalistToDelete(Semifinalist $semifinalist)

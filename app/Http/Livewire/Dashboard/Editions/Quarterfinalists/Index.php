@@ -50,7 +50,7 @@ class Index extends Component
         }
 
         $quarterfinalists = $quarterfinalists->paginate($this->pagination);
-        return view('livewire.dashboard.editions.quarterfinalists.index', compact('quarterfinalists'));
+        return view('livewire.dashboard.editions.quarterfinalists.index', compact('quarterfinalists'))->layout('layouts.dashboard.pages');
     }
 
     public function selectedQuarterfinalistToDelete(Quarterfinalist $quarterfinalist)

@@ -16,7 +16,7 @@ class Save extends Component
     public function render()
     {
         $this->editions = MissUniverse::pluck('id', 'name');
-        return view('livewire.dashboard.editions.semifinalists.save');
+        return view('livewire.dashboard.editions.semifinalists.save')->layout('layouts.dashboard.add.app');
     }
 
     public function submit()
