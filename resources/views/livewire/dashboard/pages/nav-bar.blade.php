@@ -90,6 +90,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="group">
+                    <span class="ml-3 text-base font-medium hover:scale-110 transition text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white">
+                        <i class="fa-solid fa-language"></i>
+                    </span>
+                    <div class="absolute z-20 -translate-x-8 w-20 h-8 bg-transparent"></div>
+                    <div
+                        class="absolute z-20 -translate-x-8 hidden group-hover:block mt-8 w-30 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
+                        <div class="py-3 px-5">
+                            <h3 class="text-medium text-center font-semibold text-gray-800 dark:text-white">
+                                {{ __('Languages') }}
+                            </h3>
+                            <ul class="my-3">
+                                <li class="">
+                                    <a href="{{ route('language', 'en') }}">
+                                        <span class="fi fi-gb fis rounded-full mr-2"></span>
+                                        English
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('language', 'es') }}">
+                                        <span class="fi fi-es fis rounded-full mr-2"></span>
+                                        Español
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex flex-row justify-center items-center">
                     <label for="dark_check" class="inline-flex relative items-center cursor-pointer">
                         <input @click="change_mode()" type="checkbox" :value="dark_mode" id="dark_check"

@@ -62,6 +62,7 @@ use App\Http\Livewire\Sponsor\Person;
 use App\Http\Livewire\Web\Index as WebIndex;
 use App\Http\Livewire\Web\News\Index as WebNewsIndex;
 use App\Http\Livewire\Web\News\Show as WebNewsShow;
+use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,7 +86,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/news/show/{slug}', WebNewsShow::class)->name('news-show');
 });
 
-Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'], 'prefix' => 'dashboard'], function () {
+Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', LocaleCookieMiddleware::class], 'prefix' => 'dashboard'], function () {
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -228,6 +229,10 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         });
     });
 });
+
+Route::get('/locale/{locale}', function ($locale) {
+    return redirect()->back()->withCookie('locale', $locale);
+})->name('language');
 
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', BlogIndex::class)->name('web-index');
