@@ -18,6 +18,7 @@ class Save extends Component
     public $country_id, $national_committee_id;
 
     public $candidate;
+    public $send_button;
 
     protected $rules = [
         'country_id' => 'required|integer',
@@ -48,6 +49,7 @@ class Save extends Component
 
     public function render()
     {
+        $this->customize_send_button();
         if($this->country_id) {
             $this->national_committees = NationalCommittee::where('country_id', $this->country_id)->get();
         } else {
@@ -55,6 +57,16 @@ class Save extends Component
         }
         $this->countries = Country::pluck('id', 'name');
         return view('livewire.dashboard.candidate.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'candidate/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'candidate/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
     }
 
     public function submit()

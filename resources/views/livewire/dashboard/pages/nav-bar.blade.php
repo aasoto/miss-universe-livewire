@@ -23,7 +23,7 @@
                     <div class="flex flex-row text text-lg text-gray-800 dark:text-white font-medium">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <img class="rounded-full h-7 w-7" src="{{ $redirect }}../../storage/app/public/{{ $profile_photo }}" alt="{{ $name }}">
-                            <p class="mx-5"><span class="hidden sm:block capitalize">{{ $role }}</span></p>
+                            <p class="mx-5"><span class="hidden sm:block capitalize">{{ __($role) }}</span></p>
                         @else
                             <span class="inline-flex rounded-md">
                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">

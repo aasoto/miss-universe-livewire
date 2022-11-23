@@ -29,7 +29,9 @@
                     </label>
                 </div>
                 <div class="basis-1/2 text-center">
-                    <button type="submit" class="rounded-full px-5 py-2 text-white text-xs lg:text-base font-bold bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-400 dark:to-rose-700 hover:scale-110 transition">Iniciar sesión</button>
+                    <button type="submit" class="rounded-full px-5 py-2 text-white text-xs lg:text-base font-bold bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-400 dark:to-rose-700 hover:scale-110 transition">
+                        {{__('Log in')}}
+                    </button>
                 </div>
             </div>
             <div class="flex flex-col iPhoneSE:flex-row justify-center items-center mt-5">
@@ -37,7 +39,7 @@
                 @if (Route::has('password.request'))
                     <a class="ml-2 text-rose-700 dark:text-rose-300 hover:text-rose-900 dark:hover:text-rose-500 hover:underline text-xs xl:text-base font-medium"
                         href="{{ route('password.request') }}">
-                        {{__('Click here.')}}
+                        {{__('Click here!')}}
                     </a>
                 @endif
             </div>

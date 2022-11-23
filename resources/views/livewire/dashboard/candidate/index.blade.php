@@ -18,16 +18,16 @@
             <div class="col-span-1">
                 <select wire:model="pagination"
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{ __('Show') }}</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="300">300</option>
-                    <option value="500">500</option>
-                    <option value="750">750</option>
-                    <option value="1000">1000</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{ __('Show') }}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="10">10</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="25">25</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="50">50</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="100">100</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="200">200</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="300">300</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="500">500</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="750">750</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="1000">1000</option>
                 </select>
             </div>
             <div class="col-span-1 md:col-span-3">
@@ -40,18 +40,18 @@
             <div class="basis-0 md:basis-1/2">
                 <select wire:model="country_id"
                     class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
-                    <option value="">{{ __('Country...') }}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{ __('Country...') }}</option>
                     @foreach ($countries as $name => $id)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ __($name) }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="basis-0 md:basis-1/2">
                 <select wire:model="national_committee_id"
                     class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
-                    <option value="">{{ __('National committees...') }}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{ __('National committees...') }}</option>
                     @foreach ($national_committees as $business_name => $id)
-                        <option value="{{ $id }}">{{ $business_name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $business_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -59,24 +59,33 @@
         <table class="container mx-0 iPhoneSE:mx-5 md:mx-10 w-[85%] sm:w-full">
             <thead class="sticky top-5 md:top-18 z-40 h-12 w-full bg-gray-300 rounded-full">
                 <tr class="text-xs iPhoneSE:text-base text-gray-800 font-bold">
+                    @php
+                        $first = true;
+                    @endphp
                     @foreach ($columns as $key => $column)
-                        <th
-                            class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                        @if ($first)
+                        <th class="rounded-l-3xl px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                        @php
+                            $first = false;
+                        @endphp
+                        @else
+                        <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                        @endif
                             <button wire:click="sort('{{ $key }}')">
-                                {{ $column }}
-                                @if ($key == $sortColumn)
-                                    @if ($sortDirection == 'asc')
-                                        &uarr;
-                                    @else
-                                        &darr;
-                                    @endif
+                            {{ __($column) }}
+                            @if ($key == $sortColumn)
+                                @if ($sortDirection == 'asc')
+                                    &uarr;
+                                @else
+                                    &darr;
                                 @endif
+                            @endif
                             </button>
                         </th>
                     @endforeach
-                    <th
-                        class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
-                        Acciones</th>
+                    <th class="rounded-r-3xl px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                        {{__('Actions')}}
+                    </th>
                 </tr>
             </thead>
             <tbody class="w-full">
@@ -90,7 +99,7 @@
                                 <i
                                     class="fi fi-{{ $candidate->country->iso3166_1_alpha2 }} fis rounded-full scale-125"></i>
                             </span>
-                            <span>{{ $candidate->country->name }}</span>
+                            <span>{{ __($candidate->country->name) }}</span>
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                             {{ $candidate->first_name . ' ' . $candidate->second_name . ' ' . $candidate->first_last_name . ' ' . $candidate->second_last_name }}

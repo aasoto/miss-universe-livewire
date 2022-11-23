@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
-            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-500 via-lime-600 to-green-800 hover:scale-110 transition">
+            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold {{$send_button}} hover:scale-110 transition">
                 {{__('Save')}}
             </button>
         </div>

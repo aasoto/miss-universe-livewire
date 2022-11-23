@@ -28,9 +28,9 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        'country_id' => 'País',
-        'first_name' => 'Nombres',
-        'national_committee_id' => 'Comité nacional'
+        'country_id' => 'Country',
+        'first_name' => 'Name',
+        'national_committee_id' => 'National committee'
     ];
 
     public $confirmingDeleteCandidate, $candidateToDelete;
