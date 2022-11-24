@@ -142,7 +142,7 @@
             <div class="col-span-2 text-center">
                 <label class="text-lg text-gray-500 dark:text-white mt-5 px-4"
                     for="">
-                    {{__('Final cadre')}}
+                    {{__('Final top')}}
                 </label>
                 <div class="flex flex-row justify-evenly items-center">
                     <div class="flex flex-row justify-center gap-3">

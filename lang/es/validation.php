@@ -171,5 +171,10 @@ return [
         'year'                  => 'año',
         'business_name'         => 'razón social',
         'national_director'     => 'director nacional',
+        'city_venue_id'         => 'ciudad sede',
+        'broadcaster_id'        => 'canal de televisión',
+        'place_id'              => 'recinto sede',
+        'artist'                => 'artista',
+        'edition_id'            => 'edición',
     ],
 ];

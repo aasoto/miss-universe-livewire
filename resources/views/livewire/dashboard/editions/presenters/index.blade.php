@@ -46,7 +46,7 @@
             <div class="col-span-3">
                 <select wire:model="country_id"
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Country')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Country...')}}</option>
                     @foreach ($countries as $name => $id)
                         <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{$name}}</option>
                     @endforeach
@@ -69,7 +69,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;
@@ -95,7 +95,7 @@
                         {{ $presenter->name }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                        {{ $presenter->country->name }}
+                        {{ __($presenter->country->name) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         @isset($presenter->broadcaster)
@@ -105,7 +105,7 @@
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         @foreach ($roles as $key => $rol)
                             @if ($key == $presenter->rol)
-                                {{$rol}}
+                                {{__($rol)}}
                             @endif
                         @endforeach
                     </td>

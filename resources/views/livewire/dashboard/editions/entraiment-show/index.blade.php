@@ -10,7 +10,7 @@
                 <a href="{{ route('d-editions-entertainment-show-create') }}">
                     <button
                         class="w-full rounded-full px-4 py-2 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 text-white text-medium font-bold hover:bg-green-700 hover:scale-110 transition duration-200">
-                        {{ __('Add entretainment show') }}
+                        {{ __('Add entertainment show') }}
                     </button>
                 </a>
             </div>
@@ -48,7 +48,7 @@
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Country...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{$name}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{__($name)}}</option>
                     @endforeach
                 </select>
             </div>
@@ -69,7 +69,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;

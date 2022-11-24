@@ -17,16 +17,16 @@
             <div class="col-span-1">
                 <select wire:model="pagination"
                 class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{__('Show...')}}</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="300">300</option>
-                    <option value="500">500</option>
-                    <option value="750">750</option>
-                    <option value="1000">1000</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Show...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="10">10</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="25">25</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="50">50</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="100">100</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="200">200</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="300">300</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="500">500</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="750">750</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="1000">1000</option>
                 </select>
             </div>
             <div class="col-span-3">
@@ -37,9 +37,9 @@
             <div class="col-span-3 lg:col-span-6">
                 <select wire:model="country_id"
                     class="rounded-full bg-transparent w-full px-4 py-2 border border-gray-400 text-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50">
-                    <option value="">{{ __('Country...') }}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{ __('Country...') }}</option>
                     @foreach ($countries as $name => $id)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -60,7 +60,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;
@@ -83,7 +83,7 @@
                             {{ $broadcaster->id }}
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                            {{ $broadcaster->country->name }}
+                            {{ __($broadcaster->country->name) }}
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                             <img src="{{asset('../storage/app/public/images/editions/broadcasters/'.$broadcaster->logo_light_theme) }}" class="w-12 h-5 object-contain" alt="logo-{{$broadcaster->name}}">

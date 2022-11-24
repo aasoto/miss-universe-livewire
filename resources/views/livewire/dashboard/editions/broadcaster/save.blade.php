@@ -20,9 +20,10 @@
                     </div>
                     <div class="relative basis-11/12">
                         <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
-                            for="country">
+                            for="country_id">
                             {{__('Country')}}
                         </label>
+                        <x-jet-input-error for='country_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                         <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-4 py-2"
                             wire:model="country_id">
                             <option value="">{{__('Select...')}}</option>
@@ -33,12 +34,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="name">
                     {{__('Name')}}
                 </label>
-                <x-jet-input-error for='name' />
+                <x-jet-input-error for='name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="name" type="text">
             </div>
@@ -56,7 +57,7 @@
                     </div>
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="logo_dark_theme">
                     {{__('Logo dark theme')}}

@@ -30,7 +30,7 @@
                     wire:model="country_id">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ __($name) }}</option>
                     @endforeach
                 </select>
             </div>
@@ -58,7 +58,7 @@
                     wire:model="act_performing">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($acts as $key => $act)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$key}}">{{$act}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$key}}">{{__($act)}}</option>
                     @endforeach
                 </select>
             </div>

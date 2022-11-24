@@ -26,12 +26,12 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        'year' => 'Año',
-        'name' => 'Nombre',
-        'official_name' => 'Nombre Oficial',
-        'city_venue_id' => 'Sede',
-        'broadcaster_id' => 'Canal de televisión',
-        'broadcaster_2' => 'Canal de TV 2'
+        'year' => 'Year',
+        'name' => 'Name',
+        'official_name' => 'Official name',
+        'city_venue_id' => 'City venue',
+        'broadcaster_id' => 'Broadcasting channel',
+        'broadcaster_2' => 'Secondary broadcasting channel'
     ];
 
     public $confirmingDeleteMissUniverse, $missUniverseToDelete;

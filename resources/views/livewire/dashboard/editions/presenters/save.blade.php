@@ -30,7 +30,7 @@
                     wire:model="rol">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($roles as $key => $rol)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$key}}">{{$rol}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$key}}">{{__($rol)}}</option>
                     @endforeach
                 </select>
             </div>

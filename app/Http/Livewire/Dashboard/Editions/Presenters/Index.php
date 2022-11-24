@@ -25,19 +25,19 @@ class Index extends Component
     public $broadcaster_id, $country_id;
 
     public $roles = [
-        'main_show' => 'Show principal',
-        'backstage' => 'Tras bambalinas',
-        'prelims' => 'Preliminar',
-        'national_costume' => 'Traje nacional',
-        'other' => 'Otro'
+        'main_show' => 'Main show',
+        'backstage' => 'Backstage',
+        'prelims' => 'Preliminary competition',
+        'national_costume' => 'National costume parade',
+        'other' => 'Other'
     ];
 
     public $columns = [
         'id' => 'ID',
-        'name' => 'Nombre',
-        'country_id' => 'País',
-        'broadcaster_id' => 'Canal',
-        'rol' => 'Rol'
+        'name' => 'Name',
+        'country_id' => 'Country',
+        'broadcaster_id' => 'Channel',
+        'rol' => 'Role'
     ];
 
     public $confirmingDeletePresenter, $presenterToDelete;

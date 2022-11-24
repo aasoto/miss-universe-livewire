@@ -25,9 +25,9 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        'country_id' => 'País',
+        'country_id' => 'Country',
         'logo' => 'Logo',
-        'name' => 'Nombre'
+        'name' => 'Name'
     ];
 
     public $confirmingDeleteBroadcaster, $broadcasterToDelete;

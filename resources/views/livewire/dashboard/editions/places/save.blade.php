@@ -11,7 +11,7 @@
     </x-jet-action-message>
     <form wire:submit.prevent="submit">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 dark:gap-9">
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="name">
                     {{__('Name')}}
@@ -20,7 +20,7 @@
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="name" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="city_venue_id">
                     {{__('City')}}
@@ -28,9 +28,9 @@
                 <x-jet-input-error for='city_venue_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                     wire:model="city_venue_id">
-                    <option value="">{{__('Select...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($city_venues as $key => $value)
-                        <option value="{{$value['id']}}">{{$value['city'].', '.$value['state'].', '.$value['country']['name'].'.'}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{__($value['city']).', '.__($value['state']).', '.__($value['country']['name']).'.'}}</option>
                     @endforeach
                 </select>
             </div>

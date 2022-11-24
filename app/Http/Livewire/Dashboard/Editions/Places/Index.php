@@ -25,8 +25,8 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        'name' => 'Lugar',
-        'city_venue' => 'Ciudad'
+        'name' => 'Place',
+        'city_venue' => 'City'
     ];
 
     public $confirmingDeletePlace, $placeToDelete;

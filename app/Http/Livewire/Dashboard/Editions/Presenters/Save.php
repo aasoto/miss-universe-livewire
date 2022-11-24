@@ -21,11 +21,11 @@ class Save extends Component
     public $presenter;
 
     public $roles = [
-        'main_show' => 'Show principal',
-        'backstage' => 'Tras bambalinas',
-        'prelims' => 'Preliminar',
-        'national_costume' => 'Traje nacional',
-        'other' => 'Otro'
+        'main_show' => 'Main show',
+        'backstage' => 'Backstage',
+        'prelims' => 'Preliminary competition',
+        'national_costume' => 'National costume parade',
+        'other' => 'Other'
     ];
 
     protected $rules = [

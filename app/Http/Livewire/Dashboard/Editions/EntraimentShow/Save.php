@@ -20,11 +20,11 @@ class Save extends Component
     public $send_button;
 
     public $acts = [
-        'opening' => 'Inicio',
-        'swimsuit' => 'Traje de baño',
-        'evening_gown' => 'Vestido de noche',
-        'final_look' => 'Desfile final',
-        'other' => 'Otro'
+        'opening' => 'Opening',
+        'swimsuit' => 'Swimsuit competition',
+        'evening_gown' => 'Evening gown competition',
+        'final_look' => 'Final look',
+        'other' => 'Other'
     ];
 
     protected $rules = [

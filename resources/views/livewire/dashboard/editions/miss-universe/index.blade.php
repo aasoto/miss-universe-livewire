@@ -48,7 +48,7 @@
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Cities venue...')}}</option>
                     @foreach ($city_venues as $key => $value)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{$value['city'].', '.$value['state'].', '.$value['country']['name']}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{__($value['city']).', '.__($value['state']).', '.__($value['country']['name'])}}</option>
                     @endforeach
                 </select>
             </div>
@@ -69,7 +69,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;
@@ -102,7 +102,7 @@
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                             @isset($m_u->place)
-                                {{ $m_u->place->city_venue->city.', '.$m_u->place->city_venue->country->name}}
+                                {{ __($m_u->place->city_venue->city).', '.__($m_u->place->city_venue->country->name)}}
                             @endisset
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">

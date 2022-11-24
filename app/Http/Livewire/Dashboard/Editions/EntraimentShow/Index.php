@@ -25,11 +25,11 @@ class Index extends Component
     public $edition_id, $country_id;
 
     public $acts = [
-        'opening' => 'Inicio',
-        'swimsuit' => 'Traje de baño',
-        'evening_gown' => 'Vestido de noche',
-        'final_look' => 'Desfile final',
-        'other' => 'Otro'
+        'opening' => 'Opening',
+        'swimsuit' => 'Swimsuit competition',
+        'evening_gown' => 'Evening gown competition',
+        'final_look' => 'Final look',
+        'other' => 'Other'
     ];
 
     public $columns = [
