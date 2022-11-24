@@ -14,7 +14,7 @@ class Save extends Component
 
     public $nationalcommittee;
 
-    public $flag;
+    public $flag, $send_button;
 
     protected $rules = [
         'country_id' => 'required|integer',
@@ -34,12 +34,23 @@ class Save extends Component
 
     public function render()
     {
+        $this->customize_send_button();
         if ($this->country_id) {
             $this->flag = Country::where('id', $this->country_id)->get('iso3166_1_alpha2');
             $this->flag = $this->flag[0]->iso3166_1_alpha2;
         }
         $this->countries = Country::pluck('id', 'name');
         return view('livewire.dashboard.national-committee.save')->layout('layouts.dashboard.add.app');
+    }
+
+    public function customize_send_button ()
+    {
+        if (strpos(url()->current(), 'national-committee/create')) {
+            $this->send_button = 'bg-gradient-to-l from-lime-400 via-lime-500 to-green-900';
+        }
+        if (strpos(url()->current(), 'national-committee/edit')) {
+            $this->send_button = 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-700';
+        }
     }
 
     public function submit()

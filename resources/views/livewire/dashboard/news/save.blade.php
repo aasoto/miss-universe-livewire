@@ -29,24 +29,24 @@
                     </div>
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="title">
                     {{ __('Title') }}
                 </label>
-                <x-jet-input-error for='title' />
+                <x-jet-input-error for='title'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input
                     class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="title" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="subtitle">
                     {{ __('Subtitle') }}
                 </label>
-                <x-jet-input-error for='subtitle' />
+                <x-jet-input-error for='subtitle'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input
                     class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="subtitle" type="text">
@@ -72,27 +72,29 @@
                     for="content">
                     {{ __('News content HTML view') }}
                 </label>
-                <x-jet-input-error for='content' />
+                <x-jet-input-error for='content'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <textarea wire:model="content"
                     class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
             </div>
             <div class="col-span-1 relative">
-                <label
-                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="posted">
-                    Postear</label>
+                    {{__('Posted')}}
+                </label>
+                <x-jet-input-error for='posted' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select wire:model="posted"
                     class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2">
-                    <option value="">{{__('Select...')}}</option>
-                    <option value="yes">{{__('Yes')}}</option>
-                    <option value="not">{{__('Not')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="yes">{{__('Yes')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="not">{{__('Not')}}</option>
                 </select>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="date_publish">
                     {{__('Publish date')}}</label>
+                <x-jet-input-error for='date_publish' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input
                     class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="date_publish" type="date">
@@ -103,11 +105,12 @@
                     for="posted">
                     {{__('Category')}}
                 </label>
+                <x-jet-input-error for='category_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select wire:model="category_id"
                     class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2">
-                    <option value="">{{__('Select...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($categories as $name => $id)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ __($name) }}</option>
                     @endforeach
                 </select>
             </div>
@@ -117,16 +120,17 @@
                     for="type">
                     {{__('Type')}}
                 </label>
+                <x-jet-input-error for='type' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select name="type" wire:model="type"
                     class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2">
-                    <option value="">{{__('Select...')}}</option>
-                    <option value="article">{{__('Article')}}</option>
-                    <option value="news">{{__('News')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="article">{{__('Article')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="news">{{__('News')}}</option>
                 </select>
             </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
-            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-400 via-lime-500 to-green-900 hover:scale-110 transition">Guardar</button>
+            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold {{$send_button}} hover:scale-110 transition">Guardar</button>
         </div>
     </form>
 </section>

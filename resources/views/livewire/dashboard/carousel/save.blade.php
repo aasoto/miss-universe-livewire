@@ -2,12 +2,12 @@
 <section class="pt-32">
     <x-jet-action-message on="created">
         <div class="box-success-action-message">
-            {{__('Created carousel successfully')}}
+            {{__('Created carousel item successfully')}}
         </div>
     </x-jet-action-message>
     <x-jet-action-message on="updated">
         <div class="box-success-action-message">
-            {{__('Updated carousel successfully')}}
+            {{__('Updated carousel item successfully')}}
         </div>
     </x-jet-action-message>
     <form wire:submit.prevent="submit">
@@ -33,9 +33,9 @@
                 <div class="col-span-6">
                     <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2"
                         wire:model="type">
-                        <option class="text-gray-900" value="">{{__('Select...')}}</option>
-                        <option class="text-gray-900" value="import">{{__('Import image')}}</option>
-                        <option class="text-gray-900" value="make">{{__('Make item')}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" class="text-gray-900" value="">{{__('Select...')}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" class="text-gray-900" value="import">{{__('Import Image')}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" class="text-gray-900" value="make">{{__('Make Item')}}</option>
                     </select>
                 </div>
             @endif
@@ -115,7 +115,7 @@
                     <x-jet-input-error for="button_1_color"/>
                     <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                         wire:model="button_1_color">
-                        <option value="">{{__('Select color...')}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select color...')}}</option>
                         <option value="0 0 0" class="bg-black text-white">{{__('Black')}}</option>
                         <option value="255 255 255" class="bg-white-500 focus:bg-white-800 text-black">{{__('White')}}</option>
                         <option value="100 116 139" class="bg-slate-500 focus:bg-slate-800 text-white">{{__('Slate')}}</option>
@@ -160,7 +160,7 @@
                     <x-jet-input-error for="button_2_color"/>
                     <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white px-10 py-2 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                         wire:model="button_2_color">
-                        <option value="">{{__('Select color...')}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select color...')}}</option>
                         <option value="0 0 0" class="bg-black text-white">{{__('Black')}}</option>
                         <option value="255 255 255" class="bg-white-500 focus:bg-white-800 text-black">{{__('White')}}</option>
                         <option value="100 116 139" class="bg-slate-500 focus:bg-slate-800 text-white">{{__('Slate')}}</option>

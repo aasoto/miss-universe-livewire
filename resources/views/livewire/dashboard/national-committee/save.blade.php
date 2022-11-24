@@ -16,36 +16,37 @@
                     for="country">
                     {{__('Country')}}
                 </label>
+                <x-jet-input-error for='country_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <span class="fi fi-{{$flag}} fis rounded-full scale-150 translate-x-8 translate-y-8"></span>
                 <select class="w-full rounded-full border-2 bg-transparent border-gray-500 dark:border-white pl-20 py-2"
                     wire:model="country_id">
-                    <option value="">{{__('Select...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ __($name) }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="business_name">
                     {{__('Business name')}}
                 </label>
-                <x-jet-input-error for='business_name' />
+                <x-jet-input-error for='business_name' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="business_name" type="text">
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="national_director">
                     {{__('National director')}}
                 </label>
-                <x-jet-input-error for='national_director' />
+                <x-jet-input-error for='national_director' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="national_director" type="text">
             </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
-            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold bg-gradient-to-l from-lime-400 via-lime-500 to-green-900 hover:scale-110 transition">
+            <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold {{$send_button}} hover:scale-110 transition">
                 {{__('Save')}}
             </button>
         </div>

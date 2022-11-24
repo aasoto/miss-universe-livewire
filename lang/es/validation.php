@@ -169,5 +169,7 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
+        'business_name'         => 'razón social',
+        'national_director'     => 'director nacional',
     ],
 ];

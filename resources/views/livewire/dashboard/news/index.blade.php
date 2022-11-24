@@ -17,16 +17,16 @@
             <div class="col-span-1">
                 <select wire:model="pagination"
                 class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{__('Show...')}}</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="300">300</option>
-                    <option value="500">500</option>
-                    <option value="750">750</option>
-                    <option value="1000">1000</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Show...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="10">10</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="25">25</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="50">50</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="100">100</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="200">200</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="300">300</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="500">500</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="750">750</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="1000">1000</option>
                 </select>
             </div>
             <div class="col-span-6">
@@ -55,26 +55,26 @@
             <div class="col-span-2 lg:col-span-4">
                 <select wire:model="posted"
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{__('Posted...')}}</option>
-                    <option value="yes">{{__('Yes')}}</option>
-                    <option value="not">{{__('Not')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Posted...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="yes">{{__('Yes')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="not">{{__('Not')}}</option>
                 </select>
             </div>
             <div class="col-span-2 lg:col-span-4">
                 <select wire:model="category_id"
                 class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{__('Category...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Category...')}}</option>
                     @foreach ($categories as $name => $id)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{__($name)}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-span-2 lg:col-span-4">
                 <select wire:model="type"
                 class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
-                    <option value="">{{__('Type...')}}</option>
-                    <option value="article">{{__('Article')}}</option>
-                    <option value="news">{{__('News')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="">{{__('Type...')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="article">{{__('Article')}}</option>
+                    <option class="bg-transparent dark:bg-slate-800" value="news">{{__('News')}}</option>
                 </select>
             </div>
         </div>
@@ -95,7 +95,7 @@
                     <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                     @endif
                         <button wire:click="sort('{{ $key }}')">
-                        {{ $column }}
+                        {{ __($column) }}
                         @if ($key == $sortColumn)
                             @if ($sortDirection == 'asc')
                                 &uarr;
@@ -127,13 +127,13 @@
                         {{ $n->date_publish }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                        {{ $n->posted }}
+                        {{ __($n->posted) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                        {{ $n->type }}
+                        {{ __($n->type) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                        {{ $n->category->name }}
+                        {{ __($n->category->name) }}
                     </td>
                     <td class="flex gap-1 justify-center items-center px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         <button

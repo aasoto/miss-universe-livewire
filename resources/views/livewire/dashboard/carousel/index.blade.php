@@ -52,7 +52,7 @@
                                         type="text" x-show="!carousel.editMode" x-model="carousel.title" class="borde-2 border-gray-800 w-full rounded-md shadow-md">
                                 </template>
                                 <template x-if="!carousel.title">
-                                    <label class="italic">Importado</label>
+                                    <label class="italic">{{__('Imported')}}</label>
                                 </template>
                             </td>
                             <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
@@ -87,7 +87,7 @@
 <x-jet-confirmation-modal wire:model="confirmingDeleteCarousel">
     <x-slot name="title">
         <div class="">
-            {{ __('Delete carousel') }}
+            {{ __('Delete carousel item') }}
         </div>
     </x-slot>
 

@@ -35,12 +35,12 @@ class Index extends Component
     //Array de columnas de la tabla
     public $columns = [
         'id' => 'ID',
-        'title' => 'Título',
-        'subtitle' => 'Subtitulo',
-        'date_publish' => 'F. Publicación',
-        'posted' => 'Posteado',
-        'type' => 'Tipo',
-        'category_id' => 'Categoría'
+        'title' => 'Title',
+        'subtitle' => 'Subtitle',
+        'date_publish' => 'Publish date',
+        'posted' => 'Posted',
+        'type' => 'Type',
+        'category_id' => 'Category'
     ];
 
     //variables para ordenar columnas
