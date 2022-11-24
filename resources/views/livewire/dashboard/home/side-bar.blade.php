@@ -330,7 +330,7 @@
                                     <i class="fa-solid fa-music"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Entraiment shows')}}
+                                    {{__('Entertainment shows')}}
                                 </p>
                             </div>
                         </a>
@@ -408,7 +408,7 @@
                                     <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('First runner ups')}}
+                                    {{__('First runners up')}}
                                 </p>
                             </div>
                         </a>
@@ -421,7 +421,7 @@
                                     <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Second runner ups')}}
+                                    {{__('Second runners up')}}
                                 </p>
                             </div>
                         </a>
@@ -434,7 +434,7 @@
                                     <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Third runner ups')}}
+                                    {{__('Third runners up')}}
                                 </p>
                             </div>
                         </a>
@@ -447,7 +447,7 @@
                                     <i class="fa-solid fa-medal"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Fourth runner ups')}}
+                                    {{__('Fourth runners up')}}
                                 </p>
                             </div>
                         </a>
@@ -460,7 +460,7 @@
                                     <i class="fa-solid fa-person-arrow-up-from-line"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Runners ups')}}
+                                    {{__('Runners up')}}
                                 </p>
                             </div>
                         </a>
@@ -512,7 +512,7 @@
                                     <i class="fa-solid fa-award"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Best National Costumes')}}
+                                    {{__('Best National Costume')}}
                                 </p>
                             </div>
                         </a>
@@ -525,7 +525,7 @@
                                     <i class="fa-solid fa-award"></i>
                                 </div>
                                 <p class="text-gray-800 dark:text-white text-base font-medium">
-                                    {{__('Special awards')}}
+                                    {{__('Miss congeniality')}}
                                 </p>
                             </div>
                         </a>
