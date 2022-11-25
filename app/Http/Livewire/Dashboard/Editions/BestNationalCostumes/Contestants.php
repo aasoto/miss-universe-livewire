@@ -20,8 +20,8 @@ class Contestants extends Component
     public $best_national_costume;
 
     public $columns = [
-        'country_id' => 'País',
-        '' => 'Nombre'
+        'country_id' => 'Country',
+        '' => 'Name'
     ];
 
     protected $rules = [

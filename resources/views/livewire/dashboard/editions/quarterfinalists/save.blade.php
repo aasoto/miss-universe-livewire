@@ -8,7 +8,7 @@
         wire:model="edition_id">
         <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
         @foreach ($editions as $name => $id)
-            <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $name }}</option>
+            <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ __($name) }}</option>
         @endforeach
     </select>
     @if ($edition_id)
