@@ -36,7 +36,7 @@
                     class="w-full bg-transparent border-gray-400 focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50 rounded-full">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Country...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{$name}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{__($name)}}</option>
                     @endforeach
                 </select>
             </div>
@@ -66,7 +66,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;
@@ -95,7 +95,7 @@
                         {{ $fourth_runner_up->edition->name }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
-                        {{ $fourth_runner_up->candidate->country->name }}
+                        {{ __($fourth_runner_up->candidate->country->name) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         {{ $fourth_runner_up->candidate->first_name.' '.$fourth_runner_up->candidate->second_name.' '.$fourth_runner_up->candidate->first_last_name.' '.$fourth_runner_up->candidate->second_last_name }}

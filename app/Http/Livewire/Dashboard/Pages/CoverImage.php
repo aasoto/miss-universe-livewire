@@ -255,15 +255,15 @@ class CoverImage extends Component
 
         /****************** THIRD RUNNER UP *************** */
         if (strpos(url()->current(), 'dashboard/editions/third_runner_up')) {
-            $this->title = 'List of thrid runners up';
+            $this->title = 'List of third runners up';
             $this->cover_image = '../'.$this->cover_image;
         }
         if (strpos(url()->current(), 'editions/third_runner_up/create')) {
-            $this->title = 'Add thrid runner up';
+            $this->title = 'Add third runner up';
             $this->cover_image = $this->cover_image;
         }
         if (strpos(url()->current(), 'editions/third_runner_up/edit')) {
-            $this->title = 'Modify thrid runner up';
+            $this->title = 'Modify third runner up';
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 

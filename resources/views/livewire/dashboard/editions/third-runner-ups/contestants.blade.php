@@ -14,7 +14,7 @@
                 <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                 @endif
                     <button wire:click="sort('{{ $key }}')">
-                    {{ $column }}
+                    {{ __($column) }}
                     @if ($key == $sortColumn)
                         @if ($sortDirection == 'asc')
                             &uarr;
@@ -35,7 +35,7 @@
             <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
                 <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                     <span class="fi fi-{{$contestant->candidate->country->iso3166_1_alpha2}} fis rounded-full scale-[2] mr-5"></span>
-                    {{ $contestant->candidate->country->name }}
+                    {{ __($contestant->candidate->country->name) }}
                 </td>
                 <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                     {{ $contestant->candidate->first_name.' '.$contestant->candidate->second_name.' '.$contestant->candidate->first_last_name.' '.$contestant->candidate->second_last_name }}
@@ -43,7 +43,7 @@
                 <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                     <div class="text-center">
                         <button wire:click="confirmAction({{$contestant->candidate->id}})" class="w-full rounded-full px-4 py-2 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 text-white text-medium font-bold hover:bg-green-700 hover:scale-110 transition duration-200">
-                            {{__('Winner')}}
+                            {{__('Third runner up')}}
                         </button>
                     </div>
                 </td>

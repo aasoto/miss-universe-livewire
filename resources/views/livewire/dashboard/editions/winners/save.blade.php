@@ -41,7 +41,7 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Please go to the main list and delete the candidate assigned and choose another one if the actual data is wrong.') }}
+            {{ __('Please go to the main list and modify or remove the candidate assigned and choose another one if the actual data is wrong.') }}
         </x-slot>
 
         <x-slot name="footer">

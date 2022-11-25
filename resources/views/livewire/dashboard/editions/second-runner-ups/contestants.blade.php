@@ -14,7 +14,7 @@
                 <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                 @endif
                     <button wire:click="sort('{{ $key }}')">
-                    {{ $column }}
+                    {{ __($column) }}
                     @if ($key == $sortColumn)
                         @if ($sortDirection == 'asc')
                             &uarr;
@@ -35,7 +35,7 @@
         <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
             <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                 <span class="fi fi-{{$contestant->candidate->country->iso3166_1_alpha2}} fis rounded-full scale-[2] mr-5"></span>
-                {{ $contestant->candidate->country->name }}
+                {{ __($contestant->candidate->country->name) }}
             </td>
             <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                 {{ $contestant->candidate->first_name.' '.$contestant->candidate->second_name.' '.$contestant->candidate->first_last_name.' '.$contestant->candidate->second_last_name }}

@@ -20,8 +20,8 @@ class Contestants extends Component
     public $first_runner_up;
 
     public $columns = [
-        'country_id' => 'País',
-        '' => 'Nombre'
+        'country_id' => 'Country',
+        '' => 'Name'
     ];
 
     protected $rules = [
