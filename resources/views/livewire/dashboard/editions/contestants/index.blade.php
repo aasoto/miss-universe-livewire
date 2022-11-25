@@ -55,7 +55,7 @@
                         <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
                         @endif
                             <button wire:click="sort('{{ $key }}')">
-                            {{ $column }}
+                            {{ __($column) }}
                             @if ($key == $sortColumn)
                                 @if ($sortDirection == 'asc')
                                     &uarr;
@@ -85,6 +85,9 @@
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
                         {{ $contestant->edition->name }}
+                    </td>
+                    <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
+                        {{ $contestant->candidate->country->name }}
                     </td>
                     <td class="flex gap-1 justify-center items-center px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         <button

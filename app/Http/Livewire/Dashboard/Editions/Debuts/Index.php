@@ -24,9 +24,9 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        '' => 'Año',
-        'edition_id' => 'Edición',
-        'country_id' => 'País'
+        '' => 'Year',
+        'edition_id' => 'Edition',
+        'country_id' => 'Country'
     ];
 
     public $confirmingDeleteDebut, $debutToDelete;

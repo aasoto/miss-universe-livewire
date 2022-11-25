@@ -25,10 +25,10 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        'year' => 'Año',
-        'edition_id' => 'Edición',
-        'country_id' => 'País',
-        'first_name' => 'Nombre'
+        'year' => 'Year',
+        'edition_id' => 'Edition',
+        'country_id' => 'Country',
+        'first_name' => 'Name'
     ];
 
     public $confirmingDeleteWinner, $winnerToDelete;

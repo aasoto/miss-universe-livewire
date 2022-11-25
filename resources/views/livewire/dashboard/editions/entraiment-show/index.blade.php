@@ -95,16 +95,16 @@
                         {{ $entraiment->artist }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                        {{ $entraiment->country->name }}
+                        {{ __($entraiment->country->name) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
-                        {{ $entraiment->edition->name }}
+                        {{ __($entraiment->edition->name) }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         @isset($entraiment->act_performing)
                             @foreach ($acts as $key => $act)
                                 @if ($entraiment->act_performing == $key)
-                                    {{ $act }}
+                                    {{ __($act) }}
                                 @endif
                             @endforeach
                         @endisset

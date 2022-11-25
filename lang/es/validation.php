@@ -176,5 +176,6 @@ return [
         'place_id'              => 'recinto sede',
         'artist'                => 'artista',
         'edition_id'            => 'edición',
+        'candidate_id'          => 'candidata',
     ],
 ];

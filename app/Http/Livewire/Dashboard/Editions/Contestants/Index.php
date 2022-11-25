@@ -24,10 +24,10 @@ class Index extends Component
 
     public $columns = [
         'id' => 'ID',
-        '' => 'Año',
-        'edition_id' => 'Edición',
-        'candidate_id' => 'Nombre',
-        '' => 'País'
+        'year' => 'Year',
+        'edition_id' => 'Edition',
+        'candidate_id' => 'Name',
+        'country' => 'Country'
     ];
 
     public $confirmingDeleteContestant, $contestantToDelete;
