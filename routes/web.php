@@ -54,6 +54,8 @@ use App\Http\Livewire\Dashboard\NationalCommittee\Index as NationalCommitteeInde
 use App\Http\Livewire\Dashboard\NationalCommittee\Save as NationalCommitteeSave;
 use App\Http\Livewire\Dashboard\News\Index as NewsIndex;
 use App\Http\Livewire\Dashboard\News\Save as NewsSave;
+use App\Http\Livewire\Dashboard\Owner\Index as OwnerIndex;
+use App\Http\Livewire\Dashboard\Owner\Save as OwnerSave;
 use App\Http\Livewire\News\Qualify;
 use App\Http\Livewire\Sponsor\Company;
 use App\Http\Livewire\Sponsor\Detail;
@@ -114,6 +116,12 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
         Route::get('/', CarouselIndex::class)->name('d-carousel-index');
         Route::get('/create', CarouselSave::class)->name('d-carousel-create');
         Route::get('/edit/{id}', CarouselSave::class)->name('d-carousel-edit');
+    });
+
+    Route::group(['prefix' => 'owner'], function () {
+        Route::get('/', OwnerIndex::class)->name('d-owner-index');
+        Route::get('/create', OwnerSave::class)->name('d-owner-create');
+        Route::get('/edit/{id}', OwnerSave::class)->name('d-owner-edit');
     });
 
     Route::group(['prefix' => 'editions'], function () {

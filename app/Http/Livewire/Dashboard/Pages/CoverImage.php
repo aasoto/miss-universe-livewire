@@ -70,6 +70,18 @@ class CoverImage extends Component
             $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** CANDIDATES *************** */
+        if (strpos(url()->current(), 'dashboard/owner')) {
+            $this->title = 'List of owners';
+        }
+        if (strpos(url()->current(), 'owner/create')) {
+            $this->title = 'Add owner';
+        }
+        if (strpos(url()->current(), 'owner/edit')) {
+            $this->title = 'Modify owner';
+            $this->cover_image = '../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         /*************------ EDITIONS ------****************** */
         /****************** BROADCASTER *************** */
         if (strpos(url()->current(), 'dashboard/editions/broadcaster')) {
