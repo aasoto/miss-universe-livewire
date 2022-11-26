@@ -28,6 +28,8 @@ use App\Http\Livewire\Dashboard\Editions\MissCongeniality\Index as MissCongenial
 use App\Http\Livewire\Dashboard\Editions\MissCongeniality\Save as MissCongenialitySave;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Index as MissUniverseIndex;
 use App\Http\Livewire\Dashboard\Editions\MissUniverse\Save as MissUniverseSave;
+use App\Http\Livewire\Dashboard\Editions\Photogenic\Index as PhotogenicIndex;
+use App\Http\Livewire\Dashboard\Editions\Photogenic\Save as PhotogenicSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
@@ -229,6 +231,11 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', MissCongenialityIndex::class)->name('d-editions-miss-congeniality-index');
             Route::get('/create', MissCongenialitySave::class)->name('d-editions-miss-congeniality-create');
             Route::get('/edit/{id}', MissCongenialitySave::class)->name('d-editions-miss-congeniality-edit');
+        });
+        Route::group(['prefix' => 'miss_photogenic'], function () {
+            Route::get('/', PhotogenicIndex::class)->name('d-editions-miss-photogenic-index');
+            Route::get('/create', PhotogenicSave::class)->name('d-editions-miss-photogenic-create');
+            Route::get('/edit/{id}', PhotogenicSave::class)->name('d-editions-miss-photogenic-edit');
         });
         Route::group(['prefix' => 'special_awards'], function () {
             Route::get('/', SpecialAwardsIndex::class)->name('d-editions-special-awards-index');

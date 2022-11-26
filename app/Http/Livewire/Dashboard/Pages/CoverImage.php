@@ -377,6 +377,20 @@ class CoverImage extends Component
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
 
+        /****************** MISS PHOTOGENIC *************** */
+        if (strpos(url()->current(), 'dashboard/editions/miss_photogenic')) {
+            $this->title = 'List of miss photogenic';
+            $this->cover_image = '../'.$this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_photogenic/create')) {
+            $this->title = 'Add miss photogenic';
+            $this->cover_image = $this->cover_image;
+        }
+        if (strpos(url()->current(), 'editions/miss_photogenic/edit')) {
+            $this->title = 'Modify miss photogenic';
+            $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
+        }
+
         if ($this->title == null) {
             $this->title = '';
         }

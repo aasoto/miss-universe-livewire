@@ -530,6 +530,72 @@
                             </div>
                         </a>
                     </li>
+                    <li class="mt-2">
+                        <a href="{{ route('d-editions-miss-photogenic-index') }}" class="py-2">
+                            <div class="flex flex-row gap-3 items-center">
+                                <div
+                                    class="rounded-lg w-12 bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <p class="text-gray-800 dark:text-white text-base font-medium">
+                                    {{__('Miss photogenic')}}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="relative group flex flex-col w-full transition duration-200">
+                <div class="flex flex-row">
+                    <div
+                        class="-z-10 w-full h-10 group-hover:bg-rose-100 dark:group-hover:bg-rose-900/30 group-hover:blur-lg">
+                    </div>
+                    <a href="#"
+                        class="absolute top-0 z-10 bg-transparent group-hover:scale-105 flex flex-row items-center w-full">
+                        <div class="w-1/4">
+                            <div
+                                class="mx-2 px-2 py-2 text-white text-center bg-gradient-to-r from-pink-600 dark:from-pink-300 to-rose-900 dark:to-rose-600 rounded-lg">
+                                <i class="fa-solid fa-money-bills"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="w-3/4 flex flex-row justify-between mx-5 text-gray-800 dark:text-white text-base font-medium">
+                            <div class="basis-3/4">
+                                <p class="#">{{__('Owners')}}</p>
+                            </div>
+                            <div class="basis-1/4 text-right">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <ul class="hidden group-hover:block my-5 p-4 rounded-lg shadow transition duration-200">
+                    <li class="">
+                        <a href="{{ route('d-owner-index') }}" class="py-2">
+                            <div class="flex flex-row gap-3 items-center">
+                                <div
+                                    class="rounded-lg bg-gradient-to-r from-cyan-400 dark:from-cyan-200 to-blue-900 dark:to-blue-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
+                                <p class="text-gray-800 dark:text-white text-base font-medium">
+                                    {{__('List')}}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="{{ route('d-owner-create') }}" class="py-2">
+                            <div class="flex flex-row gap-3 items-center">
+                                <div
+                                    class="rounded-lg bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <p class="text-gray-800 dark:text-white text-base font-medium">
+                                    {{__('Add')}}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

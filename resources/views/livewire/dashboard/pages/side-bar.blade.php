@@ -529,6 +529,19 @@
                             </div>
                         </a>
                     </li>
+                    <li class="mt-2">
+                        <a href="{{ route('d-editions-miss-photogenic-index') }}" class="py-2">
+                            <div class="flex flex-row gap-3 items-center">
+                                <div
+                                    class="rounded-full w-12 h-12 flex justify-center items-center bg-gradient-to-r from-lime-400 dark:from-lime-200 to-green-900 dark:to-green-700 px-4 py-2 text-white">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <p class="text-gray-800 dark:text-white text-base font-medium">
+                                    {{__('Miss photogenic')}}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="relative group flex flex-col w-full transition duration-200">
@@ -541,7 +554,7 @@
                         <div class="w-1/4">
                             <div
                                 class="w-12 h-12 flex justify-center items-center mx-2 px-2 py-2 text-white text-center bg-gradient-to-r {{ $colour }} rounded-full">
-                                <i class="fa-solid fa-bill"></i>
+                                <i class="fa-solid fa-money-bills"></i>
                             </div>
                         </div>
                         <div
