@@ -13,22 +13,27 @@
         <!-- Scripts -->
         @vite([
             'resources/css/app.css',
-            'resources/js/app.js',
-            'node_modules/flag-icons/css/flag-icons.min.css',
-            'resources/fontawesome-free-6.2.0-web/css/all.min.css',
-            'resources/fontawesome-free-6.2.0-web/js/all.min.js',
-            'resources/js/dropdown.js'
+            'resources/js/app.js'
         ])
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="min-h-screen bg-gray-200 dark:bg-gray-800">
+    <body class="">
         <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-        @livewire('web.navigation.menu')
+        <div x-data="switch_dark_mode()" x-init="dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
+            $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)))">
+            <div :class="{'dark': dark_mode === true}">
+                <div class="relative bg-white dark:bg-slate-800 text-slate-800 dark:text-white">
+                    {{-- Navigation --}}
+                    @livewire('web.navigation.menu')
+
+                    <main>
+                        {{ $slot }}
+                    </main>
+                </div>
+            </div>
+        </div>
 
         {{--@stack('modals')--}}
 
@@ -36,4 +41,15 @@
         {{-- <script src="../resources/alpinejs/data.js"></script> --}}
 
     </body>
+    <script>
+    function switch_dark_mode () {
+        return {
+            dark_mode: false,
+            change_mode(){
+                this.dark_mode = !this.dark_mode;
+                console.log('dark mode: ', this.dark_mode);
+            }
+        }
+    }
+    </script>
 </html>
