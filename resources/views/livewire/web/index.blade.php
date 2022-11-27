@@ -127,7 +127,43 @@
         </section>
     </div>
     <!-- fin Sección de ganadoras actuales -->
+    <!-- Sección de noticias -->
+    <div x-data="latest_news()">
+        <section class="my-8 px-6 sm:px-12">
+            <div class="container mx-auto py-5 md:py-10 w-10/12 md:w-8/12">
+                <h1 class="text-2xl md:text-3xl mb-4 font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                    Últimas noticias
+                </h1>
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <template x-for="item in news">
+                    <div class="col-span-4 lg:col-span-2 2xl:col-span-1">
+                        <a :href="`{{asset('news/show')}}/${item.slug}`">
+                            <div
+                                class="flex flex-col xl:flex-row 2xl:flex-col w-full rounded-md shadow-md hover:shadow-gray-400 hover:scale-105 transition">
+                                <img class="w-full xl:w-1/2 2xl:w-full h-full xl:h-64 2xl:h-1/2 rounded-t-md xl:rounded-l-md 2xl:rounded-t-md object-cover object-center cursor-pointer"
+                                    :src="`../storage/app/public/images/news/background/${item.background}`" alt="">
+                                <div class="px-4">
+                                    <h3 class="text-lg sm:text-xl mb-4 font-medium text-left hover:text-rose-700 hover:underline cursor-pointer"
+                                        x-text="item.title"></h3>
+                                    <p class="text-base text-justify pb-4 break-words cursor-pointer" x-html="item.content"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+            <div class="my-7">
+                <a href="pages/list_news.html">
+                    <h2
+                        class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 hover:underline cursor-pointer text-center">
+                        Ver más noticias</h2>
+                </a>
+            </div>
+        </section>
+    </div>
 </section>
+
 
 <script>
     function data() {
@@ -221,36 +257,41 @@
 
     function titleholders() {
         return {
-            current_titleholders: [
-                {
-                    edition: 'Miss Universo 2021',
-                    description: 'Harnaaz Kaur Sandhu de la India coronada el 13 de diciembre de 2021 en Eilat, Israel.',
-                    image: '../storage/app/public/images/titleholders/Captura2.PNG',
-                    flag: 'in',
-                    show: false
-                },{
-                    edition: 'Miss Mundo 2021',
-                    description: 'Karolina Bielawska de Polonia coronada en Marzo del 2022 en San Juan, Puerto Rico.',
-                    image: '../storage/app/public/images/titleholders/miss-world.jpg',
-                    flag: 'pl',
-                    show: false
-                },{
-                    edition: 'Miss Grand International 2022',
-                    description: 'Isabella Menin de Brasil coronada el 25 de octubre del 2022 en Bogor, Indonesia.',
-                    image: '../storage/app/public/images/titleholders/miss-grand-2022.PNG',
-                    flag: 'br',
-                    show: false
-                }
-            ],
+            current_titleholders: [{
+                edition: 'Miss Universo 2021',
+                description: 'Harnaaz Kaur Sandhu de la India coronada el 13 de diciembre de 2021 en Eilat, Israel.',
+                image: '../storage/app/public/images/titleholders/Captura2.PNG',
+                flag: 'in',
+                show: false
+            }, {
+                edition: 'Miss Mundo 2021',
+                description: 'Karolina Bielawska de Polonia coronada en Marzo del 2022 en San Juan, Puerto Rico.',
+                image: '../storage/app/public/images/titleholders/miss-world.jpg',
+                flag: 'pl',
+                show: false
+            }, {
+                edition: 'Miss Grand International 2022',
+                description: 'Isabella Menin de Brasil coronada el 25 de octubre del 2022 en Bogor, Indonesia.',
+                image: '../storage/app/public/images/titleholders/miss-grand-2022.PNG',
+                flag: 'br',
+                show: false
+            }],
             show_info_titleholder(key) {
                 for (let i = 0; i < this.current_titleholders.length; i++) {
-                    if ((key.edition == this.current_titleholders[i].edition) && (key.description == this.current_titleholders[i].description)) {
+                    if ((key.edition == this.current_titleholders[i].edition) && (key.description == this
+                            .current_titleholders[i].description)) {
                         this.current_titleholders[i].show = true;
                     } else {
                         this.current_titleholders[i].show = false;
                     }
                 }
             }
+        }
+    }
+
+    function latest_news() {
+        return {
+            news: @entangle('news')
         }
     }
 </script>

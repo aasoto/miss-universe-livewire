@@ -16,6 +16,9 @@ class Index extends Component
         $this->carousels = json_encode($this->carousels);
         $this->carousels = json_decode($this->carousels);
         $this->news = News::orderBy('id', 'desc')->take(8)->get();
+        for ($i=0; $i < count($this->news); $i++) {
+            $this->news[$i]->content = str($this->news[$i]->content)->substr(0, 250);
+        }
         $this->news = json_decode(json_encode($this->news));
         return view('livewire.web.index')->layout('layouts.web.layout');
     }
