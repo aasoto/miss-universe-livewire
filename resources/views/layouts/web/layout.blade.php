@@ -31,6 +31,8 @@
                     <main>
                         {{ $slot }}
                     </main>
+                    {{-- Footer --}}
+                    @livewire('web.footer.menu')
                 </div>
             </div>
         </div>
