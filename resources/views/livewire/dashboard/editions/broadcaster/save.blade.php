@@ -28,7 +28,7 @@
                             wire:model="country_id">
                             <option value="">{{__('Select...')}}</option>
                             @foreach ($countries as $name => $id)
-                                <option value="{{ $id }}">{{ $name }}</option>
+                                <option value="{{ $id }}">{{ __($name) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -52,8 +52,10 @@
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="logo_light_theme" type="file">
                 @if ($broadcaster && $broadcaster->logo_light_theme)
-                    <div class="flex justify-center items-center">
-                        <img class="w-60 mt-5 rounded-lg bg-transparent dark:bg-slate-400" src="{{ $broadcaster->getLogoLightUrl() }}"/>
+                    <div class="flex justify-center items-center mt-5">
+                        <div class="p-3 rounded-lg bg-transparent dark:bg-slate-400">
+                            <img class="w-60" src="{{ $broadcaster->getLogoLightUrl() }}"/>
+                        </div>
                     </div>
                 @endif
             </div>
@@ -66,8 +68,10 @@
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="logo_dark_theme" type="file">
                 @if ($broadcaster && $broadcaster->logo_dark_theme)
-                    <div class="flex justify-center items-center">
-                        <img class="w-60 mt-5 rounded-lg bg-slate-800 dark:bg-transparent" src="{{ $broadcaster->getLogoDarkUrl() }}"/>
+                    <div class="flex justify-center items-center mt-5">
+                        <div class="p-3 w-60 rounded-lg bg-slate-800 dark:bg-transparent">
+                            <img class="w-60" src="{{ $broadcaster->getLogoDarkUrl() }}"/>
+                        </div>
                     </div>
                 @endif
             </div>

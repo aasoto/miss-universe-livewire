@@ -114,6 +114,12 @@
                             class="rounded-full my-1 py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-cyan-500 to-blue-900 text-white">
                             <i class="scale-[0.6] md:scale-100 fa-solid fa-eye"></i>
                         </button>
+                        <a href="{{ route('d-editions-presenter-attach', $presenter) }}">
+                            <button
+                                class="rounded-full my-1 py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-lime-400 to-green-900 text-white">
+                                <i class="scale-[0.6] md:scale-100 fa-solid fa-paperclip"></i>
+                            </button>
+                        </a>
                         <a href="{{ route('d-editions-presenter-edit', $presenter) }}">
                             <button
                                 class="rounded-full my-1 py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white">

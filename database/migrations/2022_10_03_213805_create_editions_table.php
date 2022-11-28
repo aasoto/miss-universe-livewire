@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->strig('year', 20);
+            $table->text('slug');
+            $table->string('year', 20);
             $table->string('name', 200);
             $table->string('official_name', 1000)->nullable();
             $table->date('start_concentration')->nullable();
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('hotel_concentration', 200)->nullable();
             $table->date('date_preliminary')->nullable();
             $table->date('date')->nullable();
+            $table->foreignId("owner_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('broadcaster_2')->nullable();
             $table->foreignId("place_id")->constrained()->onDelete('cascade')->onUpdate('cascade');

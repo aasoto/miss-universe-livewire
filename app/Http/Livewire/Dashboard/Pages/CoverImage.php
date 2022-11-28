@@ -138,6 +138,10 @@ class CoverImage extends Component
             $this->title = 'Modify presenter';
             $this->cover_image = '../../../../../storage/app/public/images/dashboard/cover-images/fondo-naranja.svg';
         }
+        if (strpos(url()->current(), 'editions/presenter/attach')) {
+            $this->title = 'Attach presenter to edition';
+            $this->cover_image = '../'.$this->cover_image;
+        }
 
         /****************** MISS UNIVERSE *************** */
         if (strpos(url()->current(), 'dashboard/editions/miss_universe')) {

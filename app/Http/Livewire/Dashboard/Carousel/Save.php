@@ -38,10 +38,10 @@ class Save extends Component
 
     protected $rules = [
         'type' => 'required|string|max:50',
-        'image' => 'required|image|mimes:jpeg,jpg,png|max:10240',
+        'image' => 'required|image|mimes:jpeg,jpg,png,svg|max:10240',
         'title' => 'nullable|string|min:10|max:500',
         'subtitle' => 'nullable|string|min:10|max:700',
-        'secondary_image' => 'nullable|image|mimes:jpeg,jpg,png|max:10240',
+        'secondary_image' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240',
         'button_1_text' => 'nullable|string|max:50',
         'button_1_type' => 'nullable|string|max:100',
         'button_1_color' => 'nullable|string|max:2000',
@@ -96,9 +96,11 @@ class Save extends Component
             if ($this->checked_images == false) {
                 if ($this->type == 'make' && $this->secondary_image != null) {
                     $imageName = 'carousel_background_'.time().'.'.$this->image->getClientOriginalExtension();
-                    $this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
+                    $this->image->storeAs('images/carousels/background', $imageName, 'public');
+                    //$this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
                     $secondaryImageName = 'carousel_secondary_image_'.time().'.'.$this->secondary_image->getClientOriginalExtension();
-                    $this->resizeUploadImage('../storage/app/public/images/carousels/secondaries_images', $secondaryImageName, $this->secondary_image, 700, 700);
+                    $this->secondary_image->storeAs('images/carousels/secondaries_images', $secondaryImageName, 'public');
+                    //$this->resizeUploadImage('../storage/app/public/images/carousels/secondaries_images', $secondaryImageName, $this->secondary_image, 700, 700);
 
                     $this->checked_images = true;
                 }
@@ -106,7 +108,8 @@ class Save extends Component
 
             if ($this->checked_images == false) {
                 $imageName = 'carousel_background_'.time().'.'.$this->image->getClientOriginalExtension();
-                $this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
+                $this->image->storeAs('images/carousels/background', $imageName, 'public');
+                //$this->resizeUploadImage('../storage/app/public/images/carousels/background', $imageName, $this->image, 945, 1920);
 
                 $this->checked_images = true;
             }

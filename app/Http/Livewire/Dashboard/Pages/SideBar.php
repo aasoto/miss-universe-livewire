@@ -36,6 +36,12 @@ class SideBar extends Component
                 $this->redirect = '../'.$this->redirect;
                 $this->list_blur_shadow = 'group-hover:bg-yellow-200 dark:group-hover:bg-yellow-900/30';
             }
+
+            if (strpos(url()->current(), 'attach') && strpos(url()->current(), 'editions')) {
+                $this->colour = 'from-lime-400 dark:from-lime-300 via-lime-700 dark:via-lime-500 to-green-800 dark:to-green-700';
+                $this->redirect = '../'.$this->redirect;
+                $this->list_blur_shadow = 'group-hover:bg-lime-200 dark:group-hover:bg-lime-900/30';
+            }
             return;
         }
 

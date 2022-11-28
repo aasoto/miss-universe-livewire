@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class NavBar extends Component
 {
-    public $profile_photo, $name, $role, $redirect, $check_color;
+    public $profile_photo, $name, $roles, $redirect, $check_color;
 
     public function mount($redirect, $check_color)
     {
@@ -18,13 +18,13 @@ class NavBar extends Component
     {
         $this->profile_photo = auth()->user()->profile_photo_path;
         $this->name = auth()->user()->name;
-        if (auth()->user()->role == 'admin') {
-            $this->role = 'Administrator';
+        if (auth()->user()->roles == 'admin') {
+            $this->roles = 'Administrator';
         } else {
-            if (auth()->user()->role == 'normal') {
-                $this->role = 'Editor';
+            if (auth()->user()->roles == 'normal') {
+                $this->roles = 'Editor';
             } else {
-                $this->role = 'Unknown';
+                $this->roles = 'Unknown';
             }
         }
 
@@ -57,6 +57,11 @@ class NavBar extends Component
             $this->check_color = 'from-cyan-400 dark:from-cyan-300 via-sky-700 dark:via-sky-500 to-blue-800 dark:to-blue-700';
         }
 
+        if (strpos(url()->current(), 'editions') && strpos(url()->current(), 'attach')) {
+            $this->redirect = '../'.$this->redirect;
+            $this->check_color = 'from-lime-400 dark:from-lime-300 via-lime-700 dark:via-lime-500 to-green-800 dark:to-green-700';
+            return;
+        }
 
     }
 }

@@ -16,7 +16,7 @@ class Save extends Component
 
     public $broadcasters, $places, $presenters, $presenter;
 
-    public $year, $name, $official_name, $start_concentration, $end_concentration, $hotel_concentration, $date_preliminary, $date, $presenter_id, $description, $content, $top_3 = false, $top_5 = false, $top_6 = false, $extra_data, $logo, $background;
+    public $year, $name, $official_name, $start_concentration, $end_concentration, $hotel_concentration, $date_preliminary, $date, $description, $content, $top_3 = false, $top_5 = false, $top_6 = false, $extra_data, $logo, $background;
 
     public $current_logo, $current_background;
 
@@ -36,7 +36,6 @@ class Save extends Component
         'broadcaster_id' => 'required|integer',
         'broadcaster_2' => 'nullable|integer',
         'place_id' => 'required|integer',
-        'presenter_id' => 'nullable|integer',
         'description' => 'required|string',
         'content' => 'nullable|string',
         'top_3' => 'required|boolean',
@@ -69,8 +68,6 @@ class Save extends Component
             $this->current_logo = $this->miss_universe->logo;
             $this->current_background = $this->miss_universe->background;
 
-            $this->presenter = MissUniversePresentatorInterception::where('edition_id', $id)->firstOrFail();
-            $this->presenter_id = $this->presenter->presenter_id;
         }
     }
 
@@ -79,7 +76,6 @@ class Save extends Component
         $this->customize_send_button();
         $this->broadcasters = Broadcaster::pluck('id', 'name');
         $this->places = Place::get();
-        $this->presenters = Presenter::pluck('id', 'name');
         return view('livewire.dashboard.editions.miss-universe.save')->layout('layouts.dashboard.add.app');
     }
 
@@ -101,6 +97,7 @@ class Save extends Component
             $this->miss_universe->update([
                 'year' => $this->year,
                 'name' => $this->name,
+                'slug' => str($this->name)->slug(),
                 'official_name' => $this->official_name,
                 'start_concentration' => $this->start_concentration,
                 'end_concentration' => $this->end_concentration,
@@ -118,36 +115,12 @@ class Save extends Component
                 'extra_data' => $this->extra_data
             ]);
 
-            if ($this->presenter) {
-                if ($this->presenter_id) {
-                    $this->presenter->update([
-                        'presenter_id' => $this->presenter_id,
-                        'edition_id' => $this->miss_universe->id
-                    ]);
-                } else {
-                    $this->presenter->update([
-                        'presenter_id' => null,
-                        'edition_id' => $this->miss_universe->id
-                    ]);
-                }
-
-            } else {
-                if ($this->presenter_id) {
-                    $this->presenter = MissUniversePresentatorInterception::create([
-                        'presenter_id' => $this->presenter_id,
-                        'edition_id' => $this->miss_universe->id
-                    ]);
-                } else {
-                    $this->presenter = MissUniversePresentatorInterception::create([
-                        'edition_id' => $this->miss_universe->id
-                    ]);
-                }
-            }
             $this->emit('updated');
         } else {
             $this->miss_universe = MissUniverse::create([
                 'year' => $this->year,
                 'name' => $this->name,
+                'slug' => str($this->name)->slug(),
                 'official_name' => $this->official_name,
                 'start_concentration' => $this->start_concentration,
                 'end_concentration' => $this->end_concentration,
@@ -164,17 +137,6 @@ class Save extends Component
                 'top_6' => $this->top_6,
                 'extra_data' => $this->extra_data
             ]);
-
-            if ($this->presenter_id) {
-                $this->presenter = MissUniversePresentatorInterception::create([
-                    'presenter_id' => $this->presenter_id,
-                    'edition_id' => $this->miss_universe->id
-                ]);
-            } else {
-                $this->presenter = MissUniversePresentatorInterception::create([
-                    'edition_id' => $this->miss_universe->id
-                ]);
-            }
 
             $this->emit('created');
         }

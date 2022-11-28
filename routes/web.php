@@ -33,6 +33,7 @@ use App\Http\Livewire\Dashboard\Editions\Photogenic\Save as PhotogenicSave;
 use App\Http\Livewire\Dashboard\Editions\Places\Index as PlacesIndex;
 use App\Http\Livewire\Dashboard\Editions\Places\Save as PlacesSave;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Index as PresentersIndex;
+use App\Http\Livewire\Dashboard\Editions\Presenters\PresenterToEdition;
 use App\Http\Livewire\Dashboard\Editions\Presenters\Save as PresentersSave;
 use App\Http\Livewire\Dashboard\Editions\Quarterfinalists\Index as QuarterfinalistsIndex;
 use App\Http\Livewire\Dashboard\Editions\Quarterfinalists\Save as QuarterfinalistsSave;
@@ -151,6 +152,7 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
             Route::get('/', PresentersIndex::class)->name('d-editions-presenter-index');
             Route::get('/create', PresentersSave::class)->name('d-editions-presenter-create');
             Route::get('/edit/{id}', PresentersSave::class)->name('d-editions-presenter-edit');
+            Route::get('/attach/{id}', PresenterToEdition::class)->name('d-editions-presenter-attach');
         });
         Route::group(['prefix' => 'entertainment_show'], function () {
             Route::get('/', EntraimentShowIndex::class)->name('d-editions-entertainment-show-index');
