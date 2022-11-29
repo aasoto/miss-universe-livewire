@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('city_venues', function (Blueprint $table) {
             $table->id();
             $table->string('city', 200);
-            $table->string('status', 200)->nullable();
+            $table->string('state', 200)->nullable();
             $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

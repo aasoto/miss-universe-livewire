@@ -7,6 +7,7 @@ use App\Models\Editions\MissUniverse;
 use App\Models\Editions\MissUniversePresentatorInterception;
 use App\Models\Editions\Place;
 use App\Models\editions\Presenter;
+use App\Models\Owner;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,9 +15,9 @@ class Save extends Component
 {
     use WithFileUploads;
 
-    public $broadcasters, $places, $presenters, $presenter;
+    public $broadcasters, $places, $owners;
 
-    public $year, $name, $official_name, $start_concentration, $end_concentration, $hotel_concentration, $date_preliminary, $date, $description, $content, $top_3 = false, $top_5 = false, $top_6 = false, $extra_data, $logo, $background;
+    public $year, $name, $official_name, $start_concentration, $end_concentration, $hotel_concentration, $date_preliminary, $date, $placements, $entrants, $description, $content, $top_3 = false, $top_5 = false, $top_6 = false, $extra_data, $logo, $background, $owner_id;
 
     public $current_logo, $current_background;
 
@@ -36,6 +37,9 @@ class Save extends Component
         'broadcaster_id' => 'required|integer',
         'broadcaster_2' => 'nullable|integer',
         'place_id' => 'required|integer',
+        'placements' => 'nullable|integer',
+        'entrants' => 'nullable|integer',
+        'owner_id' => 'required|integer',
         'description' => 'required|string',
         'content' => 'nullable|string',
         'top_3' => 'required|boolean',
@@ -59,6 +63,8 @@ class Save extends Component
             $this->broadcaster_id = $this->miss_universe->broadcaster_id;
             $this->broadcaster_2 = $this->miss_universe->broadcaster_2;
             $this->place_id = $this->miss_universe->place_id;
+            $this->placements = $this->miss_universe->placements;
+            $this->entrants = $this->miss_universe->entrants;
             $this->description = $this->miss_universe->description;
             $this->content = $this->miss_universe->content;
             $this->top_3 = $this->miss_universe->top_3;
@@ -67,6 +73,7 @@ class Save extends Component
             $this->extra_data = $this->miss_universe->extra_data;
             $this->current_logo = $this->miss_universe->logo;
             $this->current_background = $this->miss_universe->background;
+            $this->owner_id = $this->miss_universe->owner_id;
 
         }
     }
@@ -76,6 +83,7 @@ class Save extends Component
         $this->customize_send_button();
         $this->broadcasters = Broadcaster::pluck('id', 'name');
         $this->places = Place::get();
+        $this->owners = Owner::get();
         return view('livewire.dashboard.editions.miss-universe.save')->layout('layouts.dashboard.add.app');
     }
 
@@ -107,6 +115,9 @@ class Save extends Component
                 'broadcaster_id' => $this->broadcaster_id,
                 'broadcaster_2' => $this->broadcaster_2,
                 'place_id' => $this->place_id,
+                'owner_id' => $this->owner_id,
+                'placements' => $this->placements,
+                'entrants' => $this->entrants,
                 'description' => $this->description,
                 'content' => $this->content,
                 'top_3' => $this->top_3,
@@ -130,6 +141,9 @@ class Save extends Component
                 'broadcaster_id' => $this->broadcaster_id,
                 'broadcaster_2' => $this->broadcaster_2,
                 'place_id' => $this->place_id,
+                'owner_id' => $this->owner_id,
+                'placements' => $this->placements,
+                'entrants' => $this->entrants,
                 'description' => $this->description,
                 'content' => $this->content,
                 'top_3' => $this->top_3,

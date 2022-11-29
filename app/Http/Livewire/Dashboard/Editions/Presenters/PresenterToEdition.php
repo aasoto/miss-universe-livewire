@@ -58,6 +58,7 @@ class PresenterToEdition extends Component
 
     public function open_success_modal()
     {
+        $this->close_confirming_modal();
         $this->success = true;
     }
 

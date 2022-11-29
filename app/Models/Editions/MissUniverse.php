@@ -12,7 +12,31 @@ class MissUniverse extends Model
 
     protected $table = 'editions';
 
-    protected $fillable = ['year', 'name', 'official_name', 'start_concentration', 'end_concentration', 'hotel_concentration', 'date_preliminary', 'date', 'broadcaster_id', 'broadcaster_2', 'place_id', 'entrants', 'placements', 'description', 'content', 'top_3', 'top_5', 'top_6', 'extra_data', 'logo', 'background'];
+    protected $fillable = [
+        'year',
+        'slug',
+        'name',
+        'official_name',
+        'start_concentration',
+        'end_concentration',
+        'hotel_concentration',
+        'date_preliminary',
+        'date',
+        'owner_id',
+        'broadcaster_id',
+        'broadcaster_2',
+        'place_id',
+        'entrants',
+        'placements',
+        'description',
+        'content',
+        'top_3',
+        'top_5',
+        'top_6',
+        'extra_data',
+        'logo',
+        'background'
+    ];
 
     public function broadcaster(){
         return $this->belongsTo(Broadcaster::class, 'broadcaster_id');

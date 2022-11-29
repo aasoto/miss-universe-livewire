@@ -18,7 +18,7 @@
                 </label>
                 <x-jet-input-error for='year' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
-                    wire:model="year" type="text">
+                    wire:model="year" type="number">
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
@@ -127,17 +127,35 @@
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
-                    for="presenter_id">
-                    {{__('Presenter')}}
+                    for="owner_id">
+                    {{__('Owner')}}
                 </label>
-                <x-jet-input-error for='presenter_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <x-jet-input-error for='owner_id' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <select class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
-                    wire:model="presenter_id">
+                    wire:model="owner_id">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
-                    @foreach ($presenters as $name => $id)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$id}}">{{$name}}</option>
+                    @foreach ($owners as $key => $value)
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{$value['business_name'].' - '.$value['owner_name'].'.'}}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="col-span-1 relative">
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="entrants">
+                    {{__('Entrants')}}
+                </label>
+                <x-jet-input-error for='entrants' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
+                    wire:model="entrants" type="number">
+            </div>
+            <div class="col-span-1 relative">
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="placements">
+                    {{__('Placements')}}
+                </label>
+                <x-jet-input-error for='placements' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
+                    wire:model="placements" type="number">
             </div>
             <div class="col-span-2 text-center">
                 <label class="text-lg text-gray-500 dark:text-white mt-5 px-4"
@@ -187,6 +205,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-span-1 lg:col-span-2 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="description">
+                    {{ __('Description HTML view') }}
+                </label>
+                <x-jet-input-error for='description'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <textarea wire:model="description"
+                    class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
+            </div>
             <div class="col-span-2">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
@@ -203,6 +231,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-span-1 lg:col-span-2 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="content">
+                    {{ __('Content HTML view') }}
+                </label>
+                <x-jet-input-error for='content'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <textarea wire:model="content"
+                    class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
+            </div>
             <div class="col-span-2">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
@@ -218,6 +256,16 @@
                         </textarea>
                     </div>
                 </div>
+            </div>
+            <div class="col-span-1 lg:col-span-2 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="extra_data">
+                    {{ __('Extra data HTML view') }}
+                </label>
+                <x-jet-input-error for='extra_data'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <textarea wire:model="extra_data"
+                    class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
