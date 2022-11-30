@@ -13,7 +13,8 @@ class Save extends Component
 
     public $countries;
 
-    public $name, $logo_light_theme, $logo_dark_theme;
+    public $name, $logo_light_theme, $logo_dark_theme, $description;
+    public $current_logo_light_theme, $current_logo_dark_theme;
 
     public $country_id;
 
@@ -25,7 +26,8 @@ class Save extends Component
         'country_id' => 'required|integer',
         'name' => 'required|max:200|string',
         'logo_light_theme' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240',
-        'logo_dark_theme' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240'
+        'logo_dark_theme' => 'nullable|image|mimes:jpeg,jpg,png,svg|max:10240',
+        'description' => 'nullable|string'
     ];
 
     public function mount($id = null)
@@ -34,8 +36,9 @@ class Save extends Component
             $this->broadcaster = Broadcaster::findOrFail($id);
             $this->country_id = $this->broadcaster->country_id;
             $this->name = $this->broadcaster->name;
-            $this->logo_light_theme = $this->broadcaster->logo_light_theme;
-            $this->logo_dark_theme = $this->broadcaster->logo_dark_theme;
+            $this->current_logo_light_theme = $this->broadcaster->logo_light_theme;
+            $this->current_logo_dark_theme = $this->broadcaster->logo_dark_theme;
+            $this->description = $this->broadcaster->description;
         }
     }
 
@@ -70,7 +73,8 @@ class Save extends Component
         if ($this->broadcaster) {
             $this->broadcaster->update([
                 'country_id' => $this->country_id,
-                'name' => $this->name
+                'name' => $this->name,
+                'description' => $this->description
             ]);
             $this->emit('updated');
         } else {
@@ -78,7 +82,8 @@ class Save extends Component
                 'country_id' => $this->country_id,
                 'name' => $this->name,
                 'logo_light_theme' => 'wait',
-                'logo_dark_theme' => 'wait'
+                'logo_dark_theme' => 'wait',
+                'description' => $this->description
             ]);
             $this->emit('created');
         }

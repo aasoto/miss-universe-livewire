@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Editions\MissUniverse;
 
+use App\Http\Livewire\Dashboard\Traits\Order;
 use App\Models\Editions\Broadcaster;
 use App\Models\Editions\MissUniverse;
 use App\Models\Editions\MissUniversePresentatorInterception;
@@ -15,7 +16,7 @@ class Save extends Component
 {
     use WithFileUploads;
 
-    public $broadcasters, $places, $owners;
+    public $broadcasters, $places, $owners, $edition_id;
 
     public $year, $name, $official_name, $start_concentration, $end_concentration, $hotel_concentration, $date_preliminary, $date, $placements, $entrants, $description, $content, $top_3 = false, $top_5 = false, $top_6 = false, $extra_data, $logo, $background, $owner_id;
 
@@ -74,7 +75,7 @@ class Save extends Component
             $this->current_logo = $this->miss_universe->logo;
             $this->current_background = $this->miss_universe->background;
             $this->owner_id = $this->miss_universe->owner_id;
-
+            $this->edition_id = $id;
         }
     }
 
@@ -84,7 +85,8 @@ class Save extends Component
         $this->broadcasters = Broadcaster::pluck('id', 'name');
         $this->places = Place::get();
         $this->owners = Owner::get();
-        return view('livewire.dashboard.editions.miss-universe.save')->layout('layouts.dashboard.add.app');
+        $presenters = MissUniversePresentatorInterception::where('edition_id', $this->edition_id)->get();
+        return view('livewire.dashboard.editions.miss-universe.save', compact('presenters'))->layout('layouts.dashboard.add.app');
     }
 
     public function customize_send_button ()

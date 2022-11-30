@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId("country_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('logo_light_theme');
             $table->text('logo_dark_theme')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

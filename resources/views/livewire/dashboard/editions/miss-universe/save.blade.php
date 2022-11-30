@@ -157,7 +157,39 @@
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="placements" type="number">
             </div>
-            <div class="col-span-2 text-center">
+            <div class="col-span-1 lg:col-span-2 relative">
+                <table class="container mx-0 w-[85%] mt-2 sm:w-full">
+                    <thead class="sticky top-5 md:top-18 z-40 h-12 w-full bg-gray-300">
+                        <tr class="text-xs iPhoneSE:text-base text-gray-800 font-bold">
+                            <th class="rounded-l-3xl px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                                {{__('Name')}}
+                            </th>
+                            <th class="px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                                {{__('Broadcaster')}}
+                            </th>
+                            <th class="rounded-r-3xl px-3 sm:px-6 py-3 text-xs md:text-base break-words iPhoneSE:break-normal translate-x-4 md:translate-x-0">
+                                {{__('Role')}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($presenters as $p)
+                        <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
+                            <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
+                                {{ $p->presenter->name }}
+                            </td>
+                            <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
+                                {{ $p->presenter->broadcaster->name }}
+                            </td>
+                            <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
+                                {{ $p->presenter->rol }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-span-1 lg:col-span-2 text-center">
                 <label class="text-lg text-gray-500 dark:text-white mt-5 px-4"
                     for="">
                     {{__('Final top')}}
@@ -189,7 +221,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-1 lg:col-span-2">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="description">
@@ -215,7 +247,7 @@
                 <textarea wire:model="description"
                     class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-1 lg:col-span-2">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="content">
@@ -241,7 +273,7 @@
                 <textarea wire:model="content"
                     class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-1 lg:col-span-2">
                 <label
                     class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="extra_data">
@@ -275,7 +307,9 @@
                 <x-jet-input-error for='logo' class="absolute right-28 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input type="file" wire:model="logo" class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2">
                 @if ($miss_universe && $miss_universe->logo)
+                <div class="flex justify-center items-center">
                     <img class="w-60 mt-5 rounded-lg" src="{{ $miss_universe->getLogoUrl() }}"/>
+                </div>
                 @endif
             </div>
             <div class="col-span-1 relative">
@@ -286,7 +320,9 @@
                 <x-jet-input-error for='background' class="absolute right-28 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input type="file" wire:model="background" class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2">
                 @if ($miss_universe && $miss_universe->background)
+                <div class="flex justify-center items-center">
                     <img class="w-60 mt-5 rounded-lg" src="{{ $miss_universe->getBackgroundUrl() }}"/>
+                </div>
                 @endif
             </div>
         </div>

@@ -11,7 +11,7 @@ class Broadcaster extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'country_id', 'logo_light_theme', 'logo_dark_theme'];
+    protected $fillable = ['name', 'country_id', 'logo_light_theme', 'logo_dark_theme', 'description'];
 
     public function country(){
         return $this->belongsTo(Country::class, 'country_id');

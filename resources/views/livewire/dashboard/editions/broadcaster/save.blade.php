@@ -75,6 +75,31 @@
                     </div>
                 @endif
             </div>
+            <div class="col-span-1 lg:col-span-2 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="description">
+                    {{ __('Broadcaster channel description') }}
+                </label>
+                <div
+                    class="z-10 w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3">
+                    <div wire:ignore>
+                        <textarea id="ckdescription" rows="6">
+                            {!! $description !!}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-1 lg:col-span-2 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="description">
+                    {{ __('Broadcaster channel description HTML view') }}
+                </label>
+                <x-jet-input-error for='description'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <textarea wire:model="description"
+                    class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
+            </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
             <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold {{$send_button}} hover:scale-110 transition">
@@ -83,4 +108,27 @@
         </div>
     </form>
 </section>
+{{-- Importar plugin ckeditor --}}
+<script src="{{ asset('js/ckeditor5-build-classic/ckeditor.js') }}"></script>
+<script>
+    document.addEventListener('livewire:load', function() {
+        var ckeditor = null;
+        /* Comunicación ckeditor a description */
+        var editor = ClassicEditor.create(document.querySelector('#ckdescription')).then(
+            editor => {
+                ckeditor = editor;
+                editor.model.document.on('change:data', () => {
+                    @this.description = editor.getData();
+                });
+            }
+        )
+
+        /* Comunicación description a ckeditor */
+        Livewire.hook('message.processed', (message, component) => {
+            if (message.updateQueue[0].name == 'description') {
+                ckeditor.setData(@this.description);
+            }
+        })
+    })
+</script>
 
