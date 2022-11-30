@@ -14,7 +14,7 @@ class Save extends Component
 
     public $countries, $national_committees;
 
-    public $first_name, $second_name, $first_last_name, $second_last_name, $gender, $birthdate, $official_picture;
+    public $first_name, $second_name, $first_last_name, $second_last_name, $hometown, $gender, $birthdate, $age, $official_picture;
     public $country_id, $national_committee_id;
 
     public $candidate;
@@ -26,8 +26,10 @@ class Save extends Component
         'second_name' => 'nullable|string|max:100',
         'first_last_name' => 'required|max:100|string',
         'second_last_name' => 'nullable|string|max:100',
+        'hometown' => 'nullable|string|max:200',
         'gender' => 'required',
-        'birthdate' => 'required|date',
+        'birthdate' => 'nullable|date',
+        'age' => 'nullable|integer',
         'national_committee_id' => 'required|integer',
         'official_picture' => 'nullable|image|mimes:jpeg,jpg,png|max:10240'
     ];
@@ -41,7 +43,9 @@ class Save extends Component
             $this->second_name = $this->candidate->second_name;
             $this->first_last_name = $this->candidate->first_last_name;
             $this->second_last_name = $this->candidate->second_last_name;
+            $this->hometown = $this->candidate->hometown;
             $this->gender = $this->candidate->gender;
+            $this->age = $this->candidate->age;
             $this->birthdate = $this->candidate->birthdate;
             $this->national_committee_id = $this->candidate->national_committee_id;
         }
@@ -81,8 +85,10 @@ class Save extends Component
                 'second_name' => $this->second_name,
                 'first_last_name' => $this->first_last_name,
                 'second_last_name' => $this->second_last_name,
+                'hometown' => $this->hometown,
                 'gender' => $this->gender,
                 'birthdate' => $this->birthdate,
+                'age' => $this->age,
                 'national_committee_id' => $this->national_committee_id
             ]);
             $this->emit('updated');
@@ -93,8 +99,10 @@ class Save extends Component
                 'second_name' => $this->second_name,
                 'first_last_name' => $this->first_last_name,
                 'second_last_name' => $this->second_last_name,
+                'hometown' => $this->hometown,
                 'gender' => $this->gender,
                 'birthdate' => $this->birthdate,
+                'age' => $this->age,
                 'national_committee_id' => $this->national_committee_id
             ]);
             $this->emit('created');

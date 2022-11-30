@@ -87,7 +87,7 @@
                         {{ $contestant->edition->name }}
                     </td>
                     <td class="px-1 sm:px-2 py-3 text-xs md:text-base font-bold break-words iPhoneSE:break-normal">
-                        {{ $contestant->candidate->country->name }}
+                        {{ __($contestant->candidate->country->name) }}
                     </td>
                     <td class="flex gap-1 justify-center items-center px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                         <button

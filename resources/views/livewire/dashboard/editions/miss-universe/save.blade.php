@@ -182,7 +182,11 @@
                                 {{ $p->presenter->broadcaster->name }}
                             </td>
                             <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                                {{ $p->presenter->rol }}
+                                @foreach ($roles as $key => $rol)
+                                    @if ($p->presenter->rol == $key)
+                                        {{ __($rol) }}
+                                    @endif
+                                @endforeach
                             </td>
                         </tr>
                     @endforeach

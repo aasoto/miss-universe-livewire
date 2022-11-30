@@ -26,6 +26,14 @@ class Save extends Component
 
     public $miss_universe;
 
+    public $roles = [
+        'main_show' => 'Main show',
+        'backstage' => 'Backstage',
+        'prelims' => 'Preliminary competition',
+        'national_costume' => 'National costume parade',
+        'other' => 'Other'
+    ];
+
     protected $rules = [
         'year' => 'required|integer',
         'name' => 'required|max:200|string',

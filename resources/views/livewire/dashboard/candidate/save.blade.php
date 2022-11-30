@@ -21,7 +21,9 @@
                     wire:model="country_id">
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @foreach ($countries as $name => $id)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">{{ $name }}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{ $id }}">
+                            {{ __($name) }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -63,6 +65,15 @@
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="hometown">
+                    {{__('Hometown')}}
+                </label>
+                <x-jet-input-error for='hometown' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
+                    wire:model="hometown" type="text">
+            </div>
+            <div class="col-span-1 relative">
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
                     for="gender">
                     {{__('Gender')}}
                 </label>
@@ -82,6 +93,15 @@
                 <x-jet-input-error for='birthdate' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
                     wire:model="birthdate" type="date">
+            </div>
+            <div class="col-span-1 relative">
+                <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="age">
+                    {{__('Age')}}
+                </label>
+                <x-jet-input-error for='age' class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <input class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
+                    wire:model="age" type="number">
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"

@@ -25,7 +25,7 @@
                     <option class="bg-transparent dark:bg-slate-800" value="">{{__('Select...')}}</option>
                     @endif
                     @foreach ($candidates as $key => $value)
-                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{$value['first_name'].' '.$value['second_name'].' '.$value['first_last_name'].' '.$value['second_last_name']}}</option>
+                        <option class="bg-transparent dark:bg-slate-800" value="{{$value['id']}}">{{$value['first_name'].' '.$value['second_name'].' '.$value['first_last_name'].' '.$value['second_last_name'].' - '.__($value['country']['name'])}}</option>
                     @endforeach
                 </select>
             </div>

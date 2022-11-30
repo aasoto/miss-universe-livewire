@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string("second_name", 100)->nullable();
             $table->string("first_last_name", 100);
             $table->string("second_last_name", 100)->nullable();
+            $table->string('hometown', 200)->nullable();
             $table->string("gender", 10);
-            $table->date("birthdate");
+            $table->date("birthdate")->nullable();
             $table->integer("age")->nullable();
             $table->foreignId("national_committee_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text("official_picture")->nullable();
