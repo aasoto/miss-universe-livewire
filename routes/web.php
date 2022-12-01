@@ -64,6 +64,7 @@ use App\Http\Livewire\Sponsor\Company;
 use App\Http\Livewire\Sponsor\Detail;
 use App\Http\Livewire\Sponsor\General;
 use App\Http\Livewire\Sponsor\Person;
+use App\Http\Livewire\Web\Editions\MissUniverse;
 use App\Http\Livewire\Web\Index as WebIndex;
 use App\Http\Livewire\Web\News\Index as WebNewsIndex;
 use App\Http\Livewire\Web\News\Show as WebNewsShow;
@@ -89,6 +90,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/', WebIndex::class)->name('start');
     Route::get('/news/all', WebNewsIndex::class)->name('news-index');
     Route::get('/news/show/{slug}', WebNewsShow::class)->name('news-show');
+    Route::get('/editions/{slug}', MissUniverse::class)->name('miss-universe-edition');
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', LocaleCookieMiddleware::class], 'prefix' => 'dashboard'], function () {
