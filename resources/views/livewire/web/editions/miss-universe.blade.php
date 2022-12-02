@@ -284,21 +284,25 @@
                         </div>
                     </div>
                     <div class="border-b border-gray-400 mx-10"></div>
-                    <h2 class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                    <h2
+                        class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
                         Semifinalistas (Top 10)
                     </h2>
                     <div class="flex flex-row flex-wrap gap-10 justify-center items-center my-8">
                         <template x-for="semifinalist in page.semifinalists">
                             <div class="flex flex-col justify-center items-center">
                                 <div class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
-                                    <div class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                    <div
+                                        class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
                                         <img class="w-full h-full object-cover object-top rounded-full"
-                                            :src="`../../storage/app/public/images/candidates/official_pictures/${semifinalist.candidate.official_picture}`" alt="">
+                                            :src="`../../storage/app/public/images/candidates/official_pictures/${semifinalist.candidate.official_picture}`"
+                                            alt="">
                                     </div>
                                     <span class="absolute bottom-5 left-5"><i
                                             :class="`fi fi-${semifinalist.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i></span>
                                 </div>
-                                <p class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                <p
+                                    class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
                                     Semifinalista
                                 </p>
                                 <template x-if="semifinalist.candidate.second_name">
@@ -336,21 +340,25 @@
                         </template>
                     </div>
                     <div class="border-b border-gray-400 mx-10"></div>
-                    <h2 class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                    <h2
+                        class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
                         Cuartofinalistas (Top 15)
                     </h2>
                     <div class="flex flex-row flex-wrap gap-10 justify-center items-center my-8">
                         <template x-for="quarterfinalist in page.quarterfinalists">
                             <div class="flex flex-col justify-center items-center">
                                 <div class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
-                                    <div class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                    <div
+                                        class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
                                         <img class="w-full h-full object-cover object-top rounded-full"
-                                            :src="`../../storage/app/public/images/candidates/official_pictures/${quarterfinalist.candidate.official_picture}`" alt="">
+                                            :src="`../../storage/app/public/images/candidates/official_pictures/${quarterfinalist.candidate.official_picture}`"
+                                            alt="">
                                     </div>
                                     <span class="absolute bottom-5 left-5"><i
                                             :class="`fi fi-${quarterfinalist.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i></span>
                                 </div>
-                                <p class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                <p
+                                    class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
                                     Top 15
                                 </p>
                                 <template x-if="quarterfinalist.candidate.second_name">
@@ -388,10 +396,232 @@
                         </template>
                     </div>
                     <div class="border-b border-gray-400 mx-10"></div>
+                    <h2
+                        class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                        Premios especiales
+                    </h2>
+                    <div class="flex flex-col gap-2 justify-center items-center my-8">
+                        <div class="flex flex-col lg:flex-row gap-2 my-3">
+                            <div class="basis-2/3 flex flex-row gap-2">
+                                <template x-if="page.miss_congeniality">
+                                    <template x-for="miss_congeniality in page.miss_congeniality">
+                                        <div class="basis-1/2 flex flex-col justify-center items-center">
+                                            <div
+                                                class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
+                                                <div
+                                                    class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                                    <img class="w-full h-full object-cover object-top rounded-full"
+                                                        :src="`../../storage/app/public/images/candidates/official_pictures/${miss_congeniality.candidate.official_picture}`"
+                                                        alt="">
+                                                </div>
+                                                <span class="absolute bottom-5 left-5">
+                                                    <i
+                                                        :class="`fi fi-${miss_congeniality.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i>
+                                                </span>
+                                            </div>
+                                            <p
+                                                class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                                Miss Simpatía
+                                            </p>
+                                            <template x-if="miss_congeniality.candidate.second_name">
+                                                <template x-if="miss_congeniality.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="miss_congeniality.candidate.first_name+' '+miss_congeniality.candidate.second_name+' '+miss_congeniality.candidate.first_last_name+' '+miss_congeniality.candidate.second_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="!miss_congeniality.candidate.second_name">
+                                                <template x-if="!miss_congeniality.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="miss_congeniality.candidate.first_name+' '+miss_congeniality.candidate.first_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="miss_congeniality.candidate.second_name">
+                                                <template x-if="!miss_congeniality.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="miss_congeniality.candidate.first_name+' '+miss_congeniality.candidate.second_name+' '+miss_congeniality.candidate.first_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="!miss_congeniality.candidate.second_name">
+                                                <template x-if="miss_congeniality.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="miss_congeniality.candidate.first_name+' '+miss_congeniality.candidate.first_last_name+' '+miss_congeniality.candidate.second_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <p class="text-xl font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="miss_congeniality.candidate.country.name">
+                                            </p>
+                                        </div>
+                                    </template>
+                                </template>
+                                <template x-if="page.best_national_costume">
+                                    <template x-for="best_national_costume in page.best_national_costume">
+                                        <div class="basis-1/2 flex flex-col justify-center items-center">
+                                            <div
+                                                class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
+                                                <div
+                                                    class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                                    <img class="w-full h-full object-cover object-top rounded-full"
+                                                        :src="`../../storage/app/public/images/candidates/official_pictures/${best_national_costume.candidate.official_picture}`"
+                                                        alt="">
+                                                </div>
+                                                <span class="absolute bottom-5 left-5">
+                                                    <i
+                                                        :class="`fi fi-${best_national_costume.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i>
+                                                </span>
+                                            </div>
+                                            <p
+                                                class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                                Mejor Traje Típico
+                                            </p>
+                                            <template x-if="best_national_costume.candidate.second_name">
+                                                <template x-if="best_national_costume.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="best_national_costume.candidate.first_name+' '+best_national_costume.candidate.second_name+' '+best_national_costume.candidate.first_last_name+' '+best_national_costume.candidate.second_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="!best_national_costume.candidate.second_name">
+                                                <template x-if="!best_national_costume.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="best_national_costume.candidate.first_name+' '+best_national_costume.candidate.first_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="best_national_costume.candidate.second_name">
+                                                <template x-if="!best_national_costume.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="best_national_costume.candidate.first_name+' '+best_national_costume.candidate.second_name+' '+best_national_costume.candidate.first_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <template x-if="!best_national_costume.candidate.second_name">
+                                                <template x-if="best_national_costume.candidate.second_last_name">
+                                                    <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                        x-text="best_national_costume.candidate.first_name+' '+best_national_costume.candidate.first_last_name+' '+best_national_costume.candidate.second_last_name">
+                                                    </p>
+                                                </template>
+                                            </template>
+                                            <p class="text-xl font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="best_national_costume.candidate.country.name">
+                                            </p>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                            <template x-if="page.miss_photogenic">
+                                <template x-for="miss_photogenic in page.miss_photogenic">
+                                    <div class="basis-1/3 flex flex-col justify-center items-center">
+                                        <div class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
+                                            <div
+                                                class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                                <img class="w-full h-full object-cover object-top rounded-full"
+                                                    :src="`../../storage/app/public/images/candidates/official_pictures/${miss_photogenic.candidate.official_picture}`"
+                                                    alt="">
+                                            </div>
+                                            <span class="absolute bottom-5 left-5">
+                                                <i
+                                                    :class="`fi fi-${miss_photogenic.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i>
+                                            </span>
+                                        </div>
+                                        <p
+                                            class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                            Miss Fotogenica
+                                        </p>
+                                        <template x-if="miss_photogenic.candidate.second_name">
+                                            <template x-if="miss_photogenic.candidate.second_last_name">
+                                                <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                    x-text="miss_photogenic.candidate.first_name+' '+miss_photogenic.candidate.second_name+' '+miss_photogenic.candidate.first_last_name+' '+miss_photogenic.candidate.second_last_name">
+                                                </p>
+                                            </template>
+                                        </template>
+                                        <template x-if="!miss_photogenic.candidate.second_name">
+                                            <template x-if="!miss_photogenic.candidate.second_last_name">
+                                                <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                    x-text="miss_photogenic.candidate.first_name+' '+miss_photogenic.candidate.first_last_name">
+                                                </p>
+                                            </template>
+                                        </template>
+                                        <template x-if="miss_photogenic.candidate.second_name">
+                                            <template x-if="!miss_photogenic.candidate.second_last_name">
+                                                <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                    x-text="miss_photogenic.candidate.first_name+' '+miss_photogenic.candidate.second_name+' '+miss_photogenic.candidate.first_last_name">
+                                                </p>
+                                            </template>
+                                        </template>
+                                        <template x-if="!miss_photogenic.candidate.second_name">
+                                            <template x-if="miss_photogenic.candidate.second_last_name">
+                                                <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                    x-text="miss_photogenic.candidate.first_name+' '+miss_photogenic.candidate.first_last_name+' '+miss_photogenic.candidate.second_last_name">
+                                                </p>
+                                            </template>
+                                        </template>
+                                        <p class="text-xl font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                            x-text="miss_photogenic.candidate.country.name">
+                                        </p>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <!-- End of Resumen -->
+                <div class="basis-1/3">
+                    <div class="container mx-auto -mt-0 md:-mt-20 py-5 md:py-10 w-full iPhoneSE:w-10/12 md:w-8/12">
+                        <div class="block md:hidden border-b border-gray-400 mx-5"></div>
+                        <h2
+                            class="block md:hidden text-xl my-4 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                            Propietario
+                        </h2>
+                        <img @click="open_owner()"
+                            class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_light_theme}`" alt="">
+                        <img @click="open_owner()"
+                            class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_dark_theme}`" alt="">
+                    </div>
+                    <div class="mx-auto py-5 w-10/12 md:w-8/12">
+                        <div class="block md:hidden border-b border-gray-400 mx-5"></div>
+                        <h2
+                            class="block md:hidden text-xl my-4 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                            Canales de televisión
+                        </h2>
+                        <div class="flex flex-row gap-3">
+                            <div class="container basis-1/2 flex items-center">
+                                <img @click="open_broadcaster()"
+                                    class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_light_theme}`" alt="">
+                                <img @click="open_broadcaster()"
+                                    class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_dark_theme}`" alt="">
+                            </div>
+                            <div class="container basis-1/2 flex items-center">
+                                <img @click="open_broadcaster_2()"
+                                    class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_light_theme}`" alt="">
+                                <img @click="open_broadcaster_2()"
+                                    class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_dark_theme}`" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
     </section>
+    <!-- Modals -->
+    <div x-show="show_info_owner" x-transition>
+        <div x-html="modal_owner()"></div>
+    </div>
+    <div x-show="show_info_broadcaster" x-transition>
+        <div x-html="modal_main_broadcaster()"></div>
+    </div>
+    <div x-show="show_info_broadcaster_2" x-transition>
+        <div x-html="modal_secondary_broadcaster()"></div>
+    </div>
+    <!-- end of Modals -->
 </div>
 <script>
     function data() {
@@ -401,7 +631,92 @@
             show_page_info() {
                 this.page = JSON.parse(this.page_information);
                 console.log(this.page);
-            }
+            },
+            show_info_owner: false,
+            open_owner() {
+                this.show_info_owner = true;
+            },
+            close_owner() {
+                this.show_info_owner = false;
+            },
+            show_info_broadcaster: false,
+            open_broadcaster() {
+                this.show_info_broadcaster = true;
+            },
+            close_broadcaster() {
+                this.show_info_broadcaster = false;
+            },
+            show_info_broadcaster_2: false,
+            open_broadcaster_2() {
+                this.show_info_broadcaster_2 = true;
+            },
+            close_broadcaster_2() {
+                this.show_info_broadcaster_2 = false;
+            },
+            modal_owner() {
+                return `
+                <div @click="close_owner()" class="z-40 absolute top-0 left-0 right-0 bottom-0 bg-transparent">
+                </div>
+                <div class="flex justify-center">
+                    <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
+                        <div class="flex w-full h-1/6">
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.owner.business_name + `</div>
+                            <div class="w-2/12 md:w-1/12 flex justify-center items-center">
+                                <i @click="close_owner()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
+                            <img class="block dark:hidden px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` + this.page.owner.logo_light_theme + `" alt="">
+                            <img class="hidden dark:block px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` + this.page.owner.logo_dark_theme + `" alt="">
+                            <div>` + this.page.owner.description + `</div>
+                        </div>
+                    </div>
+                </div>`;
+            },
+            modal_main_broadcaster() {
+                return `
+                <div @click="close_broadcaster()" class="z-40 absolute top-0 left-0 right-0 bottom-0 bg-transparent">
+                </div>
+                <div class="flex justify-center">
+                    <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
+                        <div class="flex w-full h-1/6">
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.main_broadcaster.name + `</div>
+                            <div class="w-2/12 md:w-1/12 flex justify-center items-center">
+                                <i @click="close_broadcaster()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
+                            <div class="flex justify-center">
+                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.main_broadcaster.logo_light_theme + `" alt="">
+                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.main_broadcaster.logo_dark_theme + `" alt="">
+                            </div>
+                            <div>` + this.page.main_broadcaster.description + `</div>
+                        </div>
+                    </div>
+                </div>`;
+            },
+            modal_secondary_broadcaster() {
+                return `
+                <div @click="close_broadcaster_2()" class="z-40 absolute top-0 left-0 right-0 bottom-0 bg-transparent">
+                </div>
+                <div class="flex justify-center">
+                    <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
+                        <div class="flex w-full h-1/6">
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.secondary_broadcaster.name + `</div>
+                            <div class="w-2/12 md:w-1/12 flex justify-center items-center">
+                                <i @click="close_broadcaster_2()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
+                            <div class="flex justify-center">
+                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.secondary_broadcaster.logo_light_theme + `" alt="">
+                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.secondary_broadcaster.logo_dark_theme + `" alt="">
+                            </div>
+                            <div>` + this.page.secondary_broadcaster.description + `</div>
+                        </div>
+                    </div>
+                </div>`;
+            },
         }
     }
 </script>
