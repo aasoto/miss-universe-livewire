@@ -269,8 +269,8 @@ class MissUniverse extends Component
             'best_national_costume' => $best_national_costume,
             'contestants' => $contestants
         );
-        $this->page_information = json_decode(json_encode($this->page_information));
-        dd($this->page_information);
-        return view('livewire.web.editions.miss-universe');
+        $this->page_information = json_encode($this->page_information);
+        // $this->page_information = '['.$this->page_information.']';
+        return view('livewire.web.editions.miss-universe')->layout('layouts.web.layout');
     }
 }

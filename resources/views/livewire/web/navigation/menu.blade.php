@@ -4,11 +4,11 @@
         <div class="z-20 ml-7">
             <div class="block dark:hidden">
                 <img class="w-[200px] md:w-auto h-[60px] md:h-[40px] -my-7 md:my-0"
-                src="../storage/app/public/images/web/navbar/logo-BPproject-horizontal-fuente.svg" alt="">
+                src="{{$redirect}}../storage/app/public/images/web/navbar/logo-BPproject-horizontal-fuente.svg" alt="">
             </div>
             <div class="hidden dark:block">
                 <img class="w-[200px] md:w-auto h-[60px] md:h-[40px] -my-7 md:my-0"
-                src="../storage/app/public/images/web/navbar/logo-BPproject-horizontal-fuente-blanco.svg" alt="">
+                src="{{$redirect}}../storage/app/public/images/web/navbar/logo-BPproject-horizontal-fuente-blanco.svg" alt="">
             </div>
         </div>
         <!-- Botón responsive -->

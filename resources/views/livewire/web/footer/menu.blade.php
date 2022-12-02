@@ -4,8 +4,8 @@
         <div class="w-full bg-gradient-to-t from-gray-300 dark:from-slate-800 to-transparent px-5 py-7">
             <div class="grid grid-cols-4 gap-5">
                 <div class="container col-span-4 md:col-span-1 font-delmon-delicate">
-                    <img class="block dark:hidden" :src="`${logo_footer_modo_diurno}`" alt="">
-                    <img class="hidden dark:block" :src="`${logo_footer_modo_nocturno}`" alt="">
+                    <img class="block dark:hidden" :src="`{{$redirect}}${logo_footer_modo_diurno}`" alt="">
+                    <img class="hidden dark:block" :src="`{{$redirect}}${logo_footer_modo_nocturno}`" alt="">
                     <div class="mt-10 md:mt-4 w-full flex flex-row justify-evenly">
                         <i class="fa-brands fa-facebook text-gray-700 dark:text-white hover:text-gray-900 dark:hover:bg-white dark:hover:text-blue-800 dark:hover:rounded-full scale-[2] md:scale-125 hover:scale-[2.5] md:hover:scale-150 transition duration-200"
                             title="Facebook"></i>
