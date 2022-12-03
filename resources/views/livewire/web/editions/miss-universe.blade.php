@@ -578,10 +578,12 @@
                         </h2>
                         <img @click="open_owner()"
                             class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_light_theme}`" alt="">
+                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_light_theme}`"
+                            alt="">
                         <img @click="open_owner()"
                             class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_dark_theme}`" alt="">
+                            :src="`../../storage/app/public/images/owners/logo/${page.owner.logo_dark_theme}`"
+                            alt="">
                     </div>
                     <div class="mx-auto py-5 w-10/12 md:w-8/12">
                         <div class="block md:hidden border-b border-gray-400 mx-5"></div>
@@ -593,22 +595,294 @@
                             <div class="container basis-1/2 flex items-center">
                                 <img @click="open_broadcaster()"
                                     class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_light_theme}`" alt="">
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_light_theme}`"
+                                    alt="">
                                 <img @click="open_broadcaster()"
                                     class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_dark_theme}`" alt="">
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.main_broadcaster.logo_dark_theme}`"
+                                    alt="">
                             </div>
                             <div class="container basis-1/2 flex items-center">
                                 <img @click="open_broadcaster_2()"
                                     class="block dark:hidden scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_light_theme}`" alt="">
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_light_theme}`"
+                                    alt="">
                                 <img @click="open_broadcaster_2()"
                                     class="hidden dark:block scale-75 md:scale-100 hover:scale-110 md:hover:scale-125 transition duration-200 cursor-pointer"
-                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_dark_theme}`" alt="">
+                                    :src="`../../storage/app/public/images/editions/broadcasters/${page.secondary_broadcaster.logo_dark_theme}`"
+                                    alt="">
                             </div>
                         </div>
                     </div>
+                    <div class="mx-1 iPhoneSE:mx-6">
+                        <div class="border-t border-gray-400 mx-10"></div>
+                        <div class="flex flex-row gap-2 mt-4 mx-1 iPhoneSE:mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Sede final
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <p
+                                    class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    <span x-text="page.place.name"></span>
+                                    <span>
+                                        <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
+                                    </span>
+                                    <span
+                                        x-text="page.place.city_venue.city+', '+page.place.city_venue.state+', '+page.place.city_venue.country.name+'.'"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Sede operativa
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <p
+                                    class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    <span x-text="page.edition_information.hotel_concentration"></span>
+                                    <span>
+                                        <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
+                                    </span>
+                                    <span x-text="page.place.city_venue.country.name"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Fecha
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                    x-text="page.edition_information.date">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Presentadores
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                    <template x-for="presenter in page.presenters">
+                                        <li
+                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                            <span>
+                                                <i
+                                                    :class="`fi fi-${presenter.presenter.country.iso3166_1_alpha2}`"></i>
+                                            </span>
+                                            <span x-text="presenter.presenter.name"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Entretenimiento
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                    <template x-for="entertainment in page.entertainment">
+                                        <li
+                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                            <span>
+                                                <i :class="`fi fi-${entertainment.country.iso3166_1_alpha2}`"></i>
+                                            </span>
+                                            <span x-text="entertainment.artist"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Número de participantes
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                    x-text="page.edition_information.entrants">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Clasificación
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                    x-text="page.edition_information.placements">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Retiros
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                    <template x-for="withdrawal in page.withdrawals">
+                                        <li
+                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                            <span>
+                                                <i :class="`fi fi-${withdrawal.country.iso3166_1_alpha2}`"></i>
+                                            </span>
+                                            <span x-text="withdrawal.country.name"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-2 mt-4 mx-5">
+                            <div class="container basis-1/2">
+                                <h4
+                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                    Regresos
+                                </h4>
+                            </div>
+                            <div class="container basis-1/2">
+                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                    <template x-for="r in page.returns">
+                                        <li
+                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                            <span>
+                                                <i :class="`fi fi-${r.country.iso3166_1_alpha2}`"></i>
+                                            </span>
+                                            <span x-text="r.country.name"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mx-5 my-8">
+                            <h4
+                                class="mb-5 text-base font-bold text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                Logo oficial de la edición
+                            </h4>
+                            <img class="rounded-lg"
+                                :src="`../../storage/app/public/images/editions/miss-universe/logos/${page.edition_information.logo}`"
+                                alt="">
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+        <!-- Infomración general y resultados -->
+        <div class="border-b border-gray-400 mx-10 my-6"></div>
+        <!-- Candidatas -->
+        <section>
+            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                Concursantes
+            </h2>
+            <div class="flex justify-center items-center">
+                <table class="container mx-0 iPhoneSE:mx-5 md:mx-10 w-full">
+                    <thead class="sticky top-20 md:top-18 z-[70] w-full bg-gray-300 text-xs iPhoneSE:text-base rounded-full text-gray-800">
+                        <tr class="text-center w-full">
+                            <th class="rounded-l-full text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
+                                País
+                            </th>
+                            <th class=" text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
+                                Concursante
+                            </th>
+                            <th class=" text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
+                                Edad
+                            </th>
+                            <th class="rounded-r-full text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
+                                Ciudad
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="w-full">
+                        <template x-for="contestant in page.contestants">
+                            <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
+                                <td class="w-2/6 px-2 py-3 text-base font-bold break-words iPhoneSE:break-normal">
+                                    <span class="ml-5">
+                                        <i
+                                            :class="`fi fi-${contestant.candidate.country.iso3166_1_alpha2} fis rounded-full scale-125`"></i>
+                                    </span>
+                                    <span class="ml-3" x-text="contestant.candidate.country.name">
+                                    </span>
+                                </td>
+                                <template x-if="contestant.candidate.second_name">
+                                    <template x-if="contestant.candidate.second_last_name">
+                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
+                                        </td>
+                                    </template>
+                                </template>
+                                <template x-if="!contestant.candidate.second_name">
+                                    <template x-if="contestant.candidate.second_last_name">
+                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
+                                        </td>
+                                    </template>
+                                </template>
+                                <template x-if="contestant.candidate.second_name">
+                                    <template x-if="!contestant.candidate.second_last_name">
+                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name">
+                                        </td>
+                                    </template>
+                                </template>
+                                <template x-if="!contestant.candidate.second_name">
+                                    <template x-if="!contestant.candidate.second_last_name">
+                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name">
+                                        </td>
+                                    </template>
+                                </template>
+                                <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
+                                    x-text="contestant.candidate.age">
+                                </td>
+                                <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
+                                    x-text="contestant.candidate.hometown">
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!--End of Candidatas -->
+        <div class="sticky top-20 md:top-28 z-[70] w-full"></div>
+        <!-- Contenido -->
+        <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
+            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
+                Contenido
+            </h2>
+            <span class="info-texto" x-html="page.edition_information.content"></span>
+        </section>
+        <!--En of Contenido -->
+        <div class="sticky top-20 md:top-28 z-[70] w-full"></div>
+        <!-- Contenido -->
+        <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
+            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
+                Información extra
+            </h2>
+            <span class="info-texto" x-html="page.edition_information.extra_data"></span>
         </section>
     </section>
     <!-- Modals -->
@@ -660,14 +934,21 @@
                 <div class="flex justify-center">
                     <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
                         <div class="flex w-full h-1/6">
-                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.owner.business_name + `</div>
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` +
+                    this.page.owner.business_name +
+                    `</div>
                             <div class="w-2/12 md:w-1/12 flex justify-center items-center">
                                 <i @click="close_owner()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
                             </div>
                         </div>
                         <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
-                            <img class="block dark:hidden px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` + this.page.owner.logo_light_theme + `" alt="">
-                            <img class="hidden dark:block px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` + this.page.owner.logo_dark_theme + `" alt="">
+                            <img class="block dark:hidden px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` +
+                    this.page.owner
+                    .logo_light_theme +
+                    `" alt="">
+                            <img class="hidden dark:block px-0 md:px-48 mb-10" src="../../storage/app/public/images/owners/logo/` +
+                    this
+                    .page.owner.logo_dark_theme + `" alt="">
                             <div>` + this.page.owner.description + `</div>
                         </div>
                     </div>
@@ -680,15 +961,20 @@
                 <div class="flex justify-center">
                     <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
                         <div class="flex w-full h-1/6">
-                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.main_broadcaster.name + `</div>
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` +
+                    this.page.main_broadcaster.name +
+                    `</div>
                             <div class="w-2/12 md:w-1/12 flex justify-center items-center">
                                 <i @click="close_broadcaster()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
                             </div>
                         </div>
                         <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
                             <div class="flex justify-center">
-                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.main_broadcaster.logo_light_theme + `" alt="">
-                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.main_broadcaster.logo_dark_theme + `" alt="">
+                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` +
+                    this.page.main_broadcaster.logo_light_theme +
+                    `" alt="">
+                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` +
+                    this.page.main_broadcaster.logo_dark_theme + `" alt="">
                             </div>
                             <div>` + this.page.main_broadcaster.description + `</div>
                         </div>
@@ -702,15 +988,20 @@
                 <div class="flex justify-center">
                     <div class="container z-50 fixed top-28 w-10/12 h-2/3 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl shadow-lg rounded-lg">
                         <div class="flex w-full h-1/6">
-                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` + this.page.secondary_broadcaster.name + `</div>
+                            <div class="w-10/12 md:w-11/12 pl-7 flex items-center text-gray-800 dark:text-white text-xl font-bold">` +
+                    this.page.secondary_broadcaster.name +
+                    `</div>
                             <div class="w-2/12 md:w-1/12 flex justify-center items-center">
                                 <i @click="close_broadcaster_2()" class="fa-solid fa-xmark text-gray-800 dark:text-white hover:text-white hover:bg-red-500 hover:rounded-full hover:py-1 hover:px-2 cursor-pointer"></i>
                             </div>
                         </div>
                         <div class="container w-full h-5/6 py-8 px-8 md:px-16 text-base font-normal text-gray-800 dark:text-white overflow-auto text-justify leading-relaxed selection:bg-rose-300 dark:selection:bg-rose-700">
                             <div class="flex justify-center">
-                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.secondary_broadcaster.logo_light_theme + `" alt="">
-                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` + this.page.secondary_broadcaster.logo_dark_theme + `" alt="">
+                                <img class="block dark:hidden px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` +
+                    this.page.secondary_broadcaster.logo_light_theme +
+                    `" alt="">
+                                <img class="hidden dark:block px-0 md:px-48 mb-10 w-2/3 object-cover object-center" src="../../storage/app/public/images/editions/broadcasters/` +
+                    this.page.secondary_broadcaster.logo_dark_theme + `" alt="">
                             </div>
                             <div>` + this.page.secondary_broadcaster.description + `</div>
                         </div>

@@ -53,6 +53,14 @@
     @apply grid grid-cols-1 divide-y-4 divide-pink-600
 }
 
+.hamburger div:first-child{
+    @apply rotate-45 translate-y-[0.330rem]
+}
+
+.hamburger div:last-child{
+    @apply -rotate-45 -translate-y-[0.330rem]
+}
+
 @layer components {
 
     @keyframes appear-x {

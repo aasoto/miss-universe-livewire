@@ -24,6 +24,7 @@ use App\Models\Editions\ThirdRunnerUp;
 use App\Models\Editions\Winner;
 use App\Models\Editions\Withdrawal;
 use App\Models\Owner;
+use DateTime;
 use Livewire\Component;
 
 class MissUniverse extends Component
@@ -38,6 +39,11 @@ class MissUniverse extends Component
     public function render()
     {
         $edition_information = EditionsMissUniverse::where('slug', $this->slug)->get();
+        // setlocale(LC_TIME, 'es_ES.UTF-8');
+        // $date = date("Y-m-d H:i:s", strtotime('2015-01-25'));
+        // $edition_information[0]->date = strftime("%A, %d de %B de %Y", $date);
+        $edition_information[0]->date = new DateTime($edition_information[0]->date);
+        $edition_information[0]->date = $edition_information[0]->date->format('j F, Y.');
 
         /*================== FILTER INFORMATION SECTION ========================*/
 
