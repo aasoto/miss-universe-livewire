@@ -393,7 +393,7 @@ class MissUniverse extends Component
             $runners_up_array = array_merge($runners_up_array, array('runner_up_'.$key => $runners_up[$key]));
         }
         if ($flag) {
-            usort($returns_array, function($a, $b) {
+            usort($runners_up_array, function($a, $b) {
                 return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
             });
             $runners_up = json_decode(json_encode($runners_up_array));

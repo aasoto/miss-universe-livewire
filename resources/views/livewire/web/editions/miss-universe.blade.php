@@ -294,6 +294,68 @@
                             </template>
                         </div>
                     </div>
+                    <template x-if="page.runners_up">
+                        <div class="border-b border-gray-400 mx-10"></div>
+                    </template>
+                    <template x-if="page.runners_up">
+                        <h2
+                            class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                            Finalistas (Top 5)
+                        </h2>
+                    </template>
+                    <template x-if="page.runners_up">
+                        <div class="flex flex-row flex-wrap gap-10 justify-center items-center my-8">
+                            <template x-for="runner_up in page.runners_up">
+                                <div class="flex flex-col justify-center items-center">
+                                    <div class="relative w-32 iPhoneSE:w-40 sm:w-48 h-32 iPhoneSE:h-40 sm:h-48">
+                                        <div
+                                            class="rounded-full w-full h-full p-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                                            <img class="w-full h-full object-cover object-top rounded-full"
+                                                :src="`../../storage/app/public/images/candidates/official_pictures/${runner_up.candidate.official_picture}`"
+                                                alt="">
+                                        </div>
+                                        <span class="absolute bottom-5 left-5">
+                                            <i :class="`fi fi-${runner_up.candidate.country.iso3166_1_alpha2} fis rounded-full scale-[3]`"></i>
+                                        </span>
+                                    </div>
+                                    <p class="text-base font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Finalista
+                                    </p>
+                                    <template x-if="runner_up.candidate.second_name">
+                                        <template x-if="runner_up.candidate.second_last_name">
+                                            <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="runner_up.candidate.first_name+' '+runner_up.candidate.second_name+' '+runner_up.candidate.first_last_name+' '+runner_up.candidate.second_last_name">
+                                            </p>
+                                        </template>
+                                    </template>
+                                    <template x-if="!runner_up.candidate.second_name">
+                                        <template x-if="!runner_up.candidate.second_last_name">
+                                            <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="runner_up.candidate.first_name+' '+runner_up.candidate.first_last_name">
+                                            </p>
+                                        </template>
+                                    </template>
+                                    <template x-if="!runner_up.candidate.second_name">
+                                        <template x-if="runner_up.candidate.second_last_name">
+                                            <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="runner_up.candidate.first_name+' '+runner_up.candidate.first_last_name+' '+runner_up.candidate.second_last_name">
+                                            </p>
+                                        </template>
+                                    </template>
+                                    <template x-if="runner_up.candidate.second_name">
+                                        <template x-if="!runner_up.candidate.second_last_name">
+                                            <p class="text-base italic font-light text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                                x-text="runner_up.candidate.first_name+' '+runner_up.candidate.second_name+' '+runner_up.candidate.first_last_name">
+                                            </p>
+                                        </template>
+                                    </template>
+                                    <p class="text-xl font-medium text-gray-800 dark:text-white text-center selection:bg-rose-300 dark:selection:bg-rose-700"
+                                        x-text="runner_up.candidate.country.name">
+                                    </p>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
                     <template x-if="page.semifinalists">
                         <div class="border-b border-gray-400 mx-10"></div>
                     </template>
@@ -712,7 +774,7 @@
                                 </template>
                             </div>
                         </div>
-                        <template x-if="presenter.presenter.name">
+                        <template x-if="page.presenters">
                             <div class="flex flex-row gap-2 mt-4 mx-5">
                                 <div class="container basis-1/2">
                                     <h4
