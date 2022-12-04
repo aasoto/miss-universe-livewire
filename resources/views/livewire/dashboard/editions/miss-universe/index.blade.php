@@ -106,7 +106,9 @@
                             @endisset
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
-                            {{ $m_u->broadcaster->name }}
+                            @isset($m_u->broadcaster->name)
+                                {{ $m_u->broadcaster->name }}
+                            @endisset
                         </td>
                         <td class="px-1 sm:px-2 py-3 text-xs md:text-base break-words iPhoneSE:break-normal">
                             @isset($m_u->broadcaster_2)

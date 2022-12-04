@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignId("owner_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->foreignId("broadcaster_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('broadcaster_2')->nullable();
-            $table->foreignId("place_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("place_id")->constrained()->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('entrants')->nullable();
             $table->integer('placements')->nullable();
             $table->text('description');
