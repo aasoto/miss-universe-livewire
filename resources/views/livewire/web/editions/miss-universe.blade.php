@@ -83,10 +83,11 @@
                         </div>
                         <div class="border-b border-gray-400 mx-10"></div>
                     </template>
-                    <h2
-                        class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
-                        Finalistas
-                    </h2>
+                    <template x-if="page.first_runner_up"">
+                        <h2 class="text-lg md:text-xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                            Finalistas
+                        </h2>
+                    </template>
                     <div class="flex flex-col xl:flex-row gap-2 justify-center items-center my-8">
                         <div class="flex flex-row gap-2 my-3">
                             <template x-if="page.first_runner_up">
@@ -647,44 +648,50 @@
                         </div>
                     </template>
                     <div class="mx-1 iPhoneSE:mx-6">
-                        <div class="border-t border-gray-400 mx-10"></div>
-                        <div class="flex flex-row gap-2 mt-4 mx-1 iPhoneSE:mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Sede final
-                                </h4>
+                        <template x-if="page.owner">
+                            <div class="border-t border-gray-400 mx-10"></div>
+                        </template>
+                        <template x-if="page.place.city_venue.city">
+                            <div class="flex flex-row gap-2 mt-4 mx-1 iPhoneSE:mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Sede final
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <p
+                                        class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        <span x-text="page.place.name"></span>
+                                        <span>
+                                            <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
+                                        </span>
+                                        <span
+                                            x-text="page.place.city_venue.city+', '+page.place.city_venue.state+', '+page.place.city_venue.country.name+'.'"></span>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="container basis-1/2">
-                                <p
-                                    class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    <span x-text="page.place.name"></span>
-                                    <span>
-                                        <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
-                                    </span>
-                                    <span
-                                        x-text="page.place.city_venue.city+', '+page.place.city_venue.state+', '+page.place.city_venue.country.name+'.'"></span>
-                                </p>
+                        </template>
+                        <template x-if="page.edition_information.hotel_concentration">
+                            <div class="flex flex-row gap-2 mt-4 mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Sede operativa
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <p
+                                        class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        <span x-text="page.edition_information.hotel_concentration"></span>
+                                        <span>
+                                            <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
+                                        </span>
+                                        <span x-text="page.place.city_venue.country.name"></span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex flex-row gap-2 mt-4 mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Sede operativa
-                                </h4>
-                            </div>
-                            <div class="container basis-1/2">
-                                <p
-                                    class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    <span x-text="page.edition_information.hotel_concentration"></span>
-                                    <span>
-                                        <i :class="`fi fi-${page.place.city_venue.country.iso3166_1_alpha2}`"></i>
-                                    </span>
-                                    <span x-text="page.place.city_venue.country.name"></span>
-                                </p>
-                            </div>
-                        </div>
+                        </template>
                         <div class="flex flex-row gap-2 mt-4 mx-5">
                             <div class="container basis-1/2">
                                 <h4
@@ -693,80 +700,95 @@
                                 </h4>
                             </div>
                             <div class="container basis-1/2">
-                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
-                                    x-text="page.edition_information.date">
-                                </p>
+                                <template x-if="page.edition_information.date">
+                                    <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                        x-text="page.edition_information.date">
+                                    </p>
+                                </template>
+                                <template x-if="!page.edition_information.date">
+                                    <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Por definir.
+                                    </p>
+                                </template>
                             </div>
                         </div>
-                        <div class="flex flex-row gap-2 mt-4 mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Presentadores
-                                </h4>
+                        <template x-if="presenter.presenter.name">
+                            <div class="flex flex-row gap-2 mt-4 mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Presentadores
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                        <template x-for="presenter in page.presenters">
+                                            <li
+                                                class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                                <span>
+                                                    <i
+                                                        :class="`fi fi-${presenter.presenter.country.iso3166_1_alpha2}`"></i>
+                                                </span>
+                                                <span x-text="presenter.presenter.name"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="container basis-1/2">
-                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
-                                    <template x-for="presenter in page.presenters">
-                                        <li
-                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
-                                            <span>
-                                                <i
-                                                    :class="`fi fi-${presenter.presenter.country.iso3166_1_alpha2}`"></i>
-                                            </span>
-                                            <span x-text="presenter.presenter.name"></span>
-                                        </li>
-                                    </template>
-                                </ul>
+                        </template>
+                        <template x-if="page.entertainment">
+                            <div class="flex flex-row gap-2 mt-4 mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Entretenimiento
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
+                                        <template x-for="entertainment in page.entertainment">
+                                            <li
+                                                class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
+                                                <span>
+                                                    <i :class="`fi fi-${entertainment.country.iso3166_1_alpha2}`"></i>
+                                                </span>
+                                                <span x-text="entertainment.artist"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex flex-row gap-2 mt-4 mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Entretenimiento
-                                </h4>
+                        </template>
+                        <template x-if="page.edition_information.entrants">
+                            <div class="flex flex-row gap-2 mt-4 mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Número de participantes
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                        x-text="page.edition_information.entrants">
+                                    </p>
+                                </div>
                             </div>
-                            <div class="container basis-1/2">
-                                <ul class="list-none iPhoneSE:list-disc md:list-none xl:list-disc list-inside">
-                                    <template x-for="entertainment in page.entertainment">
-                                        <li
-                                            class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700">
-                                            <span>
-                                                <i :class="`fi fi-${entertainment.country.iso3166_1_alpha2}`"></i>
-                                            </span>
-                                            <span x-text="entertainment.artist"></span>
-                                        </li>
-                                    </template>
-                                </ul>
+                        </template>
+                        <template x-if="page.edition_information.placements">
+                            <div class="flex flex-row gap-2 mt-4 mx-5">
+                                <div class="container basis-1/2">
+                                    <h4
+                                        class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
+                                        Clasificación
+                                    </h4>
+                                </div>
+                                <div class="container basis-1/2">
+                                    <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
+                                        x-text="page.edition_information.placements">
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex flex-row gap-2 mt-4 mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Número de participantes
-                                </h4>
-                            </div>
-                            <div class="container basis-1/2">
-                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
-                                    x-text="page.edition_information.entrants">
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex flex-row gap-2 mt-4 mx-5">
-                            <div class="container basis-1/2">
-                                <h4
-                                    class="text-base font-bold text-gray-800 dark:text-white text-right selection:bg-rose-300 dark:selection:bg-rose-700">
-                                    Clasificación
-                                </h4>
-                            </div>
-                            <div class="container basis-1/2">
-                                <p class="text-base font-normal text-gray-800 dark:text-white selection:bg-rose-300 dark:selection:bg-rose-700"
-                                    x-text="page.edition_information.placements">
-                                </p>
-                            </div>
-                        </div>
+                        </template>
                         <template x-if="page.debuts">
                             <div class="flex flex-row gap-2 mt-4 mx-5">
                                 <div class="container basis-1/2">
@@ -855,96 +877,104 @@
         <div class="border-b border-gray-400 mx-10 my-6"></div>
         <!-- Candidatas -->
         <section>
-            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
-                Concursantes
-            </h2>
-            <div class="flex justify-center items-center">
-                <table class="container mx-0 iPhoneSE:mx-5 md:mx-10 w-full">
-                    <thead class="sticky top-20 md:top-18 z-[70] w-full bg-gray-300 text-xs iPhoneSE:text-base rounded-full text-gray-800">
-                        <tr class="text-center w-full">
-                            <th class="rounded-l-full text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
-                                País
-                            </th>
-                            <th class=" text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
-                                Concursante
-                            </th>
-                            <th class=" text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
-                                Edad
-                            </th>
-                            <th class="rounded-r-full text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
-                                Ciudad
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="w-full">
-                        <template x-for="contestant in page.contestants">
-                            <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
-                                <td class="w-2/6 px-2 py-3 text-base font-bold break-words iPhoneSE:break-normal">
-                                    <span class="ml-5">
-                                        <i
-                                            :class="`fi fi-${contestant.candidate.country.iso3166_1_alpha2} fis rounded-full scale-125`"></i>
-                                    </span>
-                                    <span class="ml-3" x-text="contestant.candidate.country.name">
-                                    </span>
-                                </td>
-                                <template x-if="contestant.candidate.second_name">
-                                    <template x-if="contestant.candidate.second_last_name">
-                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
-                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
-                                        </td>
-                                    </template>
-                                </template>
-                                <template x-if="!contestant.candidate.second_name">
-                                    <template x-if="contestant.candidate.second_last_name">
-                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
-                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
-                                        </td>
-                                    </template>
-                                </template>
-                                <template x-if="contestant.candidate.second_name">
-                                    <template x-if="!contestant.candidate.second_last_name">
-                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
-                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name">
-                                        </td>
-                                    </template>
-                                </template>
-                                <template x-if="!contestant.candidate.second_name">
-                                    <template x-if="!contestant.candidate.second_last_name">
-                                        <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
-                                            x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name">
-                                        </td>
-                                    </template>
-                                </template>
-                                <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
-                                    x-text="contestant.candidate.age">
-                                </td>
-                                <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
-                                    x-text="contestant.candidate.hometown">
-                                </td>
+            <template x-if="page.contestants">
+                <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                    Concursantes
+                </h2>
+            </template>
+            <template x-if="page.contestants">
+                <div class="flex justify-center items-center">
+                    <table class="container mx-0 iPhoneSE:mx-5 md:mx-10 w-full">
+                        <thead class="sticky top-20 md:top-18 z-[70] w-full bg-gray-300 text-xs iPhoneSE:text-base rounded-full text-gray-800">
+                            <tr class="text-center w-full">
+                                <th class="rounded-l-full text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
+                                    País
+                                </th>
+                                <th class=" text-base w-2/6 py-3 break-words iPhoneSE:break-normal">
+                                    Concursante
+                                </th>
+                                <th class=" text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
+                                    Edad
+                                </th>
+                                <th class="rounded-r-full text-base w-1/6 py-3 break-words iPhoneSE:break-normal">
+                                    Ciudad
+                                </th>
                             </tr>
-                        </template>
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody class="w-full">
+                            <template x-for="contestant in page.contestants">
+                                <tr class="w-full border-b text-xs iPhoneSE:text-base border-gray-300">
+                                    <td class="w-2/6 px-2 py-3 text-base font-bold break-words iPhoneSE:break-normal">
+                                        <span class="ml-5">
+                                            <i
+                                                :class="`fi fi-${contestant.candidate.country.iso3166_1_alpha2} fis rounded-full scale-125`"></i>
+                                        </span>
+                                        <span class="ml-3" x-text="contestant.candidate.country.name">
+                                        </span>
+                                    </td>
+                                    <template x-if="contestant.candidate.second_name">
+                                        <template x-if="contestant.candidate.second_last_name">
+                                            <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                                x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
+                                            </td>
+                                        </template>
+                                    </template>
+                                    <template x-if="!contestant.candidate.second_name">
+                                        <template x-if="contestant.candidate.second_last_name">
+                                            <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                                x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name+' '+contestant.candidate.second_last_name">
+                                            </td>
+                                        </template>
+                                    </template>
+                                    <template x-if="contestant.candidate.second_name">
+                                        <template x-if="!contestant.candidate.second_last_name">
+                                            <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                                x-text="contestant.candidate.first_name+' '+contestant.candidate.second_name+' '+contestant.candidate.first_last_name">
+                                            </td>
+                                        </template>
+                                    </template>
+                                    <template x-if="!contestant.candidate.second_name">
+                                        <template x-if="!contestant.candidate.second_last_name">
+                                            <td class="w-2/6 px-2 py-3 italic text-base break-words iPhoneSE:break-normal"
+                                                x-text="contestant.candidate.first_name+' '+contestant.candidate.first_last_name">
+                                            </td>
+                                        </template>
+                                    </template>
+                                    <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
+                                        x-text="contestant.candidate.age">
+                                    </td>
+                                    <td class="w-1/6 px-2 py-3 text-base break-words iPhoneSE:break-normal"
+                                        x-text="contestant.candidate.hometown">
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
         </section>
         <!--End of Candidatas -->
         <div class="sticky top-20 md:top-28 z-[70] w-full"></div>
         <!-- Contenido -->
-        <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
-            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
-                Contenido
-            </h2>
-            <span class="info-texto" x-html="page.edition_information.content"></span>
-        </section>
+        <template x-if="page.edition_information.content">
+            <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
+                <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
+                    Contenido
+                </h2>
+                <span class="info-texto" x-html="page.edition_information.content"></span>
+            </section>
+        </template>
         <!--En of Contenido -->
         <div class="sticky top-20 md:top-28 z-[70] w-full"></div>
         <!-- Contenido -->
-        <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
-            <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
-                Información extra
-            </h2>
-            <span class="info-texto" x-html="page.edition_information.extra_data"></span>
-        </section>
+        <template x-if="page.edition_information.extra_data">
+            <section class="mx-1 iPhoneSE:mx-5 sm:mx-10">
+                <h2 class="text-xl md:text-2xl my-4 font-medium text-center text-rose-700 dark:text-rose-300">
+                    Información extra
+                </h2>
+                <span class="info-texto" x-html="page.edition_information.extra_data"></span>
+            </section>
+        </template>
     </section>
     <!-- Modals -->
     <div x-show="show_info_owner" x-transition>

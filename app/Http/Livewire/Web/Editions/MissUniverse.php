@@ -39,9 +39,11 @@ class MissUniverse extends Component
     public function render()
     {
         $edition_information = EditionsMissUniverse::where('slug', $this->slug)->get();
-        setlocale(LC_TIME, "spanish");
-        $date = new Datetime($edition_information[0]->date);
-        $edition_information[0]->date = strftime("%A %d de %B de %Y", $date->getTimestamp());
+        if ($edition_information[0]->date) {
+            setlocale(LC_TIME, "spanish");
+            $date = new Datetime($edition_information[0]->date);
+            $edition_information[0]->date = strftime("%A %d de %B de %Y", $date->getTimestamp());
+        }
 
         /*================== FILTER INFORMATION SECTION ========================*/
 
@@ -303,7 +305,7 @@ class MissUniverse extends Component
             $returns = json_decode(json_encode($returns_array));
             $returns = json_decode(json_encode($returns));
         } else {
-            $returns;
+            $returns = null;
         }
 
         return $returns;
