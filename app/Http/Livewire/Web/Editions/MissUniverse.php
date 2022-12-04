@@ -39,11 +39,9 @@ class MissUniverse extends Component
     public function render()
     {
         $edition_information = EditionsMissUniverse::where('slug', $this->slug)->get();
-        // setlocale(LC_TIME, 'es_ES.UTF-8');
-        // $date = date("Y-m-d H:i:s", strtotime('2015-01-25'));
-        // $edition_information[0]->date = strftime("%A, %d de %B de %Y", $date);
-        $edition_information[0]->date = new DateTime($edition_information[0]->date);
-        $edition_information[0]->date = $edition_information[0]->date->format('j F, Y.');
+        setlocale(LC_TIME, "spanish");
+        $date = new Datetime($edition_information[0]->date);
+        $edition_information[0]->date = strftime("%A %d de %B de %Y", $date->getTimestamp());
 
         /*================== FILTER INFORMATION SECTION ========================*/
 
@@ -150,14 +148,20 @@ class MissUniverse extends Component
     {
         $presenters = MissUniversePresentatorInterception::where('edition_id', $id)->get();
         $presenters_array = array();
+        $flag = false;
         foreach ($presenters as $key => $value) {
+            $flag = true;
             $presenters[$key]->presenter = $presenters[$key]->presenter;
             $presenters[$key]->presenter->country = $presenters[$key]->presenter->country;
             $presenters[$key]->presenter->broadcaster = $presenters[$key]->presenter->broadcaster;
             $presenters_array = array_merge($presenters_array, array('presenter_'.$key => $presenters[$key]));
         }
-        $presenters = json_decode(json_encode($presenters_array));
-        $presenters = json_decode(json_encode($presenters));
+        if ($flag) {
+            $presenters = json_decode(json_encode($presenters_array));
+            $presenters = json_decode(json_encode($presenters));
+        } else {
+            $presenters = null;
+        }
 
         return $presenters;
     }
@@ -166,12 +170,18 @@ class MissUniverse extends Component
     {
         $entertainment = EntraimentShow::select('artist', 'country_id', 'act_performing')->where('edition_id', $id)->get();
         $entertainment_array = array();
+        $flag = false;
         foreach ($entertainment as $key => $value) {
+            $flag = true;
             $entertainment[$key]->country = $entertainment[$key]->country->name;
             $entertainment_array = array_merge($entertainment_array, array('artist_'.$key => $entertainment[$key]));
         }
-        $entertainment = json_decode(json_encode($entertainment_array));
-        $entertainment = json_decode(json_encode($entertainment));
+        if ($flag) {
+            $entertainment = json_decode(json_encode($entertainment_array));
+            $entertainment = json_decode(json_encode($entertainment));
+        } else {
+            $entertainment = null;
+        }
 
         return $entertainment;
     }
@@ -179,10 +189,14 @@ class MissUniverse extends Component
     public function place($id)
     {
         $place = Place::where('id', $id)->get();
-        $place[0]->city_venue = $place[0]->city_venue;
-        $place[0]->city_venue->country = $place[0]->city_venue->country;
+        if (isset($place[0])) {
+            $place[0]->city_venue = $place[0]->city_venue;
+            $place[0]->city_venue->country = $place[0]->city_venue->country;
 
-        $place = json_decode(json_encode($place[0]));
+            $place = json_decode(json_encode($place[0]));
+        } else {
+            $place = null;
+        }
 
         return $place;
     }
@@ -190,9 +204,12 @@ class MissUniverse extends Component
     public function owner($id)
     {
         $owner = Owner::where('id', $id)->get();
-        $owner[0]->country = $owner[0]->country;
-
-        $owner = json_decode(json_encode($owner[0]));
+        if (isset($owner[0])) {
+            $owner[0]->country = $owner[0]->country;
+            $owner = json_decode(json_encode($owner[0]));
+        } else {
+            $owner = null;
+        }
 
         return $owner;
     }
@@ -200,9 +217,12 @@ class MissUniverse extends Component
     public function main_broadcaster($id)
     {
         $main_broadcaster = Broadcaster::where('id', $id)->get();
-        $main_broadcaster[0]->country = $main_broadcaster[0]->country;
-
-        $main_broadcaster = json_decode(json_encode($main_broadcaster[0]));
+        if (isset($main_broadcaster[0])) {
+            $main_broadcaster[0]->country = $main_broadcaster[0]->country;
+            $main_broadcaster = json_decode(json_encode($main_broadcaster[0]));
+        } else {
+            $main_broadcaster = null;
+        }
 
         return $main_broadcaster;
     }
@@ -210,9 +230,12 @@ class MissUniverse extends Component
     public function secondary_broadcaster($id)
     {
         $secondary_broadcaster = Broadcaster::where('id', $id)->get();
-        $secondary_broadcaster[0]->country = $secondary_broadcaster[0]->country;
-
-        $secondary_broadcaster = json_decode(json_encode($secondary_broadcaster[0]));
+        if (isset($secondary_broadcaster[0])) {
+            $secondary_broadcaster[0]->country = $secondary_broadcaster[0]->country;
+            $secondary_broadcaster = json_decode(json_encode($secondary_broadcaster[0]));
+        } else {
+            $secondary_broadcaster = null;
+        }
 
         return $secondary_broadcaster;
     }
@@ -221,12 +244,21 @@ class MissUniverse extends Component
     {
         $debuts = Debut::where('edition_id', $id)->get();
         $debuts_array = array();
+        $flag = false;
         foreach ($debuts as $key => $value) {
+            $flag = true;
             $debuts[$key]->country = $debuts[$key]->country->name;
-            $debuts_array = array_merge($debuts_array, array('debut_'.$key => $debuts[$key]));
+            $debuts_array = array_merge($debuts_array, array($key => $debuts[$key]));
         }
-        $debuts = json_decode(json_encode($debuts_array));
-        $debuts = json_decode(json_encode($debuts));
+        if ($flag) {
+            usort($debuts_array, function($a, $b) {
+                return $a->country < $b->country ? -1 : 1;
+            });
+            $debuts = json_decode(json_encode($debuts_array));
+            $debuts = json_decode(json_encode($debuts));
+        } else {
+            $debuts = null;
+        }
 
         return $debuts;
     }
@@ -235,12 +267,21 @@ class MissUniverse extends Component
     {
         $withdrawals = Withdrawal::where('edition_id', $id)->get();
         $withdrawals_array = array();
+        $flag = false;
         foreach ($withdrawals as $key => $value) {
+            $flag = true;
             $withdrawals[$key]->country = $withdrawals[$key]->country->name;
-            $withdrawals_array = array_merge($withdrawals_array, array('withdrawal_'.$key => $withdrawals[$key]));
+            $withdrawals_array = array_merge($withdrawals_array, array($key => $withdrawals[$key]));
         }
-        $withdrawals = json_decode(json_encode($withdrawals_array));
-        $withdrawals = json_decode(json_encode($withdrawals));
+        if ($flag) {
+            usort($withdrawals_array, function($a, $b) {
+                return $a->country < $b->country ? -1 : 1;
+            });
+            $withdrawals = json_decode(json_encode($withdrawals_array));
+            $withdrawals = json_decode(json_encode($withdrawals));
+        } else {
+            $withdrawals = null;
+        }
 
         return $withdrawals;
     }
@@ -249,12 +290,21 @@ class MissUniverse extends Component
     {
         $returns = Returns::where('edition_id', $id)->get();
         $returns_array = array();
+        $flag = false;
         foreach ($returns as $key => $value) {
+            $flag = true;
             $returns[$key]->country = $returns[$key]->country->name;
             $returns_array = array_merge($returns_array, array('return_'.$key => $returns[$key]));
         }
-        $returns = json_decode(json_encode($returns_array));
-        $returns = json_decode(json_encode($returns));
+        if ($flag) {
+            usort($returns_array, function($a, $b) {
+                return $a->country < $b->country ? -1 : 1;
+            });
+            $returns = json_decode(json_encode($returns_array));
+            $returns = json_decode(json_encode($returns));
+        } else {
+            $returns;
+        }
 
         return $returns;
     }
@@ -262,10 +312,13 @@ class MissUniverse extends Component
     public function winner($id)
     {
         $winner = Winner::where('edition_id', $id)->get();
-        $winner[0]->candidate = $winner[0]->candidate;
-        $winner[0]->candidate->country = $winner[0]->candidate->country;
-
-        $winner = json_decode(json_encode($winner[0]));
+        if (isset($winner[0])) {
+            $winner[0]->candidate = $winner[0]->candidate;
+            $winner[0]->candidate->country = $winner[0]->candidate->country;
+            $winner = json_decode(json_encode($winner[0]));
+        } else {
+            $winner = null;
+        }
 
         return $winner;
     }
@@ -273,10 +326,13 @@ class MissUniverse extends Component
     public function first_runner_up($id)
     {
         $first_runner_up = FirstRunnerUp::where('edition_id', $id)->get();
-        $first_runner_up[0]->candidate = $first_runner_up[0]->candidate;
-        $first_runner_up[0]->candidate->country = $first_runner_up[0]->candidate->country;
-
-        $first_runner_up = json_decode(json_encode($first_runner_up[0]));
+        if (isset($first_runner_up[0])) {
+            $first_runner_up[0]->candidate = $first_runner_up[0]->candidate;
+            $first_runner_up[0]->candidate->country = $first_runner_up[0]->candidate->country;
+            $first_runner_up = json_decode(json_encode($first_runner_up[0]));
+        } else {
+            $first_runner_up = null;
+        }
 
         return $first_runner_up;
     }
@@ -284,10 +340,13 @@ class MissUniverse extends Component
     public function second_runner_up($id)
     {
         $second_runner_up = SecondRunnerUp::where('edition_id', $id)->get();
-        $second_runner_up[0]->candidate = $second_runner_up[0]->candidate;
-        $second_runner_up[0]->candidate->country = $second_runner_up[0]->candidate->country;
-
-        $second_runner_up = json_decode(json_encode($second_runner_up[0]));
+        if (isset($second_runner_up[0])) {
+            $second_runner_up[0]->candidate = $second_runner_up[0]->candidate;
+            $second_runner_up[0]->candidate->country = $second_runner_up[0]->candidate->country;
+            $second_runner_up = json_decode(json_encode($second_runner_up[0]));
+        } else {
+            $second_runner_up = null;
+        }
 
         return $second_runner_up;
     }
@@ -295,10 +354,13 @@ class MissUniverse extends Component
     public function third_runner_up($id)
     {
         $third_runner_up = ThirdRunnerUp::where('edition_id', $id)->get();
-        $third_runner_up[0]->candidate = $third_runner_up[0]->candidate;
-        $third_runner_up[0]->candidate->country = $third_runner_up[0]->candidate->country;
-
-        $third_runner_up = json_decode(json_encode($third_runner_up[0]));
+        if (isset($third_runner_up[0])) {
+            $third_runner_up[0]->candidate = $third_runner_up[0]->candidate;
+            $third_runner_up[0]->candidate->country = $third_runner_up[0]->candidate->country;
+            $third_runner_up = json_decode(json_encode($third_runner_up[0]));
+        } else {
+            $third_runner_up = null;
+        }
 
         return $third_runner_up;
     }
@@ -306,10 +368,13 @@ class MissUniverse extends Component
     public function fourth_runner_up($id)
     {
         $fourth_runner_up = FourthRunnerUp::where('edition_id', $id)->get();
-        $fourth_runner_up[0]->candidate = $fourth_runner_up[0]->candidate;
-        $fourth_runner_up[0]->candidate->country = $fourth_runner_up[0]->candidate->country;
-
-        $fourth_runner_up = json_decode(json_encode($fourth_runner_up[0]));
+        if (isset($fourth_runner_up[0])) {
+            $fourth_runner_up[0]->candidate = $fourth_runner_up[0]->candidate;
+            $fourth_runner_up[0]->candidate->country = $fourth_runner_up[0]->candidate->country;
+            $fourth_runner_up = json_decode(json_encode($fourth_runner_up[0]));
+        } else {
+            $fourth_runner_up = null;
+        }
 
         return $fourth_runner_up;
     }
@@ -318,13 +383,22 @@ class MissUniverse extends Component
     {
         $runners_up = RunnersUp::where('edition_id', $id)->get();
         $runners_up_array = array();
+        $flag = false;
         foreach ($runners_up as $key => $value) {
+            $flag = true;
             $runners_up[$key]->candidate = $runners_up[$key]->candidate;
             $runners_up[$key]->candidate->country = $runners_up[$key]->candidate->country;
             $runners_up_array = array_merge($runners_up_array, array('runner_up_'.$key => $runners_up[$key]));
         }
-        $runners_up = json_decode(json_encode($runners_up_array));
-        $runners_up = json_decode(json_encode($runners_up));
+        if ($flag) {
+            usort($returns_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $runners_up = json_decode(json_encode($runners_up_array));
+            $runners_up = json_decode(json_encode($runners_up));
+        } else {
+            $runners_up = null;
+        }
 
         return $runners_up;
     }
@@ -333,13 +407,22 @@ class MissUniverse extends Component
     {
         $semifinalists = Semifinalist::where('edition_id', $id)->get();
         $semifinalists_array = array();
+        $flag = false;
         foreach ($semifinalists as $key => $value) {
+            $flag = true;
             $semifinalists[$key]->candidate = $semifinalists[$key]->candidate;
             $semifinalists[$key]->candidate->country = $semifinalists[$key]->candidate->country;
             $semifinalists_array = array_merge($semifinalists_array, array('semifinalist_'.$key => $semifinalists[$key]));
         }
-        $semifinalists = json_decode(json_encode($semifinalists_array));
-        $semifinalists = json_decode(json_encode($semifinalists));
+        if ($flag) {
+            usort($semifinalists_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $semifinalists = json_decode(json_encode($semifinalists_array));
+            $semifinalists = json_decode(json_encode($semifinalists));
+        } else {
+            $semifinalists = null;
+        }
 
         return $semifinalists;
     }
@@ -348,13 +431,22 @@ class MissUniverse extends Component
     {
         $quarterfinalists = Quarterfinalist::where('edition_id', $id)->get();
         $quarterfinalists_array = array();
+        $flag = false;
         foreach ($quarterfinalists as $key => $value) {
+            $flag = true;
             $quarterfinalists[$key]->candidate = $quarterfinalists[$key]->candidate;
             $quarterfinalists[$key]->candidate->country = $quarterfinalists[$key]->candidate->country;
             $quarterfinalists_array = array_merge($quarterfinalists_array, array('quarterfinalist_'.$key => $quarterfinalists[$key]));
         }
-        $quarterfinalists = json_decode(json_encode($quarterfinalists_array));
-        $quarterfinalists = json_decode(json_encode($quarterfinalists));
+        if ($flag) {
+            usort($quarterfinalists_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $quarterfinalists = json_decode(json_encode($quarterfinalists_array));
+            $quarterfinalists = json_decode(json_encode($quarterfinalists));
+        } else {
+            $quarterfinalists = null;
+        }
 
         return $quarterfinalists;
     }
@@ -363,13 +455,22 @@ class MissUniverse extends Component
     {
         $eighterfinalists = Eighterfinalist::where('edition_id', $id)->get();
         $eighterfinalists_array = array();
+        $flag = false;
         foreach ($eighterfinalists as $key => $value) {
+            $flag = true;
             $eighterfinalists[$key]->candidate = $eighterfinalists[$key]->candidate;
             $eighterfinalists[$key]->candidate->country = $eighterfinalists[$key]->candidate->country;
             $eighterfinalists_array = array_merge($eighterfinalists_array, array('eighterfinalist_'.$key => $eighterfinalists[$key]));
         }
-        $eighterfinalists = json_decode(json_encode($eighterfinalists_array));
-        $eighterfinalists = json_decode(json_encode($eighterfinalists));
+        if ($flag) {
+            usort($eighterfinalists_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $eighterfinalists = json_decode(json_encode($eighterfinalists_array));
+            $eighterfinalists = json_decode(json_encode($eighterfinalists));
+        } else {
+            $eighterfinalists = null;
+        }
 
         return $eighterfinalists;
     }
@@ -378,13 +479,22 @@ class MissUniverse extends Component
     {
         $miss_congeniality = MissCongeniality::where('edition_id', $id)->get();
         $miss_congeniality_array = array();
+        $flag = false;
         foreach ($miss_congeniality as $key => $value) {
+            $flag = true;
             $miss_congeniality[$key]->candidate = $miss_congeniality[$key]->candidate;
             $miss_congeniality[$key]->candidate->country = $miss_congeniality[$key]->candidate->country;
             $miss_congeniality_array = array_merge($miss_congeniality_array, array('miss_congeniality_'.$key => $miss_congeniality[$key]));
         }
-        $miss_congeniality = json_decode(json_encode($miss_congeniality_array));
-        $miss_congeniality = json_decode(json_encode($miss_congeniality));
+        if ($flag) {
+            usort($miss_congeniality_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $miss_congeniality = json_decode(json_encode($miss_congeniality_array));
+            $miss_congeniality = json_decode(json_encode($miss_congeniality));
+        } else {
+            $miss_congeniality = null;
+        }
 
         return $miss_congeniality;
     }
@@ -393,13 +503,22 @@ class MissUniverse extends Component
     {
         $miss_photogenic = Photogenic::where('edition_id', $id)->get();
         $miss_photogenic_array = array();
+        $flag = false;
         foreach ($miss_photogenic as $key => $value) {
+            $flag = true;
             $miss_photogenic[$key]->candidate = $miss_photogenic[$key]->candidate;
             $miss_photogenic[$key]->candidate->country = $miss_photogenic[$key]->candidate->country;
             $miss_photogenic_array = array_merge($miss_photogenic_array, array('miss_photogenic_'.$key => $miss_photogenic[$key]));
         }
-        $miss_photogenic = json_decode(json_encode($miss_photogenic_array));
-        $miss_photogenic = json_decode(json_encode($miss_photogenic));
+        if ($flag) {
+            usort($miss_photogenic_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $miss_photogenic = json_decode(json_encode($miss_photogenic_array));
+            $miss_photogenic = json_decode(json_encode($miss_photogenic));
+        } else {
+            $miss_photogenic = null;
+        }
 
         return $miss_photogenic;
     }
@@ -408,13 +527,21 @@ class MissUniverse extends Component
     {
         $best_national_costume = BestNationalCostume::where('edition_id', $id)->get();
         $best_national_costume_array = array();
+        $flag = false;
         foreach ($best_national_costume as $key => $value) {
+            $flag = true;
             $best_national_costume[$key]->candidate = $best_national_costume[$key]->candidate;
             $best_national_costume[$key]->candidate->country = $best_national_costume[$key]->candidate->country;
             $best_national_costume_array = array_merge($best_national_costume_array, array('best_national_costume_'.$key => $best_national_costume[$key]));
         }
-        $best_national_costume = json_decode(json_encode($best_national_costume_array));
-        $best_national_costume = json_decode(json_encode($best_national_costume));
+        if ($flag) {
+            usort($best_national_costume_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+        } else {
+            $best_national_costume = json_decode(json_encode($best_national_costume_array));
+            $best_national_costume = json_decode(json_encode($best_national_costume));
+        }
 
         return $best_national_costume;
     }
@@ -423,13 +550,22 @@ class MissUniverse extends Component
     {
         $contestants = Contestant::where('edition_id', $id)->get();
         $contestants_array = array();
+        $flag = false;
         foreach ($contestants as $key => $value) {
+            $flag = true;
             $contestants[$key]->candidate = $contestants[$key]->candidate;
             $contestants[$key]->candidate->country = $contestants[$key]->candidate->country;
             $contestants_array = array_merge($contestants_array, array('contestants_'.$key => $contestants[$key]));
         }
-        $contestants = json_decode(json_encode($contestants_array));
-        $contestants = json_decode(json_encode($contestants));
+        if ($flag) {
+            usort($contestants_array, function($a, $b) {
+                return $a->candidate->country->name < $b->candidate->country->name ? -1 : 1;
+            });
+            $contestants = json_decode(json_encode($contestants_array));
+            $contestants = json_decode(json_encode($contestants));
+        } else {
+            $contestants = null;
+        }
 
         return $contestants;
     }
