@@ -18,5 +18,8 @@ class Menu extends Component
         if (strpos(url()->current(), 'editions') || strpos(url()->current(), 'news/all')) {
             $this->redirect = '../';
         }
+        if (strpos(url()->current(), 'news/show')) {
+            $this->redirect = '../../';
+        }
     }
 }

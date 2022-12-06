@@ -25,6 +25,7 @@ class Show extends Component
         $this->data_news = News::where('slug', $this->slug)->get();
         $this->data_news = json_decode(json_encode($this->data_news));
         $this->user_editor = User::where('id', $this->data_news[0]->user_id)->get();
+        $this->user_editor[0]->country = $this->user_editor[0]->country;
         $this->user_editor = json_decode(json_encode($this->user_editor));
         $this->comments = DB::table('comments')
             ->join('users', 'comments.user_id', '=', 'users.id')
