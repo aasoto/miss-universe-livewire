@@ -1,60 +1,91 @@
 <div x-data="showNews()">
-    <div class="h-full" style="background-image: url('../../storage/app/public/images/news/cover-1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
-        <div class="mx-10 md:mx-20 pt-24 lg:pt-32">
-            <h1 class="text-center font-bold text-white drop-shadow-lg shadow-black text-2xl md:text-3xl lg:text-5xl">Noticias</h1>
-            <h3 class="mt-6 text-center font-semibold md:font-bold text-white drop-shadow-lg shadow-black text-lg md:text-xl lg:text-3xl">Repositorio de noticias</h3>
-            <div class="invisible">
-                <h1 class="text-left font-bold text-white shadow-lg shadow-gray-800 text-xs md:text-base lg:text-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem deleniti in ad, maxime, dolorum odit dicta blanditiis error similique, magni voluptatum inventore et eum minus consequatur cupiditate facilis delectus est!</h1>
-            </div>
-        </div>
+    <!-- Cover -->
+    <div class="flex flex-col justify-center items-center w-full min-h-[384px] max-h-screen"
+        style="background-image: url('../../storage/app/public/images/news/fondo-pink.svg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="w-full h-20"></div>
+        <h1 class="mx-10 my-5 z-10 text-center text-2xl iPhoneSE:text-3xl md:text-5xl font-bold text-white">
+            Listado de Noticias
+        </h1>
+        <h3 class="mx-10 mt-5 mb-16 z-10 text-center text-2xl iPhoneSE:text-xl md:text-3xl font-bold text-white">
+            Listado general con todas las noticias de publicadas en la página
+        </h3>
     </div>
-    <div class="w-full md:w-11/12 mx-0 mt-0 md:mt-4 lg:-mt-20 md:mx-8 lg:mx-11 xl:mx-14 2xl:mx-16 md:rounded-md bg-white/70 dark:bg-gray-800 backdrop-blur-lg shadow-sm shadow-gray-700">
+    <!-- End of Cover -->
+    <!-- Cuerpo página -->
+    <section
+        class="mt-0 md:-mt-8 lg:-mt-14 mx-0 md:mx-7 pt-12 md:pt-32 pb-20 backdrop-blur-none md:backdrop-blur-xl bg-white/50 dark:bg-slate-800/70 rounded-none md:rounded-md shadow-none md:shadow-lg md:shadow-gray-400 dark:md:shadow-black/20">
         <div class="pt-8 text-center">
-            <input @change="searching=true; typing();" x-model="search" type="text" placeholder="Buscar..." class="w-3/6 py-2 bg-white dark:bg-gray-800 rounded border border-rose-500 hover:border-rose-800 hover:shadow-sm hover:shadow-rose-400 hover:dark:shadow-white focus:shadow-sm focus:shadow-rose-400 dark:focus:shadow-gray-600 focus:border-2 focus:border-rose-800 placeholder:text-gray-500 dark:placeholder:text-gray-200">
-            <input x-model="num_results" type="range" value="10" min="10" max="100" step="10" class="w-11/12 h-2 mt-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+            <input @change="searching=true; typing();" x-model="search" type="text" placeholder="Buscar..."
+                class="w-3/6 rounded-full bg-transparent px-4 py-2 border border-gray-400 text-gray-400 focus:border-rose-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50">
+            <input x-model="num_results" type="range" value="10" min="10" max="100" step="10"
+                class="w-11/12 h-2 mt-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
         </div>
         <div x-show="results_1">
-            <template x-for="news in current_page">
-                <div class="mx-4 mt-4">
-                    <div class="flex flex-col md:flex-row bg-white dark:bg-gray-800 rounded-lg shadow-lg shadow-gray-300 dark:shadow-gray-600">
-                        <div class="basis-1/3">
-                            <img class="rounded-l-lg w-auto h-auto" :src="`../../storage/app/public/images/news/background/${news.background}`" alt="">
-                        </div>
-                        <div class="basis-2/3">
-                            <h3 class="mt-2 mx-4 text-2xl text-gray-800 dark:text-white font-bold" x-text="news.id +' - '+news.title"></h3>
-                            <p class="my-2 mx-4 text-justify text-base text-gray-800 dark:text-white font-light" x-text="news.subtitle"></p>
-                            <a :href="`{{asset('news/show')}}/${news.slug}`" class="text-blue-500 hover:text-purple-800 font-bold">Leer más...</a>
-                        </div>
+            <div class="grid grid-cols-1 2xl:grid-cols-2 gap-5 mx-5 mt-5 md:mx-20">
+                <template x-for="news in current_page">
+                    <div class="col-span-1">
+                        <a :href="`{{ asset('news/show') }}/${news.slug}`">
+                            <div
+                                class="rounded-lg h-auto md:h-60 shadow-lg hover:shadow-black/20 hover:scale-[1.02] transition duration-200">
+                                <div class="flex flex-col md:flex-row h-full">
+                                    <div class="basis-1/2 md:basis-1/3">
+                                        <img class="rounded-t-lg md:rounded-l-lg md:rounded-tr-none w-full h-full object-cover object-center cursor-pointer"
+                                            :src="`../../storage/app/public/images/news/background/${news.background}`" alt="">
+                                    </div>
+                                    <div class="basis-1/2 md:basis-2/3 px-5 py-3">
+                                        <h2 class="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-left hover:text-rose-700 dark:hover:text-rose-400 hover:underline cursor-pointer"
+                                            x-text="news.id +' - '+news.title">
+                                        </h2>
+                                        <p class="text-base text-justify pb-4 cursor-pointer"
+                                            x-text="news.subtitle">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            </template>
-            <div class="my-4">
-                <div class="flex flex-row pb-4">
-                    <button @click="previous()" class="border-t border-b border-l border-gray-700 bg-gray-200 text-gray-800 rounded-l-lg w-20 h-10">Anterior</button>
-                    <template x-for="page in count_pages">
-                        <button @click="jump(page.jump)" class="border-l border-t border-b border-gray-700 bg-gray-200 text-gray-800 w-10 h-10" x-text="page.current"></button>
-                    </template>
-                    <button @click="next()" class="border border-gray-700 bg-gray-200 text-gray-800 rounded-r-lg w-20 h-10">Siguiente</button>
-                </div>
+                </template>
+            </div>
+            <div class="flex items-center justify-center text-center mt-24">
+                <button @click="previous()" class="rounded-l-full px-2 md:px-4 py-1 md:py-2 border-2 hover:border-0 hover:scale-110 border-gray-600 dark:border-white bg-transparent hover:bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-gray-600 dark:text-white hover:text-white text-sm md:text-lg font-medium hover:font-bold transition duration-200">
+                    Anterior
+                </button>
+                <template x-for="page in count_pages">
+                    <button @click="jump(page.jump)" class="px-2 md:px-4 py-1 md:py-2 border-y-2 border-r-2 hover:border-0 hover:scale-110 border-gray-600 dark:border-white bg-transparent hover:bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-gray-600 dark:text-white hover:text-white text-sm md:text-lg font-medium hover:font-bold transition duration-200"
+                        x-text="page.current">
+                    </button>
+                </template>
+                <button @click="next()" class="rounded-r-full px-2 md:px-4 py-1 md:py-2 border-y-2 border-r-2 hover:border-0 hover:scale-110 border-gray-600 dark:border-white bg-transparent hover:bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-gray-600 dark:text-white hover:text-white text-sm md:text-lg font-medium hover:font-bold transition duration-200">
+                    Siguiente
+                </button>
             </div>
         </div>
         <div x-show="results_2">
             <template x-for="n in result_searching">
-                <div class="mx-4 mt-4">
-                    <div class="flex flex-col md:flex-row bg-white dark:bg-gray-800 rounded-lg shadow-lg shadow-gray-300 dark:shadow-gray-600">
-                        <div class="basis-1/3">
-                            <img class="rounded-l-lg w-auto h-auto" :src="`../../storage/app/public/images/news/background/${n.background}`" alt="">
+                <div class="col-span-1">
+                    <a :href="`{{ asset('news/show') }}/${n.slug}`">
+                        <div
+                            class="rounded-lg h-auto md:h-60 shadow-lg hover:shadow-black/20 hover:scale-[1.02] transition duration-200">
+                            <div class="flex flex-col md:flex-row h-full">
+                                <div class="basis-1/2 md:basis-1/3">
+                                    <img class="rounded-t-lg md:rounded-l-lg w-full h-full object-cover object-center cursor-pointer"
+                                        :src="`../../storage/app/public/images/news/background/${n.background}`" alt="">
+                                </div>
+                                <div class="basis-1/2 md:basis-2/3 px-5 py-3">
+                                    <h2 class="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-left hover:text-rose-700 dark:hover:text-rose-400 hover:underline cursor-pointer"
+                                        x-text="n.id +' - '+n.title">
+                                    </h2>
+                                    <p class="text-base text-justify pb-4 cursor-pointer"
+                                        x-text="n.subtitle">
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="basis-2/3">
-                            <h3 class="mt-2 mx-4 text-2xl text-gray-800 dark:text-white font-bold" x-text="n.title"></h3>
-                            <p class="my-2 mx-4 text-justify text-base text-gray-800 dark:text-white font-light" x-text="n.content"></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </template>
         </div>
-    </div>
-</div>
+    </section>
 <script>
     function showNews() {
         return {
@@ -69,23 +100,23 @@
             current_page: @entangle('current_page'),
             next_id: @entangle('next_id'),
             count_pages: @entangle('count_pages'),
-            typing(){
-                if(this.searching){
+            typing() {
+                if (this.searching) {
                     Livewire.emit("searching", this.search);
                     this.results_1 = false;
                     this.results_2 = true;
                 }
                 this.searching = false;
             },
-            next(){
+            next() {
                 Livewire.emit("show_page", this.next_id, "[");
             },
-            previous(){
+            previous() {
                 previous = this.next_id + (this.num_results * 2);
                 console.log('previous: ', previous);
                 Livewire.emit("show_page", previous, "[");
             },
-            jump(jump){
+            jump(jump) {
                 console.log("jump: ", jump);
                 Livewire.emit("show_page", jump, "[");
             }

@@ -15,7 +15,7 @@ class Menu extends Component
     }
     public function redirection()
     {
-        if (strpos(url()->current(), 'editions')) {
+        if (strpos(url()->current(), 'editions') || strpos(url()->current(), 'news/all')) {
             $this->redirect = '../';
         }
     }

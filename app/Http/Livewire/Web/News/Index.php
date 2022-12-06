@@ -9,7 +9,7 @@ class Index extends Component
 {
     protected $listeners = ["searching", "show_page"];
 
-    public $news, $search, $result_searching, $count, $pages, $current_page = "[", $next_id, $count_pages, $num_results = 10;
+    public $news, $search, $result_searching, $count, $last_id, $pages, $current_page = "[", $next_id, $count_pages, $num_results = 10;
 
     public function render()
     {
@@ -20,7 +20,9 @@ class Index extends Component
 
         $this->count = News::count();
         $this->pagination($this->count, $this->num_results);
-        $this->paginate($this->count);
+
+        $this->last_id = News::select('id')->orderByDesc('id')->first();
+        $this->paginate($this->last_id->id);
 
         return view('livewire.web.news.index')->layout('layouts.web.layout');
     }

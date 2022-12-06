@@ -46,8 +46,9 @@
                         </div>
                     </div>
                 </div>
-                <a href="pages/list_news.html"
-                    class="my-4 md:my-0 ml-0 md:ml-7 text-center text-base font-medium hover:scale-110 transition text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white">Noticias</a>
+                <a href="{{ route('news-index') }}" class="my-4 md:my-0 ml-0 md:ml-7 text-center text-base font-medium hover:scale-110 transition text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white">
+                    Noticias
+                </a>
                 <div class="group">
                     <div
                         class="my-4 md:my-0 ml-0 md:ml-7 text-center text-base font-medium hover:scale-110 transition text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white cursor-pointer px-[26px]">
