@@ -50,6 +50,10 @@ class MissUniverse extends Model
         return $this->belongsTo(Place::class, 'place_id');
     }
 
+    public function contestant(){
+        return $this->hasMany(Contestant::class);
+    }
+
     public function getLogoUrl()
     {
         return URL::asset('../storage/app/public/images/editions/miss-universe/logos/'.$this->logo);

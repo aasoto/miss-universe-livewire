@@ -82,7 +82,8 @@
                         <div class="relative">
                             <a class="z-20" :href="`${item.link_redirect}`">
                                 <img class="-z-50 w-full max-h-[600px] object-cover object-center"
-                                    :src="`../storage/app/public/images/carousels/background/${item.image}`" alt="">
+                                    :src="`../storage/app/public/images/carousels/background/${item.image}`"
+                                    alt="">
                             </a>
                         </div>
                     </template>
@@ -141,22 +142,25 @@
     <div x-data="latest_news()">
         <section class="my-8 px-6 sm:px-12">
             <div class="container mx-auto py-5 md:py-10 w-10/12 md:w-8/12">
-                <h1 class="text-2xl md:text-3xl mb-4 font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                <h1
+                    class="text-2xl md:text-3xl mb-4 font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
                     Últimas noticias
                 </h1>
             </div>
             <div class="grid grid-cols-4 gap-4">
                 <template x-for="item in news">
                     <div class="col-span-4 lg:col-span-2 2xl:col-span-1">
-                        <a :href="`{{asset('news/show')}}/${item.slug}`">
+                        <a :href="`{{ asset('news/show') }}/${item.slug}`">
                             <div
                                 class="flex flex-col xl:flex-row 2xl:flex-col w-full rounded-md shadow-md hover:shadow-gray-400 hover:scale-105 transition">
                                 <img class="w-full xl:w-1/2 2xl:w-full h-full xl:h-64 2xl:h-1/2 rounded-t-md xl:rounded-l-md 2xl:rounded-t-md object-cover object-center cursor-pointer"
-                                    :src="`../storage/app/public/images/news/background/${item.background}`" alt="">
+                                    :src="`../storage/app/public/images/news/background/${item.background}`"
+                                    alt="">
                                 <div class="px-4">
                                     <h3 class="text-lg sm:text-xl mb-4 font-medium text-left hover:text-rose-700 hover:underline cursor-pointer"
                                         x-text="item.title"></h3>
-                                    <p class="text-base text-justify pb-4 break-words cursor-pointer" x-html="item.content"></p>
+                                    <p class="text-base text-justify pb-4 break-words cursor-pointer"
+                                        x-html="item.content"></p>
                                 </div>
                             </div>
                         </a>
@@ -172,6 +176,39 @@
             </div>
         </section>
     </div>
+    <!-- Ediciones recomendadas -->
+    <div x-data="recommended_editions()">
+        <section class="my-5 md:container">
+            <div class="flex flex-col md:flex-row mx-5 sm:mx-10 w-auto container">
+                <div class="basis-0 md:basis-1/2">
+                    <h1
+                        class="sticky top-28 z-50 text-2xl md:text-3xl mb-4 font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600">
+                        Ediciones destacadas</h1>
+                </div>
+                <div class="basis-0 md:basis-2/3 container">
+                    <template x-for="edition in editions">
+                        <a :href="`editions/${edition.slug}`">
+                            <div class="container relative w-full h-72 my-4 rounded-lg cursor-pointer">
+                                <img class="rounded-lg w-full h-full object-cover object-top"
+                                    :src="`../storage/app/public/images/editions/miss-universe/background/${edition.background}`"
+                                    alt="">
+                                <div
+                                    class="absolute top-0 z-10 bg-gradient-to-t from-black to-transparent rounded-lg w-full h-full">
+                                </div>
+                                <img class="absolute top-4 right-4 z-20 rounded-lg h-1/3 hover:mt-4 hover:animate-bounce transition"
+                                    :src="`../storage/app/public/images/editions/miss-universe/logos/${edition.logo}`" alt="">
+                                <div class="absolute bottom-2 flex flex-col-reverse z-20 h-2/3 px-3">
+                                    <p class="text-white font-light text-base" x-html="edition.description"></p>
+                                    <h2 class="text-white font-bold text-2xl" x-text="edition.name"></h2>
+                                </div>
+                            </div>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--End of Ediciones recomendadas -->
 </section>
 
 
@@ -307,6 +344,12 @@
     function latest_news() {
         return {
             news: @entangle('news')
+        }
+    }
+
+    function recommended_editions() {
+        return {
+            editions: @entangle('editions')
         }
     }
 </script>
