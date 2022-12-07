@@ -28,7 +28,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img src="../../storage/app/public/{{ $this->user->profile_photo_path }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
@@ -80,6 +80,21 @@
                     </p>
                 @endif
             @endif
+        </div>
+
+        <!-- Country -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="country_id" value="{{ __('Country') }}" />
+            <select name="country_id" id="country_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                wire:model="state.country_id">
+                <option value="">{{ __('Select...') }}</option>
+                @foreach ($countries as $name => $id)
+                    <option value="{{ $id }}">
+                        {{ $name }}
+                    </option>
+                @endforeach
+            </select>
+            <x-jet-input-error for="country_id" class="mt-2" />
         </div>
     </x-slot>
 
