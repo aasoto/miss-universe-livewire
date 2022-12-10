@@ -64,6 +64,7 @@ use App\Http\Livewire\Sponsor\Company;
 use App\Http\Livewire\Sponsor\Detail;
 use App\Http\Livewire\Sponsor\General;
 use App\Http\Livewire\Sponsor\Person;
+use App\Http\Livewire\Web\Editions\Index as EditionsIndex;
 use App\Http\Livewire\Web\Editions\MissUniverse;
 use App\Http\Livewire\Web\Index as WebIndex;
 use App\Http\Livewire\Web\News\Index as WebNewsIndex;
@@ -90,6 +91,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/', WebIndex::class)->name('start');
     Route::get('/news/all', WebNewsIndex::class)->name('news-index');
     Route::get('/news/show/{slug}', WebNewsShow::class)->name('news-show');
+    Route::get('/editions', EditionsIndex::class)->name('miss-universe-list-editions');
     Route::get('/editions/{slug}', MissUniverse::class)->name('miss-universe-edition');
 });
 

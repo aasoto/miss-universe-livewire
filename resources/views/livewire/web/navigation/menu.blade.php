@@ -31,7 +31,7 @@
                         <div
                             class="hidden group-hover:block w-full shadow-none md:shadow dark:md:shadow-lg md:shadow-gray-800 dark:md:shadow-gray-400 backdrop-blur-none md:backdrop-blur-xl bg-transparent md:bg-white/70 dark:md:bg-slate-800 mt-1 md:mt-7 p-0 md:p-4 rounded-none md:rounded-md transition">
                             <ul class="text-center border-t-2 border-b-2 border-rose-600 dark:border-rose-300">
-                                <a href="{{ route('miss-universe-edition', 'miss-universo-2014') }}">
+                                <a href="{{ route('miss-universe-list-editions') }}">
                                     <li
                                         class="px-4 py-1 hover:scale-110 transition text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white font-medium text-base whitespace-nowrap cursor-pointer">
                                         Miss Universo</li>
