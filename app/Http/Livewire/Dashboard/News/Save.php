@@ -19,6 +19,7 @@ class Save extends Component
     public $posted;
     public $category_id;
     public $type;
+    public $tag, $tags = array();
 
     public $news;
 
@@ -32,7 +33,9 @@ class Save extends Component
         "date_publish" => "nullable|date",
         "posted" => "nullable|string|max:3",
         "category_id" => "required|integer",
-        "type" => "nullable|string|max:10"
+        "type" => "nullable|string|max:10",
+        "tag" => "nullable|string",
+        "tags" => "nullable|array"
     ];
 
     public function mount($id = null)
@@ -46,6 +49,7 @@ class Save extends Component
             $this->posted = $this->news->posted;
             $this->category_id = $this->news->category_id;
             $this->type = $this->news->type;
+            $this->load_tags($this->news->tags);
         }
     }
 
@@ -66,10 +70,35 @@ class Save extends Component
         }
     }
 
+    public function add_tags_list ()
+    {
+        array_push($this->tags, $this->tag);
+        $this->tag = '';
+    }
+
+    public function remove_tag ($key) {
+        $tags_temp = array();
+        for ($i=0; $i < count($this->tags); $i++) {
+            if($i != $key) {
+                array_push($tags_temp, $this->tags[$i]);
+            }
+        }
+        $this->tags = $tags_temp;
+    }
+
+    public function load_tags ($tags) {
+        if ($tags) {
+            $tags = json_decode($tags, true);
+            foreach ($tags as $key => $value) {
+                array_push($this->tags, $value);
+            }
+        }
+    }
+
     public function submit()
     {
         $this -> validate();
-
+        $this->tags = json_encode($this->tags);
         if ($this->news) {
             $this->news->update([
                 'title' => $this->title,
@@ -79,7 +108,8 @@ class Save extends Component
                 'date_publish' => $this->date_publish,
                 'posted' => $this->posted,
                 'category_id' => $this->category_id,
-                'type' => $this->type
+                'type' => $this->type,
+                'tags' => $this->tags
             ]);
             $this->emit('updated');
         } else {
@@ -93,11 +123,14 @@ class Save extends Component
                     'posted' => $this->posted,
                     'category_id' => $this->category_id,
                     'type' => $this->type,
+                    'tags' => $this->tags,
                     'user_id' => auth()->id()
                 ]
             );
             $this->emit('created');
         }
+
+        $this->tags = json_decode($this->tags);
 
         if ($this->background) {
             $imageName = $this->news->id.'_news.'.$this->background->getClientOriginalExtension();

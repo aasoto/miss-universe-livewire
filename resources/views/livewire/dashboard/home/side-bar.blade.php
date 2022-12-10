@@ -152,7 +152,7 @@
                 </div>
                 <ul class="hidden group-hover:block my-5 p-4 rounded-lg shadow transition duration-200">
                     <li class="">
-                        <a href={{ route('d-news-index') }}" class="py-2">
+                        <a href="{{ route('d-news-index') }}" class="py-2">
                             <div class="flex flex-row gap-3 items-center">
                                 <div
                                     class="rounded-lg bg-gradient-to-r from-cyan-400 dark:from-cyan-200 to-blue-900 dark:to-blue-700 px-4 py-2 text-white">

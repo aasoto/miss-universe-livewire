@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('date_publish')->nullable();
             $table->enum('posted', ['yes', 'not'])->nullable();
             $table->foreignId("category_id")->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->text('tags')->nullable();
             $table->enum('type', ['article', 'news'])->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

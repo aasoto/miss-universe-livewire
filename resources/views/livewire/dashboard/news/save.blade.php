@@ -128,6 +128,31 @@
                     <option class="bg-transparent dark:bg-slate-800" value="news">{{__('News')}}</option>
                 </select>
             </div>
+            <div class="col-span-1 relative">
+                <label
+                    class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"
+                    for="tag">
+                    {{ __('Tags') }}
+                </label>
+                <x-jet-input-error for='tag'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
+                <input
+                    class="w-full rounded-full border-2 bg-white dark:bg-transparent border-gray-500 dark:border-white px-4 py-2"
+                    wire:model="tag" wire:keydown.arrow-right="add_tags_list()" type="text">
+            </div>
+            <div class="col-span-1 relative">
+                <div class="flex flex-row flex-wrap gap-2 justify-start items-center">
+                    @foreach ($tags as $key => $value)
+                        <div wire:click="remove_tag({{ $key }})" class="rounded-full group mb-2 px-4 py-2 {{$send_button}} text-white font-semibold cursor-pointer">
+                            <div class="flex flex-row gap-2 justify-center items-center">
+                                <span>
+                                    {{$value}}
+                                </span>
+                                <i class="invisible group-hover:visible fa-regular fa-circle-xmark text-white"></i>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
         <div class="mt-6 py-6 w-full flex justify-center items-center">
             <button type="submit" class="rounded-full w-2/3 px-4 py-3 text-white font-bold {{$send_button}} hover:scale-110 transition">Guardar</button>
