@@ -9,7 +9,7 @@ class Index extends Component
 {
     protected $listeners = ["searching", "show_page"];
 
-    public $news, $search, $result_searching, $count, $last_id, $pages, $current_page = "[", $next_id, $count_pages, $num_results = 10;
+    public $news, $search, $result_searching, $count, $first_id, $last_id, $pages, $current_page = "[", $next_id, $count_pages, $num_results = 10;
 
     public function render()
     {
@@ -20,7 +20,7 @@ class Index extends Component
 
         $this->count = News::count();
         $this->pagination($this->count, $this->num_results);
-
+        $this->first_id = News::select('id')->orderBy('id')->first();
         $this->last_id = News::select('id')->orderByDesc('id')->first();
         $this->paginate($this->last_id->id);
 
@@ -48,8 +48,8 @@ class Index extends Component
             for ($i=0; $i < $this->num_results; $i++) {
                 $not_found = true;
                 do {
-                    $success = News::findOrFail($next_id);
-                    if ($success) {
+                    $success = News::select('id')->where('id', $next_id)->get();
+                    if (isset($success[0]->id)) {
                         if ($i != ($this->num_results - 1)) {
                             $result = News::where('id', $next_id)->get();
                             $this->current_page = $this->current_page.'{"id":"'.$result[0]->id.'","title":"'.$result[0]->title.'","subtitle":"'.$result[0]->subtitle.'","slug":"'.$result[0]->slug.'","background":"'.$result[0]->background.'"},';
@@ -75,29 +75,26 @@ class Index extends Component
         $this->pages = ceil($total / $num_x_pag);
     }
 
-    public function paginate($count)
+    public function paginate ($count)
     {
-        $this->count_pages = '[';
+        $aux_count = $count;
+        $this->count_pages = array();
         for ($i=1; $i <= $this->pages; $i++) {
-            if ($i != $this->pages) {
-                $this->count_pages = $this->count_pages.'{"current":"'.$i.'","jump":"'.$count.'"},';
-            } else {
-                $this->count_pages = $this->count_pages.'{"current":"'.$i.'","jump":"'.$count.'"}';
-            }
+            $data = array("current" => $i, "jump" => $count);
+            array_push($this->count_pages, $data);
             for ($j=0; $j < $this->num_results; $j++) {
                 $not_found = true;
                 do {
-                    $success = News::findOrFail($count);
-                    if ($success) {
+                    $success = News::where('id', $count)->get();
+                    if (isset($success[0]->id)) {
                         $count--;
                         $not_found = false;
                     } else {
                         $count--;
                     }
-                } while ($not_found);
+                } while ($not_found && $count >= 1);
             }
         }
-        $this->count_pages = $this->count_pages.']';
-        $this->count_pages = json_decode($this->count_pages);
+        $this->count_pages = json_decode(json_encode($this->count_pages));
     }
 }

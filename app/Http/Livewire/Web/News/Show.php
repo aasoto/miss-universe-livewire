@@ -23,6 +23,7 @@ class Show extends Component
     public function render()
     {
         $this->data_news = News::where('slug', $this->slug)->get();
+        $this->data_news[0]->tags = json_decode($this->data_news[0]->tags);
         $this->data_news = json_decode(json_encode($this->data_news));
         $this->user_editor = User::where('id', $this->data_news[0]->user_id)->get();
         $this->user_editor[0]->country = $this->user_editor[0]->country;

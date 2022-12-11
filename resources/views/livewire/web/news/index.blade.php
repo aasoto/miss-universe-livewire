@@ -61,29 +61,31 @@
             </div>
         </div>
         <div x-show="results_2">
-            <template x-for="n in result_searching">
-                <div class="col-span-1">
-                    <a :href="`{{ asset('news/show') }}/${n.slug}`">
-                        <div
-                            class="rounded-lg h-auto md:h-60 shadow-lg hover:shadow-black/20 hover:scale-[1.02] transition duration-200">
-                            <div class="flex flex-col md:flex-row h-full">
-                                <div class="basis-1/2 md:basis-1/3">
-                                    <img class="rounded-t-lg md:rounded-l-lg w-full h-full object-cover object-center cursor-pointer"
-                                        :src="`../../storage/app/public/images/news/background/${n.background}`" alt="">
-                                </div>
-                                <div class="basis-1/2 md:basis-2/3 px-5 py-3">
-                                    <h2 class="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-left hover:text-rose-700 dark:hover:text-rose-400 hover:underline cursor-pointer"
-                                        x-text="n.id +' - '+n.title">
-                                    </h2>
-                                    <p class="text-base text-justify pb-4 cursor-pointer"
-                                        x-text="n.subtitle">
-                                    </p>
+            <div class="grid grid-cols-1 2xl:grid-cols-2 gap-5 mx-5 mt-5 md:mx-20">
+                <template x-for="n in result_searching">
+                    <div class="col-span-1">
+                        <a :href="`{{ asset('news/show') }}/${n.slug}`">
+                            <div
+                                class="rounded-lg h-auto md:h-60 shadow-lg hover:shadow-black/20 hover:scale-[1.02] transition duration-200">
+                                <div class="flex flex-col md:flex-row h-full">
+                                    <div class="basis-1/2 md:basis-1/3">
+                                        <img class="rounded-t-lg md:rounded-l-lg w-full h-full object-cover object-center cursor-pointer"
+                                            :src="`../../storage/app/public/images/news/background/${n.background}`" alt="">
+                                    </div>
+                                    <div class="basis-1/2 md:basis-2/3 px-5 py-3">
+                                        <h2 class="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-left hover:text-rose-700 dark:hover:text-rose-400 hover:underline cursor-pointer"
+                                            x-text="n.id +' - '+n.title">
+                                        </h2>
+                                        <p class="text-base text-justify pb-4 cursor-pointer"
+                                            x-text="n.subtitle">
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            </template>
+                        </a>
+                    </div>
+                </template>
+            </div>
         </div>
     </section>
 <script>

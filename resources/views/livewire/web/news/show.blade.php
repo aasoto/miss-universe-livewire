@@ -55,6 +55,11 @@
                 </div>
                 <div class="info-texto" x-html="`<p>${data_news[0].content}</p>`">
                 </div>
+                <template x-for="tag in data_news[0].tags">
+                    <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
+                        x-text="tag">
+                    </span>
+                </template>
             </div>
         </div>
     </section>
@@ -201,128 +206,6 @@
     <template x-if="deleted_comment">
         <div x-init="deleted_comment_alert()"></div>
     </template>
-
-
-    {{-- <div
-        class="w-full md:w-11/12 mx-0 mt-4 md:mx-8 lg:mx-11 xl:mx-14 2xl:mx-16 md:rounded-md bg-white/70 dark:bg-gray-800 backdrop-blur-lg shadow-sm shadow-gray-700">
-        <div class="pt-5 ml-12 mb-5">
-            <h3 class="text-xl font-bold justify-left text-rose-500 dark:text-rose-300">Comentarios</h3>
-        </div>
-        <div x-show="auth_user_id">
-            <div x-show="!new_comment">
-                <div class="ml-12 pb-5 mr-12 flex flex-row gap-3">
-                    <div class="basis-5/6">
-                        <input @keyup.enter="add()" x-model="message" type="text" placeholder="Comenta aquí..."
-                            class="w-full py-2 bg-white dark:bg-gray-800 rounded border border-rose-500 hover:border-rose-800 hover:shadow-sm hover:shadow-rose-400 hover:dark:shadow-white focus:shadow-sm focus:shadow-rose-400 dark:focus:shadow-gray-600 focus:border-2 focus:border-rose-800 placeholder:text-gray-500 dark:placeholder:text-gray-200">
-                    </div>
-                    <div class="basis-1/6">
-                        <button @click="add()"
-                            class="w-full h-full bg-rose-500 hover:bg-rose-700 text-white text-semibold rounded">Enviar</button>
-                    </div>
-                </div>
-            </div>
-            <div x-show="new_comment">
-                <div class="ml-12 pb-5 mr-12 flex flex-row gap-3">
-                    <div class="basis-5/6">
-                        <input type="text" placeholder="Comenta aquí..."
-                            class="w-full py-2 bg-white dark:bg-gray-800 rounded border border-rose-500 hover:border-rose-800 hover:shadow-sm hover:shadow-rose-400 hover:dark:shadow-white focus:shadow-sm focus:shadow-rose-400 dark:focus:shadow-gray-600 focus:border-2 focus:border-rose-800 placeholder:text-gray-500 dark:placeholder:text-gray-200"
-                            disabled>
-                    </div>
-                    <div class="basis-1/6">
-                        <button
-                            class="opacity-50 cursor-not-allowed w-full h-full bg-rose-500 hover:bg-rose-700 text-white text-semibold rounded">Enviar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ml-12 mr-12 rounded-lg border border-rose-500">
-            <div x-show="comments[0].id">
-                <div x-show="new_comment">
-                    <template x-if="new_comment">
-                        <div x-init="no_comments = false"></div>
-                    </template>
-                    <div class="border-b border-rose-500">
-                        <div class="flex flex-row gap-3">
-                            <div class="w-11/12">
-                                <div class="ml-4 mt-4 flex flex-row gap-3">
-                                    <template x-if="auth_user_profile_photo_path">
-                                        <img class="h-7 w-7 rounded-full"
-                                            :src="`{{ asset('../storage/app/public') }}/${auth_user_profile_photo_path}`"
-                                            alt="" />
-                                    </template>
-                                    <template x-if="!auth_user_profile_photo_path">
-                                        <img class="h-7 w-7 rounded-full"
-                                            :src="`{{ asset('../storage/app/public/profile-photos/user.png') }}`"
-                                            alt="" />
-                                    </template>
-                                    <h4 class="text-lg font-bold text-gray-800 dark:text-white text-left"
-                                        x-text="auth_user_name"></h4>
-                                </div>
-                                <p class="w-11/12 text-justify mx-4 mb-4 text-gray-800 text-lg font-light dark:text-white text-left"
-                                    x-text="new_comment"></p>
-                            </div>
-                            <div class="w-1/12 my-auto mx-auto">
-                                <button class="rounded text-white bg-rose-500 px-4 h-10">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <template x-for="comment in comments_verified">
-                    <div class="border-b border-rose-500" x-init="no_comments = false">
-                        <div class="flex flex-row gap-3">
-                            <div class="w-11/12">
-                                <div class="ml-4 mt-4 flex flex-row gap-3">
-                                    <template x-if="comment.profile_photo_path">
-                                        <img class="h-7 w-7 rounded-full"
-                                            :src="`{{ asset('../storage/app/public') }}/${comment.profile_photo_path}`"
-                                            alt="" />
-                                    </template>
-                                    <template x-if="!comment.profile_photo_path">
-                                        <img class="h-7 w-7 rounded-full"
-                                            :src="`{{ asset('../storage/app/public/profile-photos/user.png') }}`"
-                                            alt="" />
-                                    </template>
-                                    <h4 class="text-lg font-bold text-gray-800 dark:text-white text-left"
-                                        x-text="comment.name"></h4>
-                                </div>
-                                <div x-show="comment.plus">
-                                    <p class="w-11/12 text-justify mx-4 mb-4 text-gray-800 text-lg font-light dark:text-white text-left"
-                                        x-text="comment.message" x-show="!comment.editMode"
-                                        @click="comment.editMode = true"></p>
-                                    <input x-model="comment.message" x-show="comment.editMode" type="text"
-                                        @keyup.enter="comment.editMode=false; update_comment(comment.id, comment.message)"
-                                        class="w-11/12 ml-4 my-4 py-2 bg-white dark:bg-gray-800 rounded border border-rose-500 hover:border-rose-800 hover:shadow-sm hover:shadow-rose-400 hover:dark:shadow-white focus:shadow-sm focus:shadow-rose-400 dark:focus:shadow-gray-600 focus:border-2 focus:border-rose-800 placeholder:text-gray-500 dark:placeholder:text-gray-200">
-                                </div>
-                                <div x-show="!comment.plus">
-                                    <p class="w-11/12 text-justify mx-4 mb-4 text-gray-800 text-lg font-light dark:text-white text-left"
-                                        x-text="comment.message"></p>
-                                </div>
-                            </div>
-                            <div class="w-1/12 my-auto mx-auto">
-                                <template x-if="comment.plus">
-                                    <button @click="delete_comment(comment.id)"
-                                        class="rounded text-white bg-rose-500 px-4 h-10">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-            <template x-if="no_comments">
-                <div class="my-5">
-                    <p class="ml-5 text-gray-800 font-bold text-xl">Sin comentarios</p>
-                </div>
-            </template>
-        </div>
-        <br>
-    </div>
-    <template x-if="deleted_comment">
-        <div x-init="deleted_comment_alert()"></div>
-    </template> --}}
 </div>
 
 <script>
