@@ -74,7 +74,7 @@
                 </label>
                 <x-jet-input-error for='content'  class="absolute right-10 bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"/>
                 <textarea wire:model="content"
-                    class="w-full rounded-3xl border-2 text-gray-800 bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
+                    class="w-full rounded-3xl border-2 text-gray-800 dark:text-white bg-white dark:bg-transparent border-gray-500 dark:border-white px-0.5 py-3"></textarea>
             </div>
             <div class="col-span-1 relative">
                 <label class="absolute text-md text-gray-500 dark:text-white bg-white dark:bg-transparent px-4 translate-x-8 dark:translate-x-3 -translate-y-3 dark:-translate-y-7"

@@ -55,11 +55,37 @@
                 </div>
                 <div class="info-texto" x-html="`<p>${data_news[0].content}</p>`">
                 </div>
-                <template x-for="tag in data_news[0].tags">
-                    <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
-                        x-text="tag">
-                    </span>
-                </template>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <div class="col-span-1">
+                        <template x-for="tag in data_news[0].tags">
+                            <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
+                                x-text="tag">
+                            </span>
+                        </template>
+                    </div>
+                    <div class="col-span-1">
+                        <div class="flex flex-col gap-5">
+                            <template x-for="item in related_news">
+                                <a :href="`{{ asset('news/show') }}/${item.slug}`">
+                                    <div
+                                        class="flex w-full rounded-md shadow-md hover:shadow-gray-400 hover:scale-105 transition">
+                                        <img class="w-1/2 h-auto rounded-l-md object-cover object-center cursor-pointer"
+                                            :src="`../../../storage/app/public/images/news/background/${item.background}`"
+                                            alt="">
+                                        <div class="px-4">
+                                            <h3 class="text-lg sm:text-xl mb-4 font-medium text-left hover:text-rose-700 hover:underline cursor-pointer"
+                                                x-text="item.title">
+                                            </h3>
+                                            <p class="text-base text-justify pb-4 break-words cursor-pointer"
+                                                x-html="item.content">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -212,7 +238,23 @@
     function show_news() {
         return {
             data_news: @entangle('data_news'),
-            user_editor: @entangle('user_editor')
+            related_news: @entangle('related_news'),
+            related_news_showed: 0,
+            show: true,
+            user_editor: @entangle('user_editor'),
+            count_relateds () {
+                console.log(this.related_news)
+                return this.related_news.length
+            },
+            show_firsts () {
+                if (this.related_news_showed < 3) {
+                    this.show = true
+                } else {
+                    this.show = false
+                }
+                this.related_news_showed = this.related_news_showed + 1
+                console.log('showed: ', this.related_news_showed, 'show: ', this.show)
+            }
         }
     }
 

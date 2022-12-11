@@ -13,7 +13,7 @@ class Show extends Component
 {
     protected $listeners = ["add_comment", "verify_owner", "delete_comment", "confirm_alert_deleted", "update_comment"];
 
-    public $data_news, $user_editor, $comments, $verified_comment, $new_comment;
+    public $data_news, $related_news, $user_editor, $comments, $verified_comment, $new_comment;
     public $auth_user_id, $auth_user_name, $auth_user_profile_photo_path, $deleted_comment;
     public $slug;
 
@@ -40,6 +40,7 @@ class Show extends Component
             $this->auth_user_name = Auth::user()->name;
             $this->auth_user_profile_photo_path = Auth::user()->profile_photo_path;
         }
+        $this->related_news = $this->recommended_publications();
         return view('livewire.web.news.show')->layout('layouts.web.layout');
     }
 
@@ -65,5 +66,26 @@ class Show extends Component
     public function update_comment($comment_id, $message)
     {
         comment::where("id", $comment_id)->update(['message' => $message]);
+    }
+
+    public function recommended_publications ()
+    {
+        $tags = $this->data_news[0]->tags;
+        $recommended_news = array();
+        if ($tags) {
+            foreach ($tags as $key => $value) {
+                $data = News::where('tags', 'like', '%'.$value.'%')->first();
+                $data->content = str($data->content)->substr(0, 250);
+                array_push($recommended_news, $data);
+            }
+        } else {
+            $data = News::where('id', '!=', $this->data_news[0]->id)->orderByDesc('id')->take(5)->get();
+            foreach ($data as $key => $value) {
+                $data[$key]->content = str($data[$key]->content)->substr(0, 250);
+                array_push($recommended_news, json_decode(json_encode($data[$key])));
+            }
+        }
+
+        return $recommended_news;
     }
 }
