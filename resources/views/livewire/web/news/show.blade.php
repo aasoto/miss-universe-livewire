@@ -59,9 +59,11 @@
                     <div class="col-span-1">
                         <div class="flex flex-wrap">
                             <template x-for="tag in data_news[0].tags">
-                                <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
-                                    x-text="tag">
-                                </span>
+                                <a :href="`{{ asset('news/tag') }}/${tag}`">
+                                    <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
+                                        x-text="tag">
+                                    </span>
+                                </a>
                             </template>
                         </div>
                     </div>

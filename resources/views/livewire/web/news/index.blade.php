@@ -88,6 +88,7 @@
             </div>
         </div>
     </section>
+</div>
 <script>
     function showNews() {
         return {

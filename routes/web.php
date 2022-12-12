@@ -69,6 +69,7 @@ use App\Http\Livewire\Web\Editions\MissUniverse;
 use App\Http\Livewire\Web\Index as WebIndex;
 use App\Http\Livewire\Web\News\Index as WebNewsIndex;
 use App\Http\Livewire\Web\News\Show as WebNewsShow;
+use App\Http\Livewire\Web\News\Tag;
 use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -91,6 +92,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/', WebIndex::class)->name('start');
     Route::get('/news/all', WebNewsIndex::class)->name('news-index');
     Route::get('/news/show/{slug}', WebNewsShow::class)->name('news-show');
+    Route::get('/news/tag/{tag}', Tag::class)->name('news-tag');
     Route::get('/editions', EditionsIndex::class)->name('miss-universe-list-editions');
     Route::get('/editions/{slug}', MissUniverse::class)->name('miss-universe-edition');
 });
