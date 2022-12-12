@@ -11,7 +11,7 @@ class Index extends Component
 {
     protected $listeners = ["slug_edition"];
 
-    public $carousels, $news, $editions, $current_slug_edition;
+    public $carousels, $news, $editions, $current_slug_edition, $current_color;
 
     public function render()
     {
@@ -38,4 +38,5 @@ class Index extends Component
     {
         $this->current_slug_edition = $slug;
     }
+
 }

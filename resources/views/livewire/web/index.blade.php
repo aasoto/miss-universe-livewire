@@ -25,7 +25,7 @@
                                                 <template x-if="item.button_1_type">
                                                     <a :href="`${item.button_1_link}`">
                                                         <button
-                                                            :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_1_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_1}-500 text-sm sm:text-base text-${item.button_1}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
+                                                            :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_1_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_1_color}-500 text-sm sm:text-base text-${item.button_1_color}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
                                                             <span x-text="item.button_1_text"></span>
                                                         </button>
                                                     </a>
@@ -33,7 +33,7 @@
                                                 <template x-if="item.button_2_type">
                                                     <a :href="`${item.button_2_link}`">
                                                         <button
-                                                            :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_2_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_2}-500 text-sm sm:text-base text-${item.button_2}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
+                                                            :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_2_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_2_color}-500 text-sm sm:text-base text-${item.button_2_color}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
                                                             <span x-text="item.button_2_text"></span>
                                                         </button>
                                                     </a>
@@ -59,7 +59,7 @@
                                         <template x-if="item.button_1_type">
                                             <a :href="`${item.button_1_link}`">
                                                 <button
-                                                    :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_1_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_1}-500 text-sm sm:text-base text-${item.button_1}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
+                                                    :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_1_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_1_color}-500 text-sm sm:text-base text-${item.button_1_color}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
                                                     <span x-text="item.button_1_text"></span>
                                                 </button>
                                             </a>
@@ -67,7 +67,7 @@
                                         <template x-if="item.button_2_type">
                                             <a :href="`${item.button_2_link}`">
                                                 <button
-                                                    :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_2_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_2}-500 text-sm sm:text-base text-${item.button_2}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
+                                                    :class="`mt-4 px-1 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 border sm:border-2 border-${item.button_2_color}-500 hover:border-white dark:hover:border-slate-800 bg-white dark:bg-slate-800 hover:bg-${item.button_2_color}-500 text-sm sm:text-base text-${item.button_2_color}-500 hover:text-white dark:hover:text-slate-800 font-normal sm:font-bold rounded-full transition hover:scale-110`">
                                                     <span x-text="item.button_2_text"></span>
                                                 </button>
                                             </a>
@@ -220,6 +220,81 @@
             carousel_aux_lenght: 0,
             item_selected: 0,
             auto_carousel: true,
+            colors_buttons: [
+                {
+                    color: 'black',
+                    code: '0 0 0'
+                },{
+                    color: 'white',
+                    code: '255 255 255'
+                },{
+                    color: 'slate',
+                    code: '100 116 139'
+                },{
+                    color: 'gray',
+                    code: '107 114 128'
+                },{
+                    color: 'zinc',
+                    code: '113 113 122'
+                },{
+                    color: 'neutral',
+                    code: '115 115 115'
+                },{
+                    color: 'stone',
+                    code: '120 113 108'
+                },{
+                    color: 'red',
+                    code: '239 68 68'
+                },{
+                    color: 'orange',
+                    code: '249 115 22'
+                },{
+                    color: 'amber',
+                    code: '245 158 11'
+                },{
+                    color: 'yellow',
+                    code: '234 179 8'
+                },{
+                    color: 'lime',
+                    code: '132 204 22'
+                },{
+                    color: 'green',
+                    code: '134 239 172'
+                },{
+                    color: 'emerald',
+                    code: '5 150 105'
+                },{
+                    color: 'teal',
+                    code: '20 184 166'
+                },{
+                    color: 'cyan',
+                    code: '6 182 212'
+                },{
+                    color: 'sky',
+                    code: '14 165 233'
+                },{
+                    color: 'blue',
+                    code: '59 130 246'
+                },{
+                    color: 'indigo',
+                    code: '99 102 241'
+                },{
+                    color: 'violet',
+                    code: '139 92 246'
+                },{
+                    color: 'purple',
+                    code: '168 85 247'
+                },{
+                    color: 'fuchsia',
+                    code: '217 70 239'
+                },{
+                    color: 'pink',
+                    code: '236 72 153'
+                },{
+                    color: 'rose',
+                    code: '244 63 94'
+                }
+            ],
             copy_data() {
                 for (let i = 0; i < this.carousel.length; i++) {
                     this.carousel_aux[i] = this.carousel[i];
@@ -234,6 +309,14 @@
                     } else {
                         this.carousel_aux[i].make = false;
                     }
+                    this.colors_buttons.forEach(element => {
+                        if (element.code == this.carousel_aux[i].button_1_color) {
+                            this.carousel_aux[i].button_1_color = element.color
+                        }
+                        if (element.code == this.carousel_aux[i].button_2_color) {
+                            this.carousel_aux[i].button_2_color = element.color
+                        }
+                    });
                 }
                 this.carousel_aux_lenght = this.carousel_aux.length;
             },
