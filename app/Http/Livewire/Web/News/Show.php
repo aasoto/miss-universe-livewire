@@ -74,9 +74,11 @@ class Show extends Component
         $recommended_news = array();
         if ($tags) {
             foreach ($tags as $key => $value) {
-                $data = News::where('tags', 'like', '%'.$value.'%')->first();
-                $data->content = str($data->content)->substr(0, 250);
-                array_push($recommended_news, $data);
+                $data = News::where('id', '!=', $this->data_news[0]->id) -> where('tags', 'like', '%'.$value.'%')->first();
+                if (isset($data->id)) {
+                    $data->content = str($data->content)->substr(0, 250);
+                    array_push($recommended_news, $data);
+                }
             }
         } else {
             $data = News::where('id', '!=', $this->data_news[0]->id)->orderByDesc('id')->take(5)->get();

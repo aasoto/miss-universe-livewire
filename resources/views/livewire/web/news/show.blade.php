@@ -57,15 +57,18 @@
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                     <div class="col-span-1">
-                        <template x-for="tag in data_news[0].tags">
-                            <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
-                                x-text="tag">
-                            </span>
-                        </template>
+                        <div class="flex flex-wrap">
+                            <template x-for="tag in data_news[0].tags">
+                                <span class="rounded-full group mx-1 mb-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 text-white font-semibold cursor-pointer"
+                                    x-text="tag">
+                                </span>
+                            </template>
+                        </div>
                     </div>
                     <div class="col-span-1">
+                        <div x-init="divide_relateds()"></div>
                         <div class="flex flex-col gap-5">
-                            <template x-for="item in related_news">
+                            <template x-for="item in firsts_related">
                                 <a :href="`{{ asset('news/show') }}/${item.slug}`">
                                     <div
                                         class="flex w-full rounded-md shadow-md hover:shadow-gray-400 hover:scale-105 transition">
@@ -83,6 +86,33 @@
                                     </div>
                                 </a>
                             </template>
+                        </div>
+                        <div x-show="!more">
+                            <h3 @click="see_more()" class="text-2xl my-4 font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-900 dark:from-pink-300 dark:to-rose-600 hover:underline cursor-pointer">
+                                Ver más noticias relacionadas
+                            </h3>
+                        </div>
+                        <div x-show="more">
+                            <div class="flex flex-col gap-5 mt-5">
+                                <template x-for="item in more_related">
+                                    <a :href="`{{ asset('news/show') }}/${item.slug}`">
+                                        <div
+                                            class="flex w-full rounded-md shadow-md hover:shadow-gray-400 hover:scale-105 transition">
+                                            <img class="w-1/2 h-auto rounded-l-md object-cover object-center cursor-pointer"
+                                                :src="`../../../storage/app/public/images/news/background/${item.background}`"
+                                                alt="">
+                                            <div class="px-4">
+                                                <h3 class="text-lg sm:text-xl mb-4 font-medium text-left hover:text-rose-700 hover:underline cursor-pointer"
+                                                    x-text="item.title">
+                                                </h3>
+                                                <p class="text-base text-justify pb-4 break-words cursor-pointer"
+                                                    x-html="item.content">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </template>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,21 +269,28 @@
         return {
             data_news: @entangle('data_news'),
             related_news: @entangle('related_news'),
-            related_news_showed: 0,
-            show: true,
+            firsts_related: [],
+            more_related: [],
+            more: false,
             user_editor: @entangle('user_editor'),
-            count_relateds () {
-                console.log(this.related_news)
-                return this.related_news.length
-            },
-            show_firsts () {
-                if (this.related_news_showed < 3) {
-                    this.show = true
-                } else {
-                    this.show = false
+            divide_relateds () {
+                let key = 0, key_2 = 0
+                for (let item of this.related_news) {
+                    if (key < 3) {
+                        this.firsts_related[key] = this.related_news[key]
+                    } else {
+                        this.more_related[key_2] = this.related_news[key]
+                        key_2++
+                    }
+                    key++
                 }
-                this.related_news_showed = this.related_news_showed + 1
-                console.log('showed: ', this.related_news_showed, 'show: ', this.show)
+
+                if (this.related_news.length <= 3) {
+                    this.more = true
+                }
+            },
+            see_more () {
+                this.more = true
             }
         }
     }
